@@ -1,0 +1,155 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>수익 배분 데이터 분석 — YVVY 기간별 배분과 인센티브</title>
+<meta name="description" content="YVVY 백서의 기간별 배분율, 시나리오별 누적 배분, 생태계 인센티브와 등급 요건을 차트로 분석합니다.">
+<meta property="og:title" content="수익 배분 데이터 분석 — YVVY">
+<meta property="og:image" content="assets/og.png">
+<meta property="og:locale" content="ko_KR">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700;900&family=Noto+Serif+KR:wght@700;900&display=swap">
+<link rel="stylesheet" href="nocapital.css?v=yvvy20261102b">
+<link rel="stylesheet" href="nocapital-apple.css?v=yvvy20261102b">
+<link rel="stylesheet" href="funnel.css?v=yvvy20261102b">
+<link rel="stylesheet" href="nocapital-bg.css?v=yvvy20261102b">
+<link rel="stylesheet" href="nocapital-type.css?v=yvvy20261102b">
+<link rel="stylesheet" href="nocapital-apple2.css?v=yvvy20261102b">
+<link rel="stylesheet" href="nocapital-responsive.css?v=yvvy20261102b">
+<link rel="stylesheet" href="nocapital-tune.css?v=yvvy20261102b">
+<link rel="stylesheet" href="nocapital-apple3.css?v=yvvy20261102b">
+<link rel="stylesheet" href="token-viz.css">
+<script>document.documentElement.classList.add('js');</script>
+</head>
+<body>
+<nav class="nav"><a class="nav-logo" href="nocapital.html">← 개요</a><a class="nav-cta" href="nocapital-join.html">참여 구조</a></nav>
+
+<section class="hero">
+  <div class="wrap">
+    <div class="eyebrow reveal">데이터 분석 · 수익 배분</div>
+    <h1 class="display reveal" data-fs="0.8">돈은<br><span class="gold">누구에게 얼마나</span> 가나</h1>
+    <p class="sub reveal">백서의 배분 표를 <em>곡선과 막대</em>로 다시 그렸습니다</p>
+    <p class="body reveal">이 페이지의 모든 숫자는 세 가지로 구분됩니다. <b>[백서]</b>는 원문에 있는 값, <b>[계산]</b>은 원문 규칙을 곱하고 더한 산수, <b>[가정]</b>은 독자가 바꿔볼 수 있는 입력값입니다. 수익 전망은 포함하지 않습니다.</p>
+  </div>
+</section>
+<section id="start">
+  <div class="wrap-wide" style="text-align:center">
+    <div class="eyebrow reveal">1 · 배분 구조</div>
+    <h2 class="display-md reveal">회사와 회원의 <span class="gold">몫은 이렇게 바뀝니다</span></h2>
+    <p class="body reveal" style="max-width:640px;margin-left:auto;margin-right:auto">[백서] 자금 활성 기간에 따라 회원 배분율이 30%에서 80%로 오릅니다.</p>
+<div class="vz reveal">
+  <h3>기간별 회원·회사 배분</h3>
+  <p class="vz-cap">[백서] 적격 순이익을 나누는 비율</p>
+  <div style="margin-top:1.1rem"><div class="vz-cap" style="font-weight:600;color:var(--vz-fg)">1–7일</div><div class="vz-stack" style="margin-top:.4rem"><div class="vz-seg s1" style="flex:30">회원 30%</div><div class="vz-seg s3" style="flex:70;font-size:.9rem">회사 70%</div></div></div><div style="margin-top:1.1rem"><div class="vz-cap" style="font-weight:600;color:var(--vz-fg)">8–30일</div><div class="vz-stack" style="margin-top:.4rem"><div class="vz-seg s1" style="flex:40">회원 40%</div><div class="vz-seg s3" style="flex:60;font-size:.9rem">회사 60%</div></div></div><div style="margin-top:1.1rem"><div class="vz-cap" style="font-weight:600;color:var(--vz-fg)">31–60일</div><div class="vz-stack" style="margin-top:.4rem"><div class="vz-seg s1" style="flex:50">회원 50%</div><div class="vz-seg s3" style="flex:50;font-size:.9rem">회사 50%</div></div></div><div style="margin-top:1.1rem"><div class="vz-cap" style="font-weight:600;color:var(--vz-fg)">61–90일</div><div class="vz-stack" style="margin-top:.4rem"><div class="vz-seg s1" style="flex:60">회원 60%</div><div class="vz-seg s3" style="flex:40;font-size:.9rem">회사 40%</div></div></div><div style="margin-top:1.1rem"><div class="vz-cap" style="font-weight:600;color:var(--vz-fg)">91–180일</div><div class="vz-stack" style="margin-top:.4rem"><div class="vz-seg s1" style="flex:70">회원 70%</div><div class="vz-seg s3" style="flex:30;font-size:.9rem">회사 30%</div></div></div><div style="margin-top:1.1rem"><div class="vz-cap" style="font-weight:600;color:var(--vz-fg)">181일부터</div><div class="vz-stack" style="margin-top:.4rem"><div class="vz-seg s1" style="flex:80">회원 80%</div><div class="vz-seg s3" style="flex:20;font-size:.9rem">회사 20%</div></div></div>
+  <p class="vz-src">출처: YVVY 백서 12쪽 · 이 비율은 이익 배분을 나타낼 뿐 원금 수익률을 의미하지 않습니다.</p>
+</div>
+    <div class="vz-stats reveal"><div class="vz-stat"><strong>50%</strong><span>회원·회사가 같아지는 시점: 31일째</span></div><div class="vz-stat"><strong>37.7%</strong><span>30일 보유 평균 회원 몫 [계산]</span></div><div class="vz-stat"><strong>59.6%</strong><span>180일 보유 평균 회원 몫 [계산]</span></div><div class="vz-stat"><strong>69.9%</strong><span>365일 보유 평균 회원 몫 [계산]</span></div></div>
+  </div>
+</section>
+<section id="supply">
+  <div class="wrap-wide" style="text-align:center">
+    <div class="eyebrow reveal">2 · 누적 배분</div>
+    <h2 class="display-md reveal">같은 100 SOL, <span class="gold">기간이 곡선을 바꿉니다</span></h2>
+    <p class="body reveal" style="max-width:640px;margin-left:auto;margin-right:auto">[가정] 입금 100 SOL을 유지하고 매일 순이익률 r이 일정하다고 놓았을 때 회원 누적 배분(SOL). 복리 재투자와 비용은 반영하지 않았습니다.</p>
+<div class="vz reveal">
+  <h3>회원 누적 배분 곡선 (SOL)</h3>
+  <p class="vz-cap">[계산] 100 × r × Σ(일별 회원 배분율). 점선은 배분율이 바뀌는 날(7·30·60·90·180일)</p>
+  <svg class="vz-line" viewBox="0 0 760 330" role="img" aria-label="입금 100 SOL, 일 수익률 1%와 0.5%일 때 회원 누적 배분 곡선"><line class="grid-l" x1="64" x2="736" y1="278.0" y2="278.0"/><text x="54" y="284.0" text-anchor="end">0</text><line class="grid-l" x1="64" x2="736" y1="229.2" y2="229.2"/><text x="54" y="235.2" text-anchor="end">50</text><line class="grid-l" x1="64" x2="736" y1="180.3" y2="180.3"/><text x="54" y="186.3" text-anchor="end">100</text><line class="grid-l" x1="64" x2="736" y1="131.5" y2="131.5"/><text x="54" y="137.5" text-anchor="end">150</text><line class="grid-l" x1="64" x2="736" y1="82.6" y2="82.6"/><text x="54" y="88.6" text-anchor="end">200</text><line class="grid-l" x1="64" x2="736" y1="33.8" y2="33.8"/><text x="54" y="39.8" text-anchor="end">250</text><text x="64.0" y="306" text-anchor="middle">0일</text><text x="119.2" y="306" text-anchor="middle">30일</text><text x="229.7" y="306" text-anchor="middle">90일</text><text x="395.4" y="306" text-anchor="middle">180일</text><text x="736.0" y="306" text-anchor="middle">365일</text><line class="grid-l" x1="76.9" x2="76.9" y1="24" y2="278" stroke-dasharray="3 5"/><line class="grid-l" x1="119.2" x2="119.2" y1="24" y2="278" stroke-dasharray="3 5"/><line class="grid-l" x1="174.5" x2="174.5" y1="24" y2="278" stroke-dasharray="3 5"/><line class="grid-l" x1="229.7" x2="229.7" y1="24" y2="278" stroke-dasharray="3 5"/><line class="grid-l" x1="395.4" x2="395.4" y1="24" y2="278" stroke-dasharray="3 5"/><path class="ln" pathLength="1" style="stroke:var(--vz-acc)" d="M64.0 278.0 L73.2 276.5 L82.4 274.8 L91.6 272.8 L100.8 270.9 L110.0 268.9 L119.2 267.0 L128.4 264.5 L137.6 262.1 L146.8 259.6 L156.1 257.2 L165.3 254.7 L174.5 252.3 L183.7 249.4 L192.9 246.4 L202.1 243.5 L211.3 240.6 L220.5 237.7 L229.7 234.7 L238.9 231.3 L248.1 227.9 L257.3 224.5 L266.5 221.0 L275.7 217.6 L284.9 214.2 L294.1 210.8 L303.3 207.4 L312.5 203.9 L321.8 200.5 L331.0 197.1 L340.2 193.7 L349.4 190.3 L358.6 186.9 L367.8 183.4 L377.0 180.0 L386.2 176.6 L395.4 173.2 L404.6 169.3 L413.8 165.4 L423.0 161.5 L432.2 157.5 L441.4 153.6 L450.6 149.7 L459.8 145.8 L469.0 141.9 L478.2 138.0 L487.5 134.1 L496.7 130.2 L505.9 126.3 L515.1 122.4 L524.3 118.5 L533.5 114.6 L542.7 110.7 L551.9 106.7 L561.1 102.8 L570.3 98.9 L579.5 95.0 L588.7 91.1 L597.9 87.2 L607.1 83.3 L616.3 79.4 L625.5 75.5 L634.7 71.6 L643.9 67.7 L653.2 63.8 L662.4 59.9 L671.6 55.9 L680.8 52.0 L690.0 48.1 L699.2 44.2 L708.4 40.3 L717.6 36.4 L726.8 32.5 L736.0 28.6"/><path class="ln" pathLength="1" style="stroke:var(--vz-mute)" d="M64.0 278.0 L73.2 277.3 L82.4 276.4 L91.6 275.4 L100.8 274.4 L110.0 273.5 L119.2 272.5 L128.4 271.3 L137.6 270.0 L146.8 268.8 L156.1 267.6 L165.3 266.4 L174.5 265.2 L183.7 263.7 L192.9 262.2 L202.1 260.8 L211.3 259.3 L220.5 257.8 L229.7 256.4 L238.9 254.7 L248.1 252.9 L257.3 251.2 L266.5 249.5 L275.7 247.8 L284.9 246.1 L294.1 244.4 L303.3 242.7 L312.5 241.0 L321.8 239.3 L331.0 237.6 L340.2 235.8 L349.4 234.1 L358.6 232.4 L367.8 230.7 L377.0 229.0 L386.2 227.3 L395.4 225.6 L404.6 223.6 L413.8 221.7 L423.0 219.7 L432.2 217.8 L441.4 215.8 L450.6 213.9 L459.8 211.9 L469.0 210.0 L478.2 208.0 L487.5 206.0 L496.7 204.1 L505.9 202.1 L515.1 200.2 L524.3 198.2 L533.5 196.3 L542.7 194.3 L551.9 192.4 L561.1 190.4 L570.3 188.5 L579.5 186.5 L588.7 184.6 L597.9 182.6 L607.1 180.6 L616.3 178.7 L625.5 176.7 L634.7 174.8 L643.9 172.8 L653.2 170.9 L662.4 168.9 L671.6 167.0 L680.8 165.0 L690.0 163.1 L699.2 161.1 L708.4 159.2 L717.6 157.2 L726.8 155.2 L736.0 153.3"/><text class="lbl" x="730.0" y="16.6" text-anchor="end">r=1% → 255.3 SOL</text><text class="lbl" x="730.0" y="141.3" text-anchor="end">r=0.5% → 127.7 SOL</text></svg>
+  <p class="vz-src">기울기가 꺾이는 곳은 배분율이 오르는 날입니다. 파란 선 r=1%(백서 예시 상단), 회색 선 r=0.5%(예시 하단).</p>
+</div>
+    <div class="tbl-wrap reveal"><table><thead><tr><th>보유 기간</th><th>r=1% 회원</th><th>r=1% 회사</th><th>r=0.5% 회원</th><th>r=0.5% 회사</th></tr></thead><tbody><tr><td>7일</td><td>2.1 SOL</td><td>4.9 SOL</td><td>1.05 SOL</td><td>2.45 SOL</td></tr><tr><td>30일</td><td>11.3 SOL</td><td>18.7 SOL</td><td>5.65 SOL</td><td>9.35 SOL</td></tr><tr><td>60일</td><td>26.3 SOL</td><td>33.7 SOL</td><td>13.15 SOL</td><td>16.85 SOL</td></tr><tr><td>90일</td><td>44.3 SOL</td><td>45.7 SOL</td><td>22.15 SOL</td><td>22.85 SOL</td></tr><tr><td>180일</td><td>107.3 SOL</td><td>72.7 SOL</td><td>53.65 SOL</td><td>36.35 SOL</td></tr><tr><td>365일</td><td>255.3 SOL</td><td>109.7 SOL</td><td>127.65 SOL</td><td>54.85 SOL</td></tr></tbody></table></div>
+    <p class="fine reveal">※ [계산] 예: 30일, r=1% → 100×1%×(7×0.3+23×0.4)=11.3 SOL(회원), 18.7 SOL(회사). 합계는 30 SOL=100×1%×30.</p>
+  </div>
+</section>
+<section id="rules" class="alt">
+  <div class="wrap-wide" style="text-align:center">
+    <div class="eyebrow reveal">3 · 시나리오</div>
+    <h2 class="display-md reveal">수익률이 <span class="gold">0일 때와 음수일 때</span></h2>
+    <p class="body reveal" style="max-width:640px;margin-left:auto;margin-right:auto">백서는 '실제 수익은 더 낮거나 0이거나 음수일 수 있다'고 밝힙니다. 세 경우를 나란히 놓습니다.</p>
+<div class="tbl-wrap reveal"><table><thead><tr><th>일 순이익률 r</th><th>연환산(단순) [계산]</th><th>연환산(복리) [계산]</th><th>180일 회원 배분 [계산]</th><th>해석</th></tr></thead><tbody><tr><td>1.0%</td><td>365%</td><td>약 +3,678% (37.8배)</td><td>107.3 SOL</td><td>백서 예시 상단. 지속 가능 근거 없음</td></tr><tr><td>0.5%</td><td>182.5%</td><td>약 +517% (6.2배)</td><td>53.7 SOL</td><td>백서 예시 하단</td></tr><tr><td>0%</td><td>0%</td><td>0%</td><td>0 SOL</td><td>배분 없음, 원금은 시장 변동에 노출</td></tr><tr><td>음수</td><td>—</td><td>—</td><td>규정 없음</td><td>손실 분담은 백서에 없음</td></tr></tbody></table></div>
+    <div class="risk reveal"><p><b>분석 의견.</b> 백서의 r 0.5–1%는 '일' 단위입니다. 연환산하면 수백 퍼센트이며, Dune 연구가 범위 안 자본의 수수료율로 쓴 값(연 약 35센트/1달러, 즉 약 35%)과 비교해도 큰 차이가 있습니다. 이 수치를 뒷받침하는 운용 실적은 백서에 없습니다. 숫자를 '설명용 파라미터'로만 읽어야 하는 이유입니다.</p></div>
+  </div>
+</section>
+<section id="demand">
+  <div class="wrap-wide" style="text-align:center">
+    <div class="eyebrow reveal">4 · 인센티브</div>
+    <h2 class="display-md reveal">추가로 나가는 몫은 <span class="gold">최대 45%</span>입니다</h2>
+    <p class="body reveal" style="max-width:640px;margin-left:auto;margin-right:auto">[백서] 1티어 10%, 2티어 5%, V1–V6 등급 풀 30%. 모두 '전략 수익' 또는 '거래 수익' 기준으로 표기됩니다.</p>
+<div class="vz reveal">
+  <h3>인센티브 항목별 비율</h3>
+  <p class="vz-cap">[백서] 전략·거래 수익 대비 %</p>
+  <div class="vz-hbar"><div class="vz-row"><div class="vz-lab">1티어 추천<small>추천 사용자 수익의</small></div><div class="vz-track"><div class="vz-fill " style="--w:10.00%"><b>10%</b></div></div></div><div class="vz-row"><div class="vz-lab">2티어 추천</div><div class="vz-track"><div class="vz-fill " style="--w:5.00%"><b>5%</b></div></div></div><div class="vz-row"><div class="vz-lab">V1 등급 풀</div><div class="vz-track"><div class="vz-fill mute" style="--w:8.00%"><b>8%</b></div></div></div><div class="vz-row"><div class="vz-lab">V2 등급 풀</div><div class="vz-track"><div class="vz-fill mute" style="--w:7.00%"><b>7%</b></div></div></div><div class="vz-row"><div class="vz-lab">V3 등급 풀</div><div class="vz-track"><div class="vz-fill mute" style="--w:6.00%"><b>6%</b></div></div></div><div class="vz-row"><div class="vz-lab">V4 등급 풀</div><div class="vz-track"><div class="vz-fill mute" style="--w:4.00%"><b>4%</b></div></div></div><div class="vz-row"><div class="vz-lab">V5 등급 풀</div><div class="vz-track"><div class="vz-fill mute" style="--w:3.00%"><b>3%</b></div></div></div><div class="vz-row"><div class="vz-lab">V6 등급 풀</div><div class="vz-track"><div class="vz-fill mute" style="--w:2.00%"><b>2%</b></div></div></div></div>
+  <p class="vz-src">등급 풀 합계 8+7+6+4+3+2=30% [계산]. 막대 폭은 항목 간 상대 비교용입니다.</p>
+</div>
+    <div class="risk reveal"><p><b>열린 질문.</b> ① 인센티브는 회사 몫(181일 이후 20%)에서 나가는지, 회원 몫에서 나가는지 백서에 없습니다. 최대 45%가 회사 몫에서만 나간다면 181일 이후의 20%로는 부족합니다 [계산]. ② 1·2티어 비율은 '추천 사용자의 전략 수익' 기준, 등급 풀은 '거래 수익' 기준으로 표기되어 기준이 서로 다릅니다.</p></div>
+  </div>
+</section>
+<section id="cases" class="alt">
+  <div class="wrap-wide" style="text-align:center">
+    <div class="eyebrow reveal">5 · 등급</div>
+    <h2 class="display-md reveal">V1에서 V6까지의 <span class="gold">진입 장벽</span></h2>
+    <p class="body reveal" style="max-width:640px;margin-left:auto;margin-right:auto">[백서] 개인 활성 보유량과 적격 그룹 실적을 동시에 충족해야 합니다.</p>
+<div class="tbl-wrap reveal"><table><thead><tr><th>등급</th><th>개인 보유(SOL)</th><th>그룹 실적(SOL)</th><th>그룹÷개인 [계산]</th><th>누적 적용 배분율 [백서]</th></tr></thead><tbody><tr><td>V1</td><td>5</td><td>50</td><td>10배</td><td>5%</td></tr><tr><td>V2</td><td>10</td><td>150</td><td>15배</td><td>11%</td></tr><tr><td>V3</td><td>50</td><td>1,000</td><td>20배</td><td>18%</td></tr><tr><td>V4</td><td>100</td><td>5,000</td><td>50배</td><td>27%</td></tr><tr><td>V5</td><td>500</td><td>20,000</td><td>40배</td><td>37%</td></tr><tr><td>V6</td><td>1,000</td><td>50,000</td><td>50배</td><td>50%</td></tr></tbody></table></div>
+    <div class="vz reveal">
+  <h3>그룹 실적 요건 (SOL)</h3>
+  <p class="vz-cap">[백서] 로그 스케일이 아닌 실제 비율. V6는 V1의 1,000배</p>
+  <div class="vz-hbar"><div class="vz-row"><div class="vz-lab">V1<small>개인 5 SOL</small></div><div class="vz-track"><div class="vz-fill mute" style="--w:0.10%"><b>50</b></div></div></div><div class="vz-row"><div class="vz-lab">V2<small>개인 10 SOL</small></div><div class="vz-track"><div class="vz-fill mute" style="--w:0.30%"><b>150</b></div></div></div><div class="vz-row"><div class="vz-lab">V3<small>개인 50 SOL</small></div><div class="vz-track"><div class="vz-fill mute" style="--w:2.00%"><b>1,000</b></div></div></div><div class="vz-row"><div class="vz-lab">V4<small>개인 100 SOL</small></div><div class="vz-track"><div class="vz-fill " style="--w:10.00%"><b>5,000</b></div></div></div><div class="vz-row"><div class="vz-lab">V5<small>개인 500 SOL</small></div><div class="vz-track"><div class="vz-fill " style="--w:40.00%"><b>20,000</b></div></div></div><div class="vz-row"><div class="vz-lab">V6<small>개인 1,000 SOL</small></div><div class="vz-track"><div class="vz-fill " style="--w:100.00%"><b>50,000</b></div></div></div></div>
+  <p class="vz-src">출처: 백서 14쪽 · 100 USDT=1 SOL 고정 환산 기준.</p>
+</div>
+    <div class="vz reveal">
+  <h3>최초 5명 달성자의 누적 풀 배분</h3>
+  <p class="vz-cap">[백서] 해당 등급에 달성자가 없으면 수익이 누적되고, 첫 달성자 등장 시 누적이 중단되어 최초 5명이 나눕니다</p>
+  <div class="vz-hbar"><div class="vz-row"><div class="vz-lab">1번째</div><div class="vz-track"><div class="vz-fill " style="--w:90.00%"><b>30%</b></div></div></div><div class="vz-row"><div class="vz-lab">2번째</div><div class="vz-track"><div class="vz-fill " style="--w:75.00%"><b>25%</b></div></div></div><div class="vz-row"><div class="vz-lab">3번째</div><div class="vz-track"><div class="vz-fill " style="--w:60.00%"><b>20%</b></div></div></div><div class="vz-row"><div class="vz-lab">4번째</div><div class="vz-track"><div class="vz-fill " style="--w:45.00%"><b>15%</b></div></div></div><div class="vz-row"><div class="vz-lab">5번째</div><div class="vz-track"><div class="vz-fill " style="--w:30.00%"><b>10%</b></div></div></div></div>
+  <p class="vz-src">30+25+20+15+10=100% [계산]. 5명 미만일 때 지급 방법과 풀 보관·정산 시점은 백서가 '별도로 정해야 한다'고 밝힙니다(15쪽).</p>
+</div>
+  </div>
+</section>
+<section id="status">
+  <div class="wrap-wide" style="text-align:center">
+    <div class="eyebrow reveal">6 · 검증 현황</div>
+    <h2 class="display-md reveal">숫자의 <span class="gold">근거 수준</span></h2>
+<div class="tbl-wrap reveal"><table><thead><tr><th>항목</th><th>근거 수준</th><th>비고</th></tr></thead><tbody><tr><td>기간별 배분율 표</td><td>백서 기재</td><td>약관 확인 필요</td></tr><tr><td>일 수익률 0.5–1%</td><td>설명용 파라미터</td><td>운용 실적 미공개</td></tr><tr><td>등급 요건·누적 풀 규칙</td><td>백서 기재</td><td>정산 시점·미달 시 지급 미정</td></tr><tr><td>인센티브 재원</td><td>없음</td><td>회사/회원 몫 구분 미기재</td></tr><tr><td>순손실 시 처리</td><td>없음</td><td>—</td></tr><tr><td>온체인 운용 실적</td><td>이 사이트에서 미확인</td><td>사용자 제공 정보(약 30 SOL, 약 5개 지갑)는 직접 대조 필요</td></tr></tbody></table></div>
+  </div>
+</section>
+<section id="sources" class="alt">
+  <div class="wrap">
+    <div class="eyebrow reveal">출처</div>
+    <h2 class="display-md reveal">이 페이지의 <span class="gold">근거 자료</span></h2>
+    <ul class="vz-refs reveal">
+      <li>YVVY 생태계 소개(리디자인 SOL 편집본), 12–15쪽 — 배분율·인센티브·등급 표 <a href="assets/YVVY-whitepaper.pdf">원문 PDF</a></li>
+      <li>The Block, Dune·1inch 연구 보도 — 연 35센트/1달러 수수료율 계산의 근거 <a href="https://www.theblock.co/post/408591/dune-research-finds-85-of-concentrated-defi-liquidity-is-underutilized-with-150m-in-annual-fees-foregone">링크</a></li>
+    </ul>
+  </div>
+</section>
+<section>
+  <div class="wrap">
+    <div class="eyebrow reveal">다음 단계</div>
+    <h2 class="display-md reveal">직접 숫자를<br><span class="gold">바꿔</span> 보세요</h2>
+    <div class="pagenav reveal"><a class="btn btn-ghost" href="company.html">← 프로젝트 분석</a><a class="btn btn-gold" href="my-link.html">시뮬레이터 →</a></div>
+  </div>
+</section>
+<footer>
+  <div class="wrap">
+    <p><strong>법적 고지</strong> 본 사이트는 「YVVY 생태계 소개(리디자인 SOL 편집본)」(이하 백서, 19쪽)의 내용을 정리하고 숫자를 다시 계산해 보여 드리는 <strong>정보 제공 목적</strong>의 사이트입니다. 백서의 내용은 사업자의 계획과 주장이며 확정된 사항이 아닙니다. 백서 스스로 '고정 수익 약속이 아니며' 실제 배분은 순결과와 최종 약관에 따른다고 밝힙니다. 사업자 정보, 파트너십, 라이선스, 운용 실적은 이 사이트에서 독립적으로 검증되지 않았습니다. 본 사이트는 <strong>투자 알선·중개·유치를 하지 않으며</strong>, 투자나 가입을 권유하지 않고, 어떠한 자금도 접수하지 않습니다. 참여 여부는 공식 자료를 직접 확인한 뒤 본인이 판단하며, 그 결과에 대한 책임은 본인에게 있습니다.</p>
+    <p><strong>투자 유의사항</strong> 본 페이지의 계산 예시는 백서 규칙을 곱하고 나눈 산수이며 수익 전망이 아닙니다. 실제 수익은 0이거나 음수일 수 있고, 가상자산과 유동성 공급(LP)에는 가격 변동, 비영구적 손실, 스마트 컨트랙트·운영 위험으로 인한 원금 손실이 발생할 수 있습니다. 모든 판단과 책임은 본인에게 있습니다.</p>
+    <p><strong>자료 출처</strong> 「YVVY 생태계 소개」 백서 · <a href="https://www.theblock.co/post/408591/dune-research-finds-85-of-concentrated-defi-liquidity-is-underutilized-with-150m-in-annual-fees-foregone" target="_blank" rel="noopener">The Block, Dune·1inch 연구 보도</a> · <a href="https://docs.meteora.ag/user-faq/dlmm-faq" target="_blank" rel="noopener">Meteora DLMM FAQ</a> · <a href="https://www.cnbc.com/2026/09/15/senate-cloture-vote-on-clarity-act-fails-dealing-regulatory-setback-to-crypto-industry.html" target="_blank" rel="noopener">CNBC, CLARITY Act 상원 표결</a></p>
+    <p>© 2026 YVVY 백서 데이터 분석</p>
+  </div>
+</footer>
+
+<div class="sticky"><a class="btn btn-gold" href="my-link.html">시뮬레이터 →</a></div>
+<script>
+const io = new IntersectionObserver((es) => es.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } }), { threshold: .12 });
+document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+addEventListener('scroll', () => document.querySelector('.sticky').classList.toggle('on', scrollY > 500), { passive: true });
+</script>
+<script src="nocapital-apple.js?v=yvvy20261102b"></script>
+<script src="nocapital-icons.js?v=yvvy20261102b"></script>
+<script src="nocapital-motion.js?v=yvvy20261102b"></script>
+<script src="nocapital-scroll.js?v=yvvy20261102b"></script>
+<script src="funnel.js?v=yvvy20261102b"></script>
+<script src="nocapital-responsive.js?v=yvvy20261102b"></script>
+<script src="nocapital-apple3.js?v=yvvy20261102b"></script>
+</body>
+</html>

@@ -1,0 +1,70 @@
+/* nocapital-apple2.css
+   Apple 제품 페이지식 헤더 · 타이포 · 정렬 + 아이폰 프레임
+   적용 방법: nocapital.html, nocapital-join.html 의 <head> 맨 마지막(nocapital-type.css 다음)에
+   <link rel="stylesheet" href="nocapital-apple2.css"> 한 줄 추가 */
+
+:root {
+  --fs-header: clamp(2.3rem, 6.2vw, 4.5rem);
+  --fs-sub: clamp(1.2rem, 2.4vw, 1.75rem);
+  --fs-body: clamp(1rem, 1.5vw, 1.125rem);
+  --measure: 35rem;                                  /* 본문 줄 폭 (헤드라인 폭에 맞춤) */
+  --pad-x: max(1.25rem, calc(50vw - 540px));         /* 상단바 좌우 = 본문 컨테이너와 같은 선 */
+  --accent-grad: linear-gradient(135deg, #cff7fd 0%, #19D3F0 45%, #0fa5c0 100%);
+}
+
+/* ---------- 상단바: 왼쪽 타이틀 · 오른쪽 메뉴 · 알약 버튼 (Apple 제품 로컬 내비) ---------- */
+.nav { height: 52px; padding: 0 var(--pad-x); background: rgba(17,22,26,.8);
+  -webkit-backdrop-filter: saturate(180%) blur(20px); backdrop-filter: saturate(180%) blur(20px);
+  border-bottom: 1px solid rgba(255,255,255,.16); }
+.nav-logo { font-size: 1.15rem; font-weight: 600; letter-spacing: -.02em; color: #f5f5f7; }
+.nav-cta { display: inline-flex; align-items: center; height: 30px; padding: 0 1rem; font-size: .85rem; font-weight: 600;
+  letter-spacing: -.01em; border-radius: 980px; background: var(--accent-grad); color: #04141a; }
+
+/* 데스크톱: 단계 진행 바(.fprog)를 상단바 오른쪽 메뉴로 합치고, 현재 단계에 흰 밑줄 */
+@media (min-width: 961px) {
+  .fprog { top: 0; left: auto; right: calc(var(--pad-x) + 132px); height: 52px; padding: 0; gap: 1.7rem; background: none; border: 0;
+    -webkit-backdrop-filter: none; backdrop-filter: none; z-index: 950; pointer-events: none; align-items: stretch; }
+  .fprog a, .fprog span { pointer-events: auto; flex: none; max-width: none; display: flex; align-items: center; position: relative;
+    padding: 0; border-radius: 0; background: none; font-size: .85rem; font-weight: 500; color: #a1a1a6; letter-spacing: -.01em; overflow: visible; }
+  .fprog a:hover { color: #f5f5f7; }
+  .fprog .done { color: #e8e8ed; }
+  .fprog .cur { background: none; color: #f5f5f7; }
+  .fprog .cur::after { content: ""; position: absolute; left: 0; right: 0; bottom: -1px; height: 2px; background: #f5f5f7; }
+  body.has-fprog .hero { padding-top: 8rem; }
+}
+
+/* ---------- 헤더 카피: 흰 소제목 → 큰 헤드라인 → 회색 서브 → 회색 본문(핵심만 흰색 굵게), 전부 가운데 정렬 ---------- */
+.display, .display-md { font-weight: 700; color: #f5f5f7; background: none; -webkit-background-clip: initial; background-clip: initial;
+  line-height: 1.12; letter-spacing: -.04em; text-wrap: balance; }
+section:not(.lt) .display .gold, section:not(.lt) .display-md .gold { background: var(--accent-grad); -webkit-background-clip: text; background-clip: text; color: transparent; }
+.eyebrow { font-size: clamp(1rem, 1.8vw, 1.3rem); font-weight: 600; letter-spacing: -.02em; color: #f5f5f7; margin-bottom: 1.1rem; }
+section.lt .eyebrow { color: #1d1d1f; }
+.sub { margin-top: 1.8rem; font-weight: 600; line-height: 1.35; letter-spacing: -.025em; color: #86868b; }
+.sub em { color: #f5f5f7; }
+.body { max-width: var(--measure); margin: 1.8rem auto 0; line-height: 1.65; color: #86868b; text-wrap: pretty; }
+.body strong { color: #f5f5f7; font-weight: 700; }
+.hero .body { margin-top: 2.6rem; font-size: clamp(1.05rem, 1.9vw, 1.3rem) !important; }
+section.lt .body { color: #6e6e73; }
+section.lt .body strong { color: #1d1d1f; }
+
+/* ---------- 안전 수칙 목록: 아이콘 + 한 덩어리 문장 (굵은 글씨 때문에 흩어지던 현상 수정) ---------- */
+.check { max-width: 680px; }
+.check li { display: block; position: relative; padding: 1.2rem 1.4rem 1.2rem 3.5rem; line-height: 1.65; text-align: left; }
+.check li::before { position: absolute; left: 1.4rem; top: 1.2rem; width: 1.4rem; text-align: center; line-height: 1.65; }
+
+/* ---------- 아이폰 프레임 (CSS로 제작: 이미지 파일 불필요, 7장 모두 같은 크기) ---------- */
+.shot { --bz: 12px; position: relative; isolation: isolate; aspect-ratio: auto; max-height: none; width: min(100%, 292px); margin: 0 auto;
+  padding: var(--bz); border: 0; border-radius: 58px; overflow: visible; background: #000;
+  box-shadow: 0 0 0 1.5px #86868b, 0 0 0 4px #1d1d1f, 0 0 0 5px #48484c, 0 50px 100px rgba(0,0,0,.55), 0 0 140px rgba(25,211,240,.10); }
+/* 옆면 버튼 (왼쪽: 무음 + 볼륨 2개 / 오른쪽: 전원) */
+.shot::before { content: ""; display: block; position: absolute; inset: 0 -5px; z-index: -1; pointer-events: none; padding: 0;
+  background:
+    linear-gradient(#58585d, #58585d) left 15% / 4px 4.2% no-repeat,
+    linear-gradient(#58585d, #58585d) left 24% / 4px 7.5% no-repeat,
+    linear-gradient(#58585d, #58585d) left 34% / 4px 7.5% no-repeat,
+    linear-gradient(#58585d, #58585d) right 27% / 4px 11% no-repeat; }
+/* 다이내믹 아일랜드 */
+.shot::after { content: ""; position: absolute; z-index: 3; top: calc(var(--bz) + 10px); left: 50%; translate: -50% 0; width: 32%; height: 27px; border-radius: 20px; background: #000; }
+/* 화면: 600×1300(약 9:19.5) 캡처가 정확히 들어가는 비율. 비율이 다른 이미지는 위쪽 기준으로 맞추고 아래는 검정 */
+.shot img { position: static; display: block; width: 100%; height: auto; aspect-ratio: 600 / 1300; object-fit: contain; object-position: top; border-radius: 46px; background: #000; }
+@media (max-width: 560px) { .shot { width: min(100%, 264px); } }

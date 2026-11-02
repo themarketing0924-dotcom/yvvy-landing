@@ -1,0 +1,136 @@
+/* nocapital-responsive.css — 데스크톱 · 아이패드(가로/세로) · 폰 공통 보정
+   nocapital-type.css 와 nocapital-apple2.css 다음에 로드 */
+
+/* 1) 작은 라벨 글자: 태블릿·폰에서 읽을 수 있는 크기로 (기존 10.5~11.5px) */
+@media (max-width: 1024px) {
+  .tag, .fprog a, .fprog span, .scroll-hero .eyebrow { font-size: 12.5px !important; }
+  .eyebrow { font-size: max(13px, 1em); }
+}
+
+/* 2) 터치 기기: 버튼·메뉴 누르기 쉬운 크기(44px) */
+@media (pointer: coarse) {
+  .btn, .btn-ghost, .nav-cta, button, .fprog a, .fprog span { min-height: 44px; display: inline-flex; align-items: center; justify-content: center; }
+  .fprog a, .fprog span { padding-left: .9rem; padding-right: .9rem; }
+}
+
+/* 3) 아이패드 세로(744~960px): 본문 폭이 너무 넓어지지 않게, 카드 2열 유지 */
+@media (min-width: 561px) and (max-width: 960px) {
+  .body, .sub { max-width: 34rem; margin-left: auto; margin-right: auto; }
+}
+
+/* 4) 표: 폰에서는 옆으로 밀지 않고 카드로 쌓아서 보여주기 */
+@media (max-width: 640px) {
+  .tbl-wrap { overflow: visible; border: 0; background: none; box-shadow: none; }
+  .tbl-wrap table, table { min-width: 0 !important; width: 100%; background: none !important; border: 0; }
+  table thead { display: none; }
+  table, table tbody, table tr, table td { display: block; width: 100%; }
+  table tr { margin: 0 0 .9rem; border: 1px solid var(--gold-line, rgba(25,211,240,.38)); border-radius: 16px; background: var(--card, #11161a); overflow: hidden; }
+  table td { border: 0 !important; border-bottom: 1px solid rgba(255,255,255,.08) !important; padding: .75rem 1rem; text-align: left !important; background: transparent !important; }
+  table td:last-child { border-bottom: 0 !important; }
+  table td[data-label]::before { content: attr(data-label); display: block; font-size: 12px; font-weight: 700; letter-spacing: .02em; color: #19D3F0; margin-bottom: .15rem; }
+  .lt table tr { background: #fff; border-color: rgba(0,0,0,.1); }
+  .lt table td { border-bottom-color: #e8e8ed !important; }
+  .lt table td[data-label]::before { color: #155e75; }
+}
+
+/* 5) 아이폰 노치·홈바 안전 영역 */
+@supports (padding: max(0px)) {
+  .nav { padding-left: max(var(--pad-x, 1.25rem), env(safe-area-inset-left)); padding-right: max(var(--pad-x, 1.25rem), env(safe-area-inset-right)); }
+  body { padding-bottom: env(safe-area-inset-bottom); }
+}
+
+/* 6) 폭 통일: 목록·FAQ·안내 박스·입력 카드는 모두 같은 폭(720px)으로 가운데 정렬 */
+:root { --w-narrow: 880px; }
+.check, .pain, details, .risk, .gate, .fnotice, .next, .track, .tbl-note {
+  width: 100%; max-width: var(--w-narrow); margin-left: auto; margin-right: auto; box-sizing: border-box;
+}
+/* 7) 폰 화면 3장: 설명 글자와 ※ 안내가 겹치지 않게 간격 확보, 설명은 가운데 정렬 */
+.phones { align-items: start; }
+.phones figure { margin: 0; }
+.phones figcaption { line-height: 1.45; min-height: 2.9em; }
+.phones + .fine { margin-top: 2.2rem; }
+.fine { max-width: var(--w-narrow); margin-left: auto; margin-right: auto; text-wrap: balance; }
+
+/* ============================================================
+   8) 타이포·간격 한 벌 — 애플 제품 페이지식 (데스크톱 · 아이패드 · 폰 공통, 모든 페이지)
+   소제목(흰) → 헤드라인(큼) → 서브(회색) → 본문(회색, 핵심만 흰색 굵게), 전부 가운데 정렬
+   ============================================================ */
+:root {
+  --fs-header: clamp(2.5rem, 7.2vw, 4.5rem);          /* 폰 40px → 아이패드 ~58px → 데스크톱 72px */
+  --fs-sub:    clamp(1.2rem, 1rem + 1.6vw, 1.75rem);   /* 19px → 28px */
+  --fs-body:   clamp(1.0625rem, .95rem + .6vw, 1.25rem); /* 17px → 20px */
+  --fs-eyebrow: clamp(1.05rem, .9rem + .8vw, 1.4rem);  /* 17px → 22px */
+  --sec-pad:   clamp(4.5rem, 10vw, 8rem);              /* 섹션 위아래 여백 */
+  --measure:   40rem;                                   /* 본문 줄 폭 */
+}
+section { padding-top: var(--sec-pad); padding-bottom: var(--sec-pad); }
+
+.eyebrow { font-size: var(--fs-eyebrow) !important; font-weight: 600; color: #f5f5f7 !important; margin-bottom: 1.3rem !important; line-height: 1.3; }
+section.lt .eyebrow { color: #1d1d1f !important; }
+.display, .display-md { max-width: 16em; margin-left: auto; margin-right: auto; line-height: 1.1 !important; letter-spacing: -.04em; text-wrap: balance; }
+.sub { max-width: 26em; margin: 1.8rem auto 0 !important; line-height: 1.4 !important; text-wrap: balance; }
+.body { max-width: var(--measure); margin: 2.2rem auto 0 !important; line-height: 1.6 !important; text-wrap: pretty; }
+.hero .body { font-size: var(--fs-body) !important; margin-top: 2.4rem !important; }
+
+/* 배너·카드 안 글자도 같은 규칙: 제목(흰·굵게) + 설명(회색), 가운데 정렬 */
+.card, .banner, .next, .risk, .gate > h3, .gate > p { text-align: center; }
+.card h3, .banner h3, .next h3, .gate h3 { font-size: clamp(1.25rem, 1rem + .9vw, 1.6rem) !important; font-weight: 700; letter-spacing: -.03em; line-height: 1.25; text-wrap: balance; }
+.card p, .banner p, .next p, .risk p { text-wrap: pretty; }
+.card .tag { display: inline-block; }
+.card p { margin-top: .6rem; }
+.risk p { max-width: 36em; margin-left: auto; margin-right: auto; }
+.fine { text-align: center; }
+
+/* 폰: 좌우 여백 일정(20px), 카드 안쪽 여백 */
+@media (max-width: 600px) {
+  section { padding-left: 1.25rem; padding-right: 1.25rem; }
+  .card, .banner, .next, .risk, .gate { padding-left: 1.25rem; padding-right: 1.25rem; }
+}
+/* 아이패드 세로: 본문은 약간 좁게(줄이 너무 길지 않게) */
+@media (min-width: 601px) and (max-width: 960px) {
+  :root { --measure: 36rem; }
+}
+.fnotice { text-align: center !important; }
+
+/* ============================================================
+   9) 한 줄 기둥 — 모든 배너·사진·영상·카드·표·목록이 같은 좌우 선에 맞춤
+   ============================================================ */
+:root { --col: 880px; --gutter: clamp(1.25rem, 4vw, 2rem); --r: 24px; --block-gap: clamp(2.5rem, 6vw, 3.5rem); }
+section { padding-left: var(--gutter) !important; padding-right: var(--gutter) !important; }
+.wrap, .wrap-wide { max-width: var(--col) !important; margin-left: auto; margin-right: auto; }
+.video-wrap, .grid, .tbl-wrap, .banner, .phones, .flowline, .vs, .check, .pain, details, .risk, .gate, .fnotice, .next, .track, .pagenav {
+  width: 100%; max-width: var(--col) !important; margin-left: auto; margin-right: auto; box-sizing: border-box;
+}
+.g4 { grid-template-columns: repeat(2, 1fr) !important; }
+@media (max-width: 600px) { .g3, .g2 { grid-template-columns: 1fr !important; } }
+
+/* 모서리·간격 한 가지 */
+.card, .banner, .next, .risk, .gate, .fnotice, .tbl-wrap, .video-wrap, .cover { border-radius: var(--r) !important; }
+.video-wrap video, .video-wrap img, .banner img, .cover img { border-radius: inherit; }
+.check li, details { border-radius: 20px !important; }
+.grid, .tbl-wrap, .video-wrap, .phones, .flowline, .vs, .banner { margin-top: var(--block-gap); }
+/* 히어로 안의 기둥도 같은 폭으로, 영상은 스크롤 중 크기가 변하지 않게 */
+.hero > .wrap, .hero > .wrap-wide { width: 100%; }
+.hero .video-wrap { scale: none !important; }
+
+/* 10) 카드 아이콘 가운데 · 4단계 흐름 카드 · 3장 카드 짝 안 맞음 · 밝은 배경 강조 그라데이션 */
+.card > .ico { margin: 0 auto 1.1rem; }
+.card.has-num > .ico { margin: 0; }
+.flowline { gap: 1.1rem; }
+.flowline > div { display: flex; flex-direction: column; align-items: center; text-align: center; padding: 1.9rem 1.1rem 1.7rem; }
+.flowline > div .ico { margin: 0 auto 1rem; width: 52px; height: 52px; border-radius: 16px; }
+.flowline > div .ico svg { width: 26px; height: 26px; }
+.flowline .stp { font-style: normal; font-size: .78rem; font-weight: 700; letter-spacing: .16em; margin-bottom: .4rem;
+  background: linear-gradient(135deg, #19D3F0, #0fa5c0); -webkit-background-clip: text; background-clip: text; color: transparent; }
+.flowline b { font-size: clamp(1.15rem, 1rem + .7vw, 1.4rem); font-weight: 700; letter-spacing: -.03em; color: #f5f5f7; }
+.lt .flowline b { color: #1d1d1f; }
+.flowline span:not(.ico) { margin-top: .45rem; font-size: clamp(.95rem, .9rem + .3vw, 1.05rem); line-height: 1.5; }
+@media (max-width: 960px) { .flowline { grid-template-columns: repeat(2, 1fr) !important; } }
+@media (max-width: 480px) { .flowline { grid-template-columns: 1fr !important; } }
+@media (min-width: 601px) and (max-width: 900px) {
+  .g3 { grid-template-columns: repeat(2, 1fr) !important; }
+  .g3 > :last-child:nth-child(odd) { grid-column: 1 / -1; }
+}
+.lt .display .gold, .lt .display-md .gold, section.lt .display .gold, section.lt .display-md .gold {
+  background: linear-gradient(135deg, #0891b2 0%, #0e7490 50%, #155e75 100%); -webkit-background-clip: text; background-clip: text; color: transparent; }
+.flowline > div .ico { color: #04141a !important; }

@@ -1,0 +1,88 @@
+@import url("https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.css");
+
+/* TYPE — Apple Mac 페이지식 헤더·서브 카피 (Apple 기기: SF / 애플SD고딕, 그 외: Pretendard) */
+:root { --sans: -apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro KR", "Apple SD Gothic Neo", "Pretendard", "Noto Sans KR", "Helvetica Neue", Arial, sans-serif; }
+body, .display, .display-md, .sub, .body, .card h3, .banner h3, .gate h3 { font-family: var(--sans); }
+
+/* 헤드라인: 순백, 촘촘한 자간, 짧은 줄간격 */
+.display, .display-md { filter: none; background: none; -webkit-background-clip: initial; background-clip: initial; color: #f5f5f7; font-weight: 700; line-height: 1.07; letter-spacing: -.045em; }
+.display { font-size: clamp(2.7rem, 7.6vw, 5.8rem); }
+.display-md { font-size: clamp(2.1rem, 5.4vw, 4rem); }
+.lt .display-md, section.lt .display-md { color: #1d1d1f; background: none; -webkit-background-clip: initial; background-clip: initial; }
+section.dk .display-md { background: none; -webkit-background-clip: initial; background-clip: initial; color: #f5f5f7; }
+/* 핵심 어구만 골드 */
+.display .gold, .display-md .gold { background: linear-gradient(135deg, #cff7fd 0%, #19D3F0 45%, #0fa5c0 100%); -webkit-background-clip: text; background-clip: text; color: transparent; }
+.lt .display-md .gold { background: linear-gradient(135deg, #0e7490, #155e75); -webkit-background-clip: text; background-clip: text; color: transparent; }
+
+/* 서브 카피: 회색, 세미볼드 */
+.sub { font-weight: 600; font-size: clamp(1.2rem, 2.5vw, 1.75rem); line-height: 1.35; letter-spacing: -.02em; color: #86868b; margin-top: 1.6rem; }
+.sub em { color: #f5f5f7; font-style: normal; }
+.lt .sub { color: #6e6e73; } .lt .sub em { color: #1d1d1f; }
+.eyebrow { font-family: var(--sans); font-weight: 600; letter-spacing: -.01em; margin-bottom: 1rem; }
+.body { font-size: clamp(1rem, 1.6vw, 1.15rem); line-height: 1.6; letter-spacing: -.01em; }
+.hero .display { margin-bottom: 0; }
+
+/* 스크롤 모션: 등장 */
+.js .reveal { opacity: 0; transform: translateY(44px) scale(.985); transition: opacity 1.1s cubic-bezier(.28,.11,.32,1), transform 1.1s cubic-bezier(.28,.11,.32,1); transition-delay: var(--d, 0s); will-change: opacity, transform; }
+.js .reveal.in { opacity: 1; transform: none; }
+/* 카드·리스트: 순차 등장 */
+.js .grid > .reveal, .js .flowline > *, .js .pain li, .js .check li, .js .chips span { transition-delay: var(--d, 0s); }
+.js .stagger-item { opacity: 0; transform: translateY(30px); transition: opacity .9s cubic-bezier(.28,.11,.32,1), transform .9s cubic-bezier(.28,.11,.32,1); transition-delay: var(--d, 0s); }
+.js .in .stagger-item, .js .stagger-item.in { opacity: 1; transform: none; }
+/* 스크롤 연동(히어로 축소·영상 확대): 개별 transform 속성 사용 */
+.hero .scroll-hero { translate: 0 var(--hy, 0px); scale: var(--hs, 1); }
+.hero .video-wrap { scale: var(--vs, 1); }
+
+@media (prefers-reduced-motion: reduce) {
+  .js .reveal, .js .stagger-item { opacity: 1; transform: none; transition: none; }
+  .hero .scroll-hero, .hero .video-wrap { translate: none; scale: none; }
+}
+
+/* 라이트 섹션의 큰 제목(.display)은 어두운 글자색 */
+section.lt .display { color: #1d1d1f; background: none; -webkit-background-clip: initial; background-clip: initial; }
+section.lt .display .gold { background: linear-gradient(135deg, #0e7490, #155e75); -webkit-background-clip: text; background-clip: text; color: transparent; }
+section.lt .eyebrow { color: #0e7490; }
+
+/* ===== 아이콘 타일 · 실제 화면 폰 목업 · 이미지 ===== */
+.card { position: relative; }
+.ico { display: grid; place-items: center; width: 52px; height: 52px; margin-bottom: 1.1rem; border-radius: 16px; color: #04141a;
+  background: linear-gradient(135deg, #cff7fd 0%, #19D3F0 45%, #0fa5c0 100%); box-shadow: 0 8px 22px rgba(25,211,240,.28), inset 0 1px 0 rgba(255,255,255,.55); }
+.ico svg { width: 26px; height: 26px; fill: none; stroke: currentColor; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; }
+.card .num + .tag, .card .num { }
+.card.has-num .ico { position: absolute; top: 1.5rem; right: 1.5rem; margin: 0; }
+.flowline div .ico { width: 40px; height: 40px; border-radius: 12px; margin: 0 auto .7rem; } .flowline div .ico svg { width: 20px; height: 20px; }
+
+.phones { display: grid; grid-template-columns: repeat(3, minmax(0, 250px)); gap: 1.4rem; justify-content: center; margin-top: 3rem; }
+.phones figure { text-align: center; }
+.phones img { width: 100%; border-radius: 30px; box-shadow: 0 24px 60px rgba(0,0,0,.45), 0 0 0 1px rgba(25,211,240,.3); }
+.phones figcaption { margin-top: .9rem; font-size: .9rem; font-weight: 600; color: #a1a1a6; }
+.lt .phones figcaption { color: #6e6e73; }
+.cover { max-width: 520px; margin: 3rem auto 0; border-radius: 28px; overflow: hidden; box-shadow: 0 40px 100px rgba(0,0,0,.6), 0 0 0 1px rgba(25,211,240,.35), 0 0 80px rgba(25,211,240,.16); }
+.cover img { width: 100%; display: block; }
+@media (max-width: 760px) {
+  .phones { display: flex; overflow-x: auto; scroll-snap-type: x mandatory; gap: 1rem; padding: 0 1rem 1rem; justify-content: flex-start; }
+  .phones figure { flex: 0 0 62%; scroll-snap-align: center; }
+}
+
+/* 히어로 배경 효과 */
+.hero { position: relative; overflow: hidden; }
+.hero > .wrap, .hero > .wrap-wide { position: relative; z-index: 1; }
+.hero-canvas { position: absolute; inset: 0; z-index: 0; opacity: .6; pointer-events: none; -webkit-mask-image: radial-gradient(ellipse 85% 75% at 50% 45%, #000 40%, transparent 100%); mask-image: radial-gradient(ellipse 85% 75% at 50% 45%, #000 40%, transparent 100%); }
+.hero-halo { position: absolute; z-index: 0; left: 50%; top: 40%; width: min(130vw, 1150px); aspect-ratio: 1; translate: -50% -50%; border-radius: 50%; pointer-events: none; filter: blur(70px); opacity: .9;
+  background: conic-gradient(from 0deg, rgba(25,211,240,0), rgba(25,211,240,.26) 18%, rgba(25,211,240,0) 40%, rgba(25,211,240,.16) 68%, rgba(25,211,240,0)); animation: halo-spin 48s linear infinite; }
+@keyframes halo-spin { to { rotate: 360deg; } }
+
+/* ===== Apple식 스크롤 연출 ===== */
+.js .ln { display: block; overflow: hidden; padding-bottom: .1em; margin-bottom: -.1em; }
+.js .ln > span { display: block; transform: translateY(112%); transition: transform 1.15s cubic-bezier(.19,1,.22,1); transition-delay: calc(var(--li, 0) * .13s + .12s); }
+.js .reveal.in .ln > span, .js .in .ln > span { transform: none; }
+.js .w { opacity: .2; transition: opacity .18s linear; }
+.flowline > * { transition: opacity .5s ease, scale .5s cubic-bezier(.19,1,.22,1) !important; }
+@media (prefers-reduced-motion: reduce) { .js .ln > span { transform: none; transition: none; } .js .w { opacity: 1; } }
+
+/* ===== 글자 크기 통일: 헤더 · 서브 · 본문 각각 한 가지 크기 (모든 섹션·페이지 공통) ===== */
+:root { --fs-header: clamp(2.2rem, 5.6vw, 4rem); --fs-sub: clamp(1.1rem, 2.2vw, 1.5rem); --fs-body: clamp(.95rem, 1.5vw, 1.1rem); }
+.display, .display-md { font-size: var(--fs-header) !important; }
+.sub { font-size: var(--fs-sub) !important; }
+.body, .card p, .card li, .pain li, .check li, details p, .step-txt p, .gate label, .tbl-wrap td, .tbl-wrap th, .risk p { font-size: var(--fs-body) !important; line-height: 1.7; }
+.fine, .video-note, .gate-hint { font-size: .85rem !important; }

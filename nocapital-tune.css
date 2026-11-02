@@ -1,0 +1,122 @@
+/* TUNE — 글자·섹션 간격 압축 + 경로 카드 정리 (Apple Mac식 리듬). 가장 마지막에 읽혀서 기존 값을 덮어씀 */
+:root {
+  --fs-header: clamp(2.25rem, 6.2vw, 3.75rem);      /* 데스크톱 60px */
+  --fs-sub: clamp(1.15rem, 1rem + 1.2vw, 1.5rem);    /* 24px */
+  --fs-body: clamp(1rem, .94rem + .35vw, 1.125rem);  /* 18px */
+  --fs-eyebrow: clamp(1rem, .9rem + .45vw, 1.15rem);
+  --sec-pad: clamp(3.5rem, 8vw, 6rem);               /* 섹션 위아래 96px */
+  --col: 1040px;                                     /* 기둥을 넓혀 3장 카드가 좁아지지 않게 */
+  --block-gap: clamp(1.75rem, 4vw, 2.5rem);
+  --measure: 38rem;
+}
+
+/* 소제목 → 헤드라인 → 서브 → 본문: 간격을 촘촘하게 */
+.eyebrow { margin-bottom: .8rem !important; }
+.display, .display-md { line-height: 1.08 !important; letter-spacing: -.035em; }
+.sub { margin-top: 1rem !important; line-height: 1.35 !important; }
+.body { margin-top: 1.1rem !important; line-height: 1.55 !important; letter-spacing: -.015em; }
+.card p, .card li, .pain li, .check li, details p, .step-txt p, .risk p, .gate label, .tbl-wrap td { line-height: 1.55 !important; letter-spacing: -.015em; }
+
+/* 카드: 안쪽 여백을 줄이고, 설명과 '한계' 문구의 높이를 3장이 맞춤 */
+.card { padding: 1.6rem 1.5rem !important; display: flex; flex-direction: column; }
+.card h3 { margin-bottom: .3rem; }
+.card p { margin-top: .4rem !important; }
+.card ul { list-style: none; margin-top: auto !important; padding-top: .9rem; border-top: 1px solid rgba(25,211,240,.25); }
+.lt .card ul { border-top-color: rgba(0,0,0,.1); }
+.card li { padding-left: 0 !important; margin-top: .25rem; }
+.card li::before { content: none !important; }
+.card p + ul, .card ul:not(:first-of-type) { }
+.card p { margin-bottom: 1rem; }
+.card:not(:has(ul)) p:last-child { margin-bottom: 0; }
+
+/* 좌우 한 선: 히어로의 영상·진행표시·안내도 본문 기둥과 같은 선 */
+.hero > .wrap, .hero > .wrap-wide { max-width: var(--col) !important; padding-left: 0; padding-right: 0; }
+.hero .video-wrap, .hero .track, .hero .fnotice, .hero .next { width: 100%; max-width: var(--col) !important; }
+
+/* ===== 지갑 화면·카드·간격 정리 (데스크톱 / 아이패드 / 폰) ===== */
+/* 밝은 섹션 안의 흰 글씨(인라인 color:#fff)가 안 보이던 문제 */
+.lt [style*="color:#fff"], .lt strong[style] { color: #1d1d1f !important; }
+
+/* 번호 + 영문 태그: 한 줄 라벨로, 아이콘은 위에 가운데 */
+.card.has-num > .ico { position: static !important; margin: 0 auto 1rem !important; }
+.card.has-num .num { display: inline-block; font-size: 1.05rem !important; letter-spacing: .08em; margin: 0 .5rem .6rem 0; }
+.card.has-num .tag { display: inline-block; margin-bottom: .6rem; }
+.card.has-num { text-align: center; }
+.card.has-num > .num, .card.has-num > .tag { vertical-align: middle; }
+
+/* 카드 아이콘 유무에 따라 높이·시작선이 어긋나지 않게 */
+.grid.g2 > .card, .grid.g3 > .card { justify-content: flex-start; }
+
+/* 지갑(폰) 3장: 어느 폭에서도 잘리지 않게 */
+.phones { display: grid !important; grid-template-columns: repeat(3, minmax(0, 260px)) !important; gap: clamp(1rem, 3vw, 2rem) !important;
+  justify-content: center; overflow: visible !important; padding: 0 !important; }
+.phones figure { flex: none !important; min-width: 0; text-align: center; }
+.phones img { width: 100%; height: auto; display: block; }
+.phones figcaption { margin-top: .9rem; font-size: clamp(.9rem, .85rem + .25vw, 1rem); }
+@media (max-width: 640px) {
+  .phones { grid-template-columns: minmax(0, 270px) !important; gap: 2rem !important; }
+  .phones figcaption { min-height: 0 !important; }
+}
+
+/* 카드 묶음 뒤에 이어지는 문장 간격 */
+.grid + p, .grid + .sub, .grid + h3 { margin-top: var(--block-gap) !important; }
+
+/* ===== 3장 카드는 항상 가지런히 한 줄 3열 (폰만 1열), 4장은 4열(넓은 화면)·2×2 ===== */
+.g3 { grid-template-columns: repeat(3, minmax(0, 1fr)) !important; }
+.g3 > :last-child:nth-child(odd) { grid-column: auto !important; }
+@media (min-width: 601px) and (max-width: 900px) {
+  .g3 { gap: .8rem !important; }
+  .g3 > .card { padding: 1.3rem 1rem !important; }
+  .g3 .card h3 { font-size: 1.1rem !important; }
+  .g3 .card p, .g3 .card li { font-size: .95rem !important; }
+}
+@media (max-width: 600px) { .g3 { grid-template-columns: 1fr !important; } }
+@media (min-width: 1000px) { .g4 { grid-template-columns: repeat(4, minmax(0, 1fr)) !important; } }
+
+/* "이 안내에서 얻는 것" 4장: 아이콘 없이 큰 숫자만 */
+.grid.numonly > .card > .ico { display: none !important; }
+.grid.numonly > .card .num { display: block !important; font-size: clamp(2.6rem, 2rem + 2vw, 3.4rem) !important; letter-spacing: -.04em; margin: 0 0 .5rem !important; }
+
+/* 번호가 있는 카드는 아이콘 없이 번호만 (모든 페이지 공통) */
+.card:has(> .num) > .ico { display: none !important; }
+.card:has(> .num):not(:has(> .tag)) > .num { display: block !important; font-size: clamp(2.6rem, 2rem + 2vw, 3.4rem) !important; letter-spacing: -.04em; margin: 0 0 .5rem !important; }
+.card:has(> .num) { text-align: center; }
+
+/* 검증 원칙 / 자주 묻는 질문: 별도 섹션 */
+.faq-list { width: 100%; max-width: var(--col); margin: var(--block-gap) auto 0; }
+.faq-list details { margin-top: .8rem; }
+.faq-list details:first-child { margin-top: 0; }
+
+/* 화면 아래 고정 "다음 단계로" 막대는 사용하지 않음(본문 체크 목록의 다음 단계 버튼과 상단 버튼으로 충분) */
+.sticky { display: none !important; }
+
+/* ===== 가입 절차 페이지 점검 반영 ===== */
+/* 단계 카드: 아이패드·폰에서는 제목·본문·폰 화면을 모두 가운데로, 줄 길이는 읽기 좋게 */
+@media (max-width: 900px) {
+  .step { grid-template-columns: minmax(0, 1fr) !important; justify-items: center; text-align: center !important; gap: 1.6rem; }
+  .step:nth-of-type(even) .step-txt { order: 0; }
+  .step-txt { max-width: 34rem; }
+  .step-txt p { text-wrap: pretty; }
+}
+/* 푸터: 읽을 수 있는 크기·대비, 고정 막대가 없으니 아래 여백 축소 */
+footer { padding-bottom: 3.5rem !important; }
+footer p { font-size: .875rem !important; line-height: 1.7 !important; color: #5f5f64 !important; }
+footer strong { color: #26303a !important; }
+.gate small { font-size: .85rem; }
+.check.no { margin-top: var(--block-gap) !important; }
+
+/* 커뮤니티(텔레그램) 배너 */
+#community .banner { padding: 2.2rem 1.5rem !important; min-height: 0 !important; }
+#community .banner p { margin: .4rem 0 0; }
+#community .banner .btn { display: inline-flex; align-items: center; justify-content: center; min-height: 48px; padding: 0 1.8rem; border-radius: 980px;
+  background: linear-gradient(135deg, #cff7fd 0%, #19D3F0 45%, #0fa5c0 100%) !important; color: #04141a !important; font-weight: 700; box-shadow: none; }
+
+/* ===== 섹션 최소 높이: 내용이 짧은 섹션도 애플처럼 한 화면 리듬을 갖게(내용이 길면 그대로 늘어남) ===== */
+body > section { min-height: clamp(500px, 68vh, 660px); display: flex; flex-direction: column; justify-content: center; }
+body > section > .wrap, body > section > .wrap-wide { width: 100%; }
+/* 맨 위 소개(헤더) 섹션: 애플처럼 첫 화면을 꽉 채움 (큰 화면 960px 상한) */
+body > section.hero, body > section#top { min-height: min(100vh, 960px) !important; min-height: min(100svh, 960px) !important; padding-bottom: clamp(3rem, 8vh, 6rem); }
+
+/* 번호가 있는 카드는 어디서나 같은 모양: 큰 번호 → (영문 라벨) → 제목 → 설명. 아이콘 없음 */
+.card:has(> .num) > .num { display: block !important; font-size: clamp(2.6rem, 2rem + 2vw, 3.4rem) !important; letter-spacing: -.04em; margin: 0 0 .5rem !important; }
+.card:has(> .num) > .tag { display: block !important; margin: 0 0 .5rem !important; }

@@ -1,0 +1,591 @@
+/* Apple식 추가 연출 보조 스타일 */
+.nav { transition: background-color .3s ease, box-shadow .3s ease; }
+.nav.is-scrolled { background: rgba(17,22,26,.92) !important; box-shadow: 0 1px 0 rgba(255,255,255,.08), 0 8px 30px rgba(0,0,0,.25); }
+.video-wrap, .cover, .phones figure, .banner, .tbl-wrap { transform-origin: 50% 60%; will-change: scale; }
+@media (prefers-reduced-motion: reduce) { .video-wrap, .cover, .phones figure, .banner, .tbl-wrap { scale: none !important; } }
+
+/* ===== 폰·아이패드(960px 이하): 단계 탭 4개를 상단바에서 빼서 '현재 단계 ▾' 메뉴 하나로 ===== */
+@media (max-width: 960px) {
+  .nav { height: 52px; }
+  .nav-menu { display: inline-flex; align-items: center; gap: .4rem; height: 34px; margin-left: auto; margin-right: .6rem; padding: 0 .9rem; border: 0; border-radius: 980px;
+    background: rgba(255,255,255,.1); color: #f5f5f7; font: 600 .85rem/1 inherit; font-family: inherit; cursor: pointer; }
+  .nav-menu i { font-style: normal; font-size: .7rem; transition: rotate .25s; }
+  body.menu-open .nav-menu i { rotate: 180deg; }
+  .fprog { top: 52px !important; display: none !important; flex-direction: column; gap: .4rem; padding: .8rem 1.25rem 1rem !important; align-items: stretch;
+    background: rgba(17,22,26,.97) !important; box-shadow: 0 20px 40px rgba(0,0,0,.45); }
+  body.menu-open .fprog { display: flex !important; }
+  .fprog a, .fprog span { max-width: none !important; flex: none !important; text-align: left !important; font-size: 1rem !important; padding: .8rem 1rem !important; border-radius: 14px !important; }
+  body.has-fprog .hero { padding-top: 6.5rem !important; }
+}
+@media (min-width: 961px) { .nav-menu { display: none; } }
+
+/* ===== 영상 아래: 신뢰 칩 3개 + 진행 3단계를 같은 폭·같은 3열로 ===== */
+.hero .chips, .hero .track { width: 100%; max-width: var(--col, 1040px); margin-left: auto; margin-right: auto; display: grid !important;
+  grid-template-columns: repeat(3, minmax(0, 1fr)); gap: .8rem; }
+.hero .chips { margin-top: var(--block-gap, 2.5rem) !important; }
+.hero .track { margin-top: .8rem !important; }
+.hero .chips span, .hero .track li { justify-content: center; text-align: center; min-height: 56px; margin: 0; border-radius: 16px; }
+.hero .track li { padding: .5rem .8rem; }
+@media (max-width: 600px) {
+  .hero .chips { grid-template-columns: 1fr; gap: .6rem; }
+  .hero .chips span { min-height: 52px; }
+  .hero .track { gap: .5rem; }
+  .hero .track li { flex-direction: column; gap: .3rem; font-size: .8rem; padding: .7rem .4rem; min-height: 72px; }
+}
+
+/* ---- 히어로: 헤드카피 굵게 + 서브카피를 헤드카피 줄 폭에 맞춤 ---- */
+.hero h1, body > section.hero h1, body > section#top h1{font-weight:900!important;letter-spacing:-.035em}
+.hero h1 .gold{font-weight:900}
+.hero .sub, .hero .body{
+  width:auto!important;
+  max-width:min(100%, var(--hw, 680px))!important;
+  margin-left:auto!important;margin-right:auto!important;
+  text-wrap:balance;word-break:keep-all;
+}
+
+/* ---- 스크롤 등장 다양화 (reduce-motion 제외) ----
+   · 3열/4열 카드: 맨 왼쪽 카드는 왼쪽 바깥에서, 맨 오른쪽 카드는 오른쪽 바깥에서 안으로 (한 줄에 나란히 놓일 때만)
+   · 배너: 좌우가 열리며(inset) 안으로 등장 */
+@media (prefers-reduced-motion: no-preference) {
+  .js{--gx:24px}
+  @media (min-width:1280px){ .js{--gx:56px} }
+  @media (min-width:601px){
+    .js .g3 > :first-child, .js .g3 > :last-child{
+      transition: opacity .9s cubic-bezier(.28,.11,.32,1) var(--d,0s), transform .9s cubic-bezier(.28,.11,.32,1) var(--d,0s), translate .9s cubic-bezier(.28,.11,.32,1) var(--d,0s);
+    }
+    .js .g3 > :first-child:not(.in){ translate:calc(var(--gx,24px) * -1) 0; }
+    .js .g3 > :last-child:not(.in){ translate:var(--gx,24px) 0; }
+    .js .g3.in > :first-child, .js .g3.in > :last-child{ translate:0 0; }
+  }
+  @media (min-width:1000px){
+    .js .g4 > :first-child, .js .g4 > :last-child{
+      transition: opacity .9s cubic-bezier(.28,.11,.32,1) var(--d,0s), transform .9s cubic-bezier(.28,.11,.32,1) var(--d,0s), translate .9s cubic-bezier(.28,.11,.32,1) var(--d,0s);
+    }
+    .js .g4 > :first-child:not(.in){ translate:calc(var(--gx,24px) * -1) 0; }
+    .js .g4 > :last-child:not(.in){ translate:var(--gx,24px) 0; }
+    .js .g4.in > :first-child, .js .g4.in > :last-child{ translate:0 0; }
+  }
+  .js .banner.reveal{
+    clip-path: inset(0 16% 0 16% round 28px);
+    transition: opacity 1.1s cubic-bezier(.28,.11,.32,1), transform 1.1s cubic-bezier(.28,.11,.32,1), clip-path 1.2s cubic-bezier(.28,.11,.32,1);
+  }
+  .js .banner.reveal.in{ clip-path: inset(0 0 0 0 round 28px); }
+}
+
+/* ---- 좌우 여백: Apple 제품 페이지 실측값 (24px / 48px / 80px, 본문 최대 1260px) ---- */
+:root{ --gutter:24px; --col:1260px; }
+@media (min-width:735px){ :root{ --gutter:48px; } }
+@media (min-width:1069px){ :root{ --gutter:80px; } }
+.banner, .cta-card, .gate{ padding-left:var(--gutter-in, clamp(1.5rem,5vw,3.5rem)); padding-right:var(--gutter-in, clamp(1.5rem,5vw,3.5rem)); }
+
+/* ---- 모바일 타이포·리듬 (Apple 제품 페이지 실측 기준: 좌우 24px, 제목 32px/1.2, 본문 19px, 제목↔본문 40px, 섹션 사이 여백 넉넉히) ---- */
+@media (max-width:734px){
+  body > section:not(.hero){ padding-top:clamp(4.5rem,20vw,6rem)!important; padding-bottom:clamp(4.5rem,20vw,6rem)!important; }
+  section:not(.hero) .eyebrow{ font-size:1.0625rem; font-weight:700; letter-spacing:0; margin-bottom:.9rem; }
+  section:not(.hero) h2.display-md, section:not(.hero) .display-md{
+    font-size:clamp(2.325rem,calc(11.4vw + 2px),3.025rem)!important; line-height:1.18!important; font-weight:900!important;
+    letter-spacing:-.032em; text-wrap:balance; word-break:keep-all; overflow-wrap:break-word; margin-left:auto; margin-right:auto;
+  }
+  section:not(.hero) .wrap > .body, section:not(.hero) .wrap > .sub, section:not(.hero) .wrap > p:not(.eyebrow):not(.fine):not(.small){
+    font-size:clamp(1.05rem,4.7vw,1.2rem)!important; line-height:1.62!important; letter-spacing:.004em;
+    margin-top:1.75rem!important; max-width:min(100%,80vw)!important; margin-inline:auto!important; text-wrap:pretty; word-break:keep-all; text-align:center;
+  }
+  section:not(.hero) .wrap > .sub{ font-size:clamp(1.15rem,5.2vw,1.35rem)!important; line-height:1.5!important; font-weight:600; }
+  section:not(.hero) .fine, section:not(.hero) .small{ font-size:.8125rem!important; line-height:1.55!important; }
+  .hero .sub{ font-size:clamp(1.2rem,5.4vw,1.4rem)!important; line-height:1.45!important; }
+  .hero .body{ font-size:clamp(1.02rem,4.5vw,1.15rem)!important; line-height:1.62!important; margin-top:1.5rem!important; }
+  /* 제목 아래 첫 블록(카드·표·영상)까지 간격 */
+  section:not(.hero) .wrap > :is(.grid,.flowline,.tbl-wrap,.phones,.banner,.faq-list,.check){ margin-top:clamp(2.5rem,10vw,3.25rem)!important; }
+}
+
+/* ===== Section sizing: Apple-like tall sections (generous padding, ~one screen on desktop; grows with content) ===== */
+body > section { min-height: 0 !important; display: block; }
+body > section:not(.hero):not(#top) {
+  display: flex; flex-direction: column; justify-content: center;
+  padding-top: clamp(5rem, 22vw, 6.5rem) !important; padding-bottom: clamp(5rem, 22vw, 6.5rem) !important;
+}
+body > section:not(.hero):not(#top) > :is(.wrap, .wrap-wide) { width: 100%; }
+@media (min-width: 735px) {
+  body > section:not(.hero):not(#top) {
+    min-height: min(78svh, 760px) !important;
+    padding-top: clamp(6rem, 11vh, 8.5rem) !important; padding-bottom: clamp(6rem, 11vh, 8.5rem) !important;
+  }
+}
+@media (min-width: 1069px) {
+  body > section:not(.hero):not(#top) { min-height: min(92svh, 900px) !important; }
+}
+body > section.hero, body > section#top {
+  display: flex; flex-direction: column; justify-content: center;
+  padding-top: clamp(7rem, 14vh, 9rem); padding-bottom: clamp(4rem, 9vh, 6.5rem);
+  min-height: min(88svh, 820px) !important;
+}
+@media (max-width: 734px) {
+  body > section.hero, body > section#top { min-height: 0 !important; padding-top: 7.25rem; padding-bottom: 4.5rem; }
+}
+@media (min-width: 735px) and (max-width: 1068px) {
+  body > section.hero, body > section#top { min-height: min(70svh, 700px) !important; }
+}
+
+/* Hero body copy: narrower, centered measure (not touching the gutters) */
+.hero .body { max-width: min(100%, var(--hw, 680px), 34rem) !important; }
+@media (max-width: 734px) {
+}
+
+/* ===== Mobile body copy: one consistent measure (Apple ≈ 80% of viewport, ~10% inset each side) ===== */
+@media (max-width: 734px) {
+  body > section :is(.wrap, .wrap-wide) > :is(.body, .sub, .fine, .note),
+  body > section :is(.wrap, .wrap-wide) > p:not(.eyebrow),
+  body > section .step-txt p,
+  .hero .body {
+    max-width: min(100%, 80vw) !important;
+    margin-inline: auto !important;
+  }
+}
+
+/* ===== Body type scale aligned to Apple (measured): lead 19px/600, supporting 17px/400, eyebrow 20px/600 ===== */
+body > section:not(.hero) :is(.wrap, .wrap-wide) > :is(.body, .sub),
+body > section:not(.hero) :is(.wrap, .wrap-wide) > p:not(.eyebrow):not(.fine):not(.small):not(.note) {
+  font-size: 1.1875rem !important; font-weight: 600 !important; line-height: 1.5 !important; letter-spacing: .012em !important;
+}
+body > section:not(.hero) :is(.wrap, .wrap-wide) > :is(.body, .sub) strong { font-weight: 700; }
+body > section:not(.hero) :is(.card, .step-txt, details) p,
+body > section:not(.hero) .card li {
+  font-size: 1.0625rem !important; font-weight: 400 !important; line-height: 1.55 !important; letter-spacing: .005em !important;
+}
+body > section:not(.hero) .eyebrow { font-size: 1.25rem !important; font-weight: 600 !important; }
+@media (max-width: 734px) {
+  body > section:not(.hero) .card h3 { font-size: 1.5rem !important; line-height: 1.25 !important; }
+}
+@media (min-width: 735px) and (max-width: 1068px) {
+  body > section:not(.hero) .card h3 { font-size: 1.3125rem !important; line-height: 1.25 !important; }
+}
+
+/* ===== Hero background video (decorative loop) ===== */
+.hero:has(.hero-bg) { position: relative; overflow: hidden; isolation: isolate; }
+.hero-bg { position: absolute; inset: 0; z-index: -1; background: #0a0e0c url(hero-bg-poster.jpg) center/cover no-repeat; }
+.hero-bg video { width: 100%; height: 100%; object-fit: cover; display: block; opacity: .9; }
+.hero-bg::after { content: ""; position: absolute; inset: 0;
+  background: linear-gradient(180deg, rgba(10,14,12,.55) 0%, rgba(10,14,12,.15) 38%, rgba(10,14,12,.15) 62%, #0a0e0c 100%); }
+@media (prefers-reduced-motion: reduce) { .hero-bg video { display: none; } }
+
+/* ===== vision: scenario calculator ===== */
+.calc { text-align: center; }
+.calc-row { display: grid; gap: .45rem; margin: 1rem auto 0; max-width: 28rem; text-align: left; }
+.calc-row label { font-weight: 600; font-size: .95rem; }
+.calc-row input { font: inherit; font-size: 1.1rem; padding: .85rem 1rem; border-radius: 14px; border: 1px solid rgba(128,128,128,.4); background: rgba(255,255,255,.06); color: inherit; width: 100%; box-sizing: border-box; }
+.lt .calc-row input { background: #f5f5f7; }
+.calc-out { margin: 1.4rem auto 0; max-width: 28rem; display: grid; gap: .55rem; text-align: left; }
+.calc-line { display: flex; justify-content: space-between; gap: 1rem; align-items: baseline; padding: .7rem 1rem; border-radius: 14px; background: rgba(25,211,240,.12); }
+.calc-line span { font-size: .95rem; } .calc-line b { font-size: 1.1rem; white-space: nowrap; }
+.calc .fine { font-size: .82rem; line-height: 1.6; max-width: 34rem; margin-inline: auto; }
+#cases .fine a { text-decoration: underline; }
+
+/* Hero content starts from the top (consistent offset under the nav), never vertically centered in a tall box */
+body > section.hero, body > section#top { justify-content: flex-start !important; }
+
+/* ===== Hero starfield canvas (nocapital): behind content, soft glow, no layout cost ===== */
+.hero:has(.hero-stars) { position: relative; overflow: hidden; isolation: isolate; }
+.hero-stars { position: absolute; inset: 0; z-index: -1; pointer-events: none;
+  -webkit-mask-image: radial-gradient(ellipse 95% 85% at 50% 45%, #000 55%, transparent 100%);
+  mask-image: radial-gradient(ellipse 95% 85% at 50% 45%, #000 55%, transparent 100%); }
+
+/* 3열 카드(아이패드 폭): 제목이 1줄/2줄로 갈려 본문 시작선이 어긋나지 않도록 제목 영역 높이를 맞춤 */
+body > section .card h3 { text-wrap: balance; }
+@media (min-width: 735px) and (max-width: 1068px) {
+  body > section .grid.g3 > .card > h3 { min-height: 2.5em; display: flex; align-items: center; justify-content: center; }
+}
+
+/* 폰에서 4열 카드가 긴 단어 때문에 화면 밖으로 밀리지 않도록 */
+.grid > * { min-width: 0; }
+@media (max-width: 480px) { .grid.g4 { grid-template-columns: 1fr !important; } }
+
+/* ===== Apple식 중심축: 칩·카드·표는 본문 열과 같은 가운데 축, 서브 카피보다 넓게 퍼지지 않음 ===== */
+.hero .chips, .hero .track { max-width: min(100%, var(--hw, 680px)) !important; }
+@media (min-width: 1069px) {
+  body > section:not(.hero) :is(.grid, .tbl-wrap, .risk, .vs, .check, .pain, .banner, .next, .gate, .track, .flowline, .phones, .video-wrap, .pagenav, .vz, .vz-stats, .vz-banner, .vz-check, .vz-refs, details) {
+    max-width: min(100%, 1080px) !important; margin-inline: auto !important;
+  }
+}
+@media (max-width: 734px) {
+  .hero .chips, .hero .track { max-width: min(100%, 80vw) !important; }
+  /* 표→카드: 첫 칸은 가운데 정렬 제목, 나머지는 작은 라벨 + 가운데 본문 */
+  .tbl-wrap table td { text-align: center; }
+  .tbl-wrap table td:first-child { font-size: 1.1875rem; font-weight: 700; letter-spacing: -.02em; }
+  .tbl-wrap table td:first-child::before { display: none !important; }
+}
+.body strong, .sub em, .card p strong { font-weight: 700; }
+
+/* 조인 페이지 히어로: 느린 3D 회전 영상 + 아주 느린 줌/패럴랙스로 입체감 */
+.hero-bg.deep { background-image: url(join-bg-poster.jpg); }
+.hero-bg.deep video { animation: deepdrift 40s ease-in-out infinite alternate; transform-origin: 50% 45%; }
+@keyframes deepdrift { from { transform: scale(1.04) translate3d(0,0,0); } to { transform: scale(1.14) translate3d(-1.2%, -1%, 0); } }
+@media (prefers-reduced-motion: reduce) { .hero-bg.deep video { animation: none; } }
+.hero-bg.deep::after { background: linear-gradient(180deg, rgba(10,14,12,.35) 0%, rgba(10,14,12,0) 40%, rgba(10,14,12,0) 62%, #0a0e0c 100%); }
+.hero-bg.deep video { opacity: 1; }
+footer .contact { margin-top: .6rem; }
+footer .contact a { color: inherit; text-decoration: underline; text-underline-offset: 2px; font-weight: 600; }
+
+/* 아이패드 폭: 히어로 영상은 본문 문단 폭에 맞춰 가운데로 좁힘 (데스크톱·폰은 그대로) */
+@media (min-width: 735px) and (max-width: 1068px) {
+  .hero .video-wrap { max-width: min(100%, 41rem) !important; margin-inline: auto !important; }
+}
+
+/* ===== 가입 절차: 추천 입력/복사 구역 ===== */
+.ref-box { max-width: 680px; margin-inline: auto; }
+.ref-label { font-size: 1.1875rem; font-weight: 600; color: var(--lt-sub, #6e6e73); margin: 0; }
+.ref-lead, .ref-verify { font-size: 1.0625rem; line-height: 1.55; color: var(--lt-sub, #6e6e73); margin: 1rem auto 0; max-width: 34rem; text-wrap: pretty; }
+.ref-verify { font-size: .95rem; }
+.ref-verify .ref-full { word-break: break-all; font-family: ui-monospace, Menlo, monospace; font-size: .85em; }
+.ref-box strong { color: var(--lt-text, #1d1d1f); font-weight: 700; }
+.ref-input { display: grid; grid-template-columns: 1fr auto; gap: .6rem; margin: 1.4rem auto 0; max-width: 34rem; }
+.ref-input input { min-width: 0; padding: .95rem 1.1rem; border-radius: 14px; border: 1px solid #19D3F0; background: #f5f5f7; color: #1d1d1f; font: inherit; font-size: 1rem; }
+.ref-input input:focus { outline: 2px solid #19D3F0; outline-offset: 1px; }
+.ref-input .btn { white-space: nowrap; }
+.ref-msg { grid-column: 1 / -1; margin: 0; min-height: 1.2em; font-size: .88rem; line-height: 1.5; color: #d1362a; text-align: left; }
+.ref-alt { display: flex; flex-wrap: wrap; gap: .6rem; justify-content: center; margin-top: 1.2rem; }
+.ref-steps { list-style: none; margin: 1.8rem auto 0; padding: 0; display: grid; grid-template-columns: repeat(3, 1fr); gap: .7rem; counter-reset: s; max-width: 34rem; }
+.ref-steps li { counter-increment: s; background: #f5f5f7; border-radius: 16px; padding: 1rem .8rem; text-align: center; }
+.ref-steps li::before { content: counter(s); display: grid; place-items: center; width: 1.8rem; height: 1.8rem; margin: 0 auto .6rem; border-radius: 50%; background: #19D3F0; color: #1d1d1f; font-weight: 800; }
+.ref-steps b { display: block; font-size: 1rem; color: #1d1d1f; }
+.ref-steps span { display: block; margin-top: .3rem; font-size: .85rem; line-height: 1.45; color: #6e6e73; }
+.ref-pc { margin: 1.2rem auto 0; max-width: 34rem; padding: .9rem 1rem; border-radius: 14px; background: #ecfeff; color: #155e75; font-size: .92rem; line-height: 1.55; }
+.ref-change { margin-top: 1.4rem; background: none; border: 0; color: #155e75; font: inherit; font-size: .92rem; font-weight: 600; text-decoration: underline; text-underline-offset: 3px; cursor: pointer; }
+@media (max-width: 600px) {
+  .ref-input { grid-template-columns: 1fr; }
+  .ref-steps { grid-template-columns: 1fr; }
+  .ref-steps li { display: grid; grid-template-columns: auto 1fr; column-gap: .8rem; text-align: left; align-items: center; }
+  .ref-steps li::before { grid-row: span 2; margin: 0; }
+}
+.ref-actions { display: grid; grid-template-columns: 1fr 1fr; gap: .9rem; margin: 1.6rem auto 0; max-width: 34rem; }
+.ref-act { background: #f5f5f7; border-radius: 20px; padding: 1.3rem 1rem; display: flex; flex-direction: column; align-items: center; text-align: center; gap: .7rem; }
+.ref-act h3 { margin: 0; font-size: 1.1rem; font-weight: 700; color: #1d1d1f; }
+.ref-act p { margin: 0; font-size: .88rem; line-height: 1.5; color: #6e6e73; flex: 1; text-wrap: balance; }
+.ref-act .btn { width: 100%; justify-content: center; }
+.ref-sub { background: none; border: 0; font: inherit; font-size: .9rem; font-weight: 600; color: #155e75; text-decoration: underline; text-underline-offset: 3px; cursor: pointer; }
+@media (max-width: 600px) { .ref-actions { grid-template-columns: 1fr; } }
+.ref-box .ref-code { display: flex; align-items: center; justify-content: space-between; gap: .6rem; flex-wrap: nowrap; max-width: 34rem; margin-inline: auto; }
+.ref-box .ref-code span { white-space: nowrap; font-size: clamp(1rem, 4.6vw, 1.3rem); }
+.ref-box .ref-code button { white-space: nowrap; flex: none; }
+#ref .risk { max-width: 680px !important; margin-inline: auto; }
+
+/* ===== Apple 데스크톱 기준(2000px 실측): 제목 80/섹션 제목 ≤56, 본문 열 ≈ 900px, 카드 영역 넓게, 모두 가운데 축 ===== */
+@media (min-width: 1069px) {
+  section:not(.hero) h2.display-md, section:not(.hero) .display-md { font-size: clamp(2.75rem, 4.3vw, 3.5rem) !important; line-height: 1.12 !important; }
+  section:not(.hero) .wrap > :is(.body, .sub), section:not(.hero) .wrap > p:not(.eyebrow):not(.fine):not(.small) {
+    max-width: 50rem !important; margin-inline: auto !important; text-align: center; text-wrap: pretty; word-break: keep-all;
+  }
+  section:not(.hero) .wrap > .body, section:not(.hero) .wrap > p:not(.eyebrow):not(.fine):not(.small):not(.sub) { font-size: 1.3125rem !important; line-height: 1.6 !important; }
+  .hero .body { max-width: min(100%, 44rem) !important; font-size: 1.3125rem !important; line-height: 1.6 !important; }
+}
+
+/* ===== 섹션 제목 크기 통일: display-md 클래스가 없는 h2(community)도 같은 크기 ===== */
+@media (max-width: 734px) { section:not(.hero) h2:not(.display-md) { font-size: clamp(2.325rem, calc(11.4vw + 2px), 3.025rem) !important; line-height: 1.18 !important; font-weight: 900; letter-spacing: -.032em; text-wrap: balance; word-break: keep-all; } }
+@media (min-width: 735px) and (max-width: 1068px) { section:not(.hero) h2:not(.display-md) { font-size: 3.25rem !important; line-height: 1.12 !important; } }
+@media (min-width: 1069px) { section:not(.hero) h2:not(.display-md) { font-size: clamp(2.75rem, 4.3vw, 3.5rem) !important; line-height: 1.12 !important; } }
+@media (min-width: 735px) { .hero .sub { font-size: 1.5rem !important; } }
+@media (max-width: 734px) { .hero .sub { font-size: clamp(1.2rem,5.4vw,1.4rem) !important; } }
+
+/* ===== 좌우 폭 재조정(애플 본문 열 기준): 배너·고지·CTA 박스는 본문 열 가까이, 카드·표는 그보다 조금만 넓게 ===== */
+@media (min-width: 1069px) {
+  body > section:not(.hero) :is(.risk, .banner, .gate, .next, .vs, .pain, .check, .vz-banner, .cta-card, .ref-box, details) { max-width: min(100%, 860px) !important; }
+  body > section:not(.hero) :is(.grid, .tbl-wrap, .track, .flowline, .phones, .video-wrap, .pagenav, .vz, .vz-stats, .vz-check, .vz-refs) { max-width: min(100%, 980px) !important; }
+}
+/* 가입 절차 배경 동영상 더 어둡게 */
+.hero-bg.deep video { filter: brightness(.55) saturate(.95); }
+.hero-bg.deep::after { background: linear-gradient(180deg, rgba(0,0,0,.55) 0%, rgba(0,0,0,.4) 45%, rgba(0,0,0,.75) 100%) !important; }
+
+/* 넓은 래퍼(.wrap-wide)도 본문 열 기준으로: 데스크톱 최대 980px, 히어로 안의 안내 배너는 860px */
+@media (min-width: 1069px) {
+  .wrap-wide { max-width: min(100%, 980px) !important; margin-inline: auto !important; }
+  .hero .wrap-wide > :not(.chips):not(.track):not(.video-wrap) { max-width: 860px; margin-inline: auto; }
+}
+@media (min-width: 1069px) { .fnotice { max-width: min(100%, 860px) !important; margin-inline: auto !important; } }
+@media (min-width: 1069px) { .hero .fnotice, .hero .next { max-width: min(100%, 860px) !important; } }
+@media (min-width: 735px) and (max-width: 1068px) { .hero .fnotice, .hero .next { max-width: min(100%, 640px) !important; } }
+
+/* ===== MacBook Air 페이지 이미지 스캔 기준: 데스크톱은 화면 폭의 약 63~66%가 콘텐츠 열(양쪽 여백 ≈17%), 가운데 축 ===== */
+@media (min-width: 1069px) {
+  section:not(.hero) .wrap > :is(.body, .sub), section:not(.hero) .wrap > p:not(.eyebrow):not(.fine):not(.small) { max-width: min(62vw, 50rem) !important; }
+  .hero .body { max-width: min(100%, 62vw, 44rem) !important; }
+  body > section:not(.hero) :is(.risk, .banner, .gate, .next, .vs, .pain, .check, .vz-banner, .cta-card, .ref-box, details) { max-width: min(100%, 62vw, 860px) !important; }
+  body > section:not(.hero) :is(.grid, .tbl-wrap, .track, .flowline, .phones, .video-wrap, .pagenav, .vz, .vz-stats, .vz-check, .vz-refs) { max-width: min(100%, 66vw, 1000px) !important; }
+  .wrap-wide { max-width: min(100%, 66vw, 1000px) !important; }
+  .hero .fnotice, .hero .next { max-width: min(100%, 62vw, 860px) !important; }
+}
+/* 태블릿: 양옆 여백을 일정하게(화면의 약 6%), 본문 열은 가운데 */
+@media (min-width: 735px) and (max-width: 1068px) {
+  section:not(.hero) .wrap > :is(.body, .sub), section:not(.hero) .wrap > p:not(.eyebrow):not(.fine):not(.small) { max-width: min(100%, 38rem) !important; margin-inline: auto !important; }
+}
+/* 모바일: 본문 열은 화면의 약 78%(양옆 11%) */
+@media (max-width: 734px) {
+  section:not(.hero) .wrap > :is(.body, .sub), section:not(.hero) .wrap > p:not(.eyebrow):not(.fine):not(.small) { max-width: min(100%, 82vw) !important; }
+}
+/* 카드·표 바로 아래 문단과의 간격 */
+section:not(.hero) .wrap > :is(.grid, .tbl-wrap) + :is(.body, .sub, p:not(.fine)) { margin-top: 2.25rem !important; }
+
+/* 따라 하기 단계 문단: 단어 단위 줄바꿈, 마지막 줄 외톨이 방지, 문단 간격 */
+.step-txt p { word-break: keep-all; text-wrap: pretty; }
+.step-txt p + p { margin-top: .9rem; }
+.step-txt p.fine { font-size: .875rem; line-height: 1.55; }
+
+/* ===== 맥북 프로 페이지 스캔 기준: 양옆 여백 넉넉히(모바일 약 9%, 태블릿 약 8%), 제목은 좁은 열에서 여러 줄로, 본문은 82% 열 ===== */
+@media (max-width: 734px) { :root { --gutter: 6.5vw !important; } }
+@media (min-width: 735px) and (max-width: 1068px) { :root { --gutter: 8vw !important; } }
+@media (min-width: 735px) { section:not(.hero) h2.display-md, section:not(.hero) .display-md { max-width: 12em !important; margin-inline: auto !important; } }
+@media (min-width: 1069px) {
+  section:not(.hero) h2.display-md, section:not(.hero) .display-md { max-width: 13em !important; }
+  section:not(.hero) .wrap > :is(.body, .sub), section:not(.hero) .wrap > p:not(.eyebrow):not(.fine):not(.small) { max-width: min(58vw, 48rem) !important; }
+}
+
+/* 사례 카드: 토큰 약칭 배지(공식 로고 파일을 받으면 <img>로 교체) */
+.pj-row { display: flex; align-items: center; justify-content: center; gap: .75rem; margin-bottom: .6rem; flex-wrap: wrap; }
+.pj-row .tag { margin: 0 !important; }
+.pj { flex: none; display: inline-grid; place-items: center; min-width: 3rem; height: 3rem; padding: 0 .5rem; border-radius: 999px; font-size: .8125rem; font-weight: 800; letter-spacing: .02em; color: #1d1d1f; background: linear-gradient(135deg, #8eebfa, #19D3F0); box-shadow: 0 0 0 4px rgba(25,211,240,.16); }
+.pj img { width: 100%; height: 100%; object-fit: contain; border-radius: 50%; }
+
+/* 히어로 서브·본문은 제목 폭(--hw)에 묶이지 않게: 태블릿 약 34rem, 데스크톱 약 44rem까지 */
+@media (min-width: 735px) {
+  .hero .sub { max-width: min(100%, max(var(--hw, 0px), 30rem)) !important; text-wrap: balance; word-break: keep-all; }
+  .hero .body { max-width: min(100%, max(var(--hw, 0px), 36rem)) !important; text-wrap: pretty; word-break: keep-all; }
+}
+@media (min-width: 1069px) {
+  .hero .sub { max-width: min(100%, max(var(--hw, 0px), 36rem)) !important; }
+  .hero .body { max-width: min(100%, max(var(--hw, 0px), 44rem)) !important; }
+}
+
+/* Join hero: content vertically centered between nav and section end (no empty bottom, no top-hugging) */
+body > section.hero:has(.hero-bg.deep) { justify-content: center !important; padding-top: clamp(6.5rem, 12vh, 8rem) !important; padding-bottom: clamp(5rem, 10vh, 7rem) !important; }
+@media (min-width: 735px) { body > section.hero:has(.hero-bg.deep) { min-height: min(74svh, 720px) !important; } }
+@media (max-width: 734px) { body > section.hero:has(.hero-bg.deep) { min-height: 0 !important; padding-top: 7rem !important; padding-bottom: 5rem !important; } }
+
+/* ===== company: whitepaper cover small; consistent block widths (desktop/tablet/mobile) ===== */
+.hero .cover { width: min(100%, 15rem); max-width: 15rem !important; margin: 2.25rem auto 0 !important; border-radius: 18px !important; box-shadow: 0 24px 60px rgba(0,0,0,.55), 0 0 0 1px rgba(25,211,240,.3), 0 0 50px rgba(25,211,240,.12) !important; }
+@media (min-width: 735px) { .hero .cover { width: 17rem; max-width: 17rem !important; } }
+@media (min-width: 1069px) {
+  .hero .video-wrap { max-width: min(62vw, 860px) !important; margin-inline: auto !important; }
+  section:not(.hero) .wrap-wide > :is(.pain, .risk, .flowline, .grid, .tbl-wrap, .pagenav, .banner),
+  section:not(.hero) .wrap > :is(.pain, .risk, .flowline, .grid, .tbl-wrap, .pagenav, .banner) { width: min(100%, 66vw, 1000px) !important; max-width: min(100%, 66vw, 1000px) !important; margin-inline: auto !important; }
+}
+@media (min-width: 735px) and (max-width: 1068px) { .hero .video-wrap { max-width: 100% !important; } }
+
+/* Cautions / footnotes: clearly smaller than body copy, on every section */
+body > section .risk p, body > section .tbl-note, body > section .gate-hint { font-size: .875rem !important; line-height: 1.6 !important; color-scheme: normal; }
+body > section .risk p b { font-size: inherit !important; }
+body > section :is(.wrap, .wrap-wide) > p.fine { font-size: .8125rem !important; line-height: 1.55 !important; opacity: .8; }
+@media (min-width: 1069px) { body > section .risk p { font-size: .9rem !important; } }
+
+/* ===== Section rhythm: no tall empty boxes — height follows content, padding sets the breathing room ===== */
+body > section:not(.hero):not(#top) { min-height: 0 !important; }
+@media (min-width: 1069px) { body > section:not(.hero):not(#top) { padding-top: clamp(5.5rem, 9vw, 8rem) !important; padding-bottom: clamp(5.5rem, 9vw, 8rem) !important; } }
+@media (min-width: 735px) and (max-width: 1068px) { body > section:not(.hero):not(#top) { padding-top: clamp(4.5rem, 9vw, 6.5rem) !important; padding-bottom: clamp(4.5rem, 9vw, 6.5rem) !important; } }
+/* Hero video: compact, proportional to the viewport */
+.hero .video-wrap { max-width: 100% !important; }
+@media (min-width: 735px) and (max-width: 1068px) { .hero .video-wrap { max-width: min(100%, 620px) !important; } }
+@media (min-width: 1069px) { .hero .video-wrap { max-width: min(52vw, 740px) !important; } }
+
+/* ===== Hero height: generous, Apple-style full first screen; content centered (equal space above/below) ===== */
+body > section.hero, body > section#top, body > section.hero:has(.hero-bg.deep) {
+  justify-content: center !important;
+  padding-top: clamp(7rem, 13vh, 9rem) !important; padding-bottom: clamp(5rem, 11vh, 8rem) !important;
+  min-height: min(94svh, 960px) !important;
+}
+@media (min-width: 735px) and (max-width: 1068px) { body > section.hero, body > section#top, body > section.hero:has(.hero-bg.deep) { min-height: min(88svh, 1000px) !important; } }
+@media (max-width: 734px) { body > section.hero, body > section#top, body > section.hero:has(.hero-bg.deep) { min-height: min(92svh, 780px) !important; padding-top: 7rem !important; padding-bottom: 5rem !important; } }
+
+/* Hero fills the whole first screen (no cap that leaves the next section peeking in on tall screens) */
+body > section.hero, body > section#top, body > section.hero:has(.hero-bg.deep) { min-height: min(100svh, 1400px) !important; }
+@media (min-width: 735px) and (max-width: 1068px) { body > section.hero, body > section#top, body > section.hero:has(.hero-bg.deep) { min-height: min(100svh, 1300px) !important; } }
+@media (max-width: 734px) { body > section.hero, body > section#top, body > section.hero:has(.hero-bg.deep) { min-height: min(100svh, 900px) !important; } }
+
+/* ===== Vertical rhythm under section titles: one rule for every section ===== */
+section:not(.hero) :is(.wrap, .wrap-wide) > :is(h2, .display-md) + :is(p, .body, .sub) { margin-top: 1.25rem !important; }
+section:not(.hero) :is(.wrap, .wrap-wide) > :is(h2, .display-md) + :is(.grid, .tbl-wrap, .flowline, .pain, .check, .risk, .banner, .vs, .phones, .video-wrap, .faq-list, details, .step, .calc, .vz, .vz-stats) { margin-top: 2.75rem !important; }
+@media (max-width: 734px) {
+  section:not(.hero) :is(.wrap, .wrap-wide) > :is(h2, .display-md) + :is(p, .body, .sub) { margin-top: 1rem !important; }
+  section:not(.hero) :is(.wrap, .wrap-wide) > :is(h2, .display-md) + :is(.grid, .tbl-wrap, .flowline, .pain, .check, .risk, .banner, .vs, .phones, .video-wrap, .faq-list, details, .step, .calc, .vz, .vz-stats) { margin-top: 2rem !important; }
+}
+
+/* ===== Apple "compare/bento" module look: near-black page, true-black cards, 28px corners, white bold highlights over gray copy ===== */
+:root { --r: 28px; }
+body > section.dk:not(.hero):not(#top) { background: #131a1f !important; }
+body > section.dk:not(.hero):not(#top) .card { background: #000 !important; background-image: none !important; border: 0 !important; box-shadow: none !important; }
+body > section.dk .card p :is(b, strong), body > section.dk .card li :is(b, strong) { color: #f5f5f7; font-weight: 700; }
+body > section.lt .card p :is(b, strong), body > section.alt .card p :is(b, strong) { color: #1d1d1f; font-weight: 700; }
+.card, .banner, .risk, .gate, .next, .tbl-wrap, .video-wrap, .fnotice { border-radius: 28px !important; }
+.card { display: flex; flex-direction: column; justify-content: center; }
+@media (min-width: 735px) { nav .brand, nav > a:first-child { font-size: 1.25rem; } }
+
+/* ===== Scroll motion with variety (non-hero): each kind of element enters differently ===== */
+@media (prefers-reduced-motion: no-preference) {
+  .js section:not(.hero) .reveal, .js section:not(.hero) .stagger-item {
+    transform: translate(var(--ax, 0), var(--ay, 36px)) scale(var(--as, .985)); filter: blur(var(--ab, 0px));
+    transition: opacity var(--at, 1s) cubic-bezier(.22,.8,.28,1), transform var(--at, 1s) cubic-bezier(.22,.8,.28,1), filter var(--at, 1s) cubic-bezier(.22,.8,.28,1);
+    transition-delay: var(--d, 0s);
+  }
+  .js section:not(.hero) .reveal.in, .js section:not(.hero) .in .stagger-item, .js section:not(.hero) .stagger-item.in { transform: none; filter: none; }
+  /* eyebrow: just fades in, almost no travel */
+  .js section:not(.hero) .eyebrow.reveal { --ay: 6px; --at: .8s; }
+  /* headlines: rise out of a soft blur, slower */
+  .js section:not(.hero) :is(h2, .display-md).reveal { --ay: 30px; --ab: 10px; --at: 1.25s; --d: .08s; }
+  /* supporting copy follows the headline */
+  .js section:not(.hero) :is(.body, .sub).reveal { --ay: 18px; --at: 1s; --d: .16s; }
+  /* cards: scale-up + stagger; side cards slide in from their own side */
+  .js section:not(.hero) .grid > .reveal, .js section:not(.hero) .grid > .stagger-item { --ay: 40px; --as: .94; --at: 1s; }
+  @media (min-width: 735px) {
+    .js section:not(.hero) .g2 > :nth-child(odd) { --ax: -44px; --ay: 20px; }
+    .js section:not(.hero) .g2 > :nth-child(even) { --ax: 44px; --ay: 20px; }
+    .js section:not(.hero) .g3 > :nth-child(3n+1) { --ax: -32px; --ay: 24px; }
+    .js section:not(.hero) .g3 > :nth-child(3n+3) { --ax: 32px; --ay: 24px; }
+    .js section:not(.hero) .g3 > :nth-child(3n+2) { --ay: 56px; }
+  }
+  /* lists / steps: slide in from the left, one after another */
+  .js section:not(.hero) :is(.pain, .check, .flowline) > * { --ax: -28px; --ay: 0px; --at: .9s; }
+  /* tables and notices: wipe up from the bottom edge */
+  .js section:not(.hero) :is(.tbl-wrap, .risk).reveal { --ay: 24px; clip-path: inset(0 0 100% 0 round 28px); transition: opacity 1s, transform 1.1s cubic-bezier(.22,.8,.28,1), clip-path 1.2s cubic-bezier(.22,.8,.28,1), filter 1s; }
+  .js section:not(.hero) :is(.tbl-wrap, .risk).reveal.in { clip-path: inset(0 0 0 0 round 28px); }
+  /* FAQ rows: quick, light rise */
+  .js section:not(.hero) details.reveal { --ay: 14px; --at: .7s; }
+}
+
+/* ===== Mobile: short cards sit two-up (Apple bento), odd last card spans the row ===== */
+@media (max-width: 734px) {
+  .grid.duo { display: grid !important; grid-template-columns: repeat(2, minmax(0, 1fr)) !important; gap: 12px !important; }
+  .grid.duo > .card { padding: 22px 12px !important; min-height: 0; justify-content: center; }
+  body .grid.duo.duo > .card:last-child:nth-child(odd) { grid-column: 1 / -1 !important; }
+  .grid.duo > .card h3 { font-size: clamp(1.0625rem, 4.6vw, 1.25rem) !important; line-height: 1.25 !important; word-break: keep-all; text-wrap: balance; }
+  .grid.duo > .card p, .grid.duo > .card li { font-size: .9375rem !important; line-height: 1.45 !important; word-break: keep-all; text-wrap: balance; }
+  .grid.duo > .card .tag, .grid.duo > .card .tag + * { word-break: keep-all; }
+  .grid.duo > .card .num, .grid.duo > .card b { font-size: inherit; }
+}
+
+/* ===== Body: no fade/slide-in for text and cards — always visible, like Apple ===== */
+.js section:not(.hero) .reveal:not(.video-wrap):not(.cover):not(.banner):not(figure),
+.js section:not(.hero) .stagger-item:not(.video-wrap):not(.cover):not(.banner):not(figure),
+.js section:not(.hero) :is(.pain, .check, .flowline, .chips) > *,
+.js section:not(.hero) :is(.tbl-wrap, .risk).reveal {
+  opacity: 1 !important; transform: none !important; filter: none !important; clip-path: none !important;
+  transition: none !important; will-change: auto !important; scale: none !important;
+}
+
+/* ===== Apple typography fine-tune: weight, tracking, leading, body size ===== */
+html body > section:not(.hero) h2, html body > section:not(.hero) .display-md, html body > section:not(.hero) h2.display-md { font-weight: 700 !important; letter-spacing: -0.03em !important; line-height: 1.14 !important; word-break: keep-all; text-wrap: balance; }
+html body > section.hero h1, html body > section#top h1 { font-weight: 800 !important; letter-spacing: -0.032em !important; line-height: 1.1 !important; word-break: keep-all; }
+html body > section:not(.hero) :is(.wrap, .wrap-wide) > :is(.body, .sub),
+html body > section:not(.hero) :is(.wrap, .wrap-wide) > p:not(.eyebrow):not(.fine):not(.small):not(.note) {
+  font-size: clamp(1rem, 3.5vw, 1.0625rem) !important; font-weight: 600 !important; letter-spacing: -0.022em !important; line-height: 1.47 !important; word-break: keep-all; text-wrap: pretty;
+}
+html body > section:not(.hero) :is(.wrap, .wrap-wide) > .sub { line-height: 1.28 !important; letter-spacing: -0.02em !important; }
+html body > section:not(.hero) .eyebrow { letter-spacing: -0.01em !important; font-weight: 600 !important; }
+html body > section:not(.hero) .card h3 { font-weight: 700 !important; letter-spacing: -0.025em !important; line-height: 1.22 !important; word-break: keep-all; }
+html body > section:not(.hero) .card p, html body > section:not(.hero) .card li { font-size: clamp(.9375rem, 3.3vw, 1.0625rem) !important; letter-spacing: -0.022em !important; line-height: 1.47 !important; word-break: keep-all; }
+@media (min-width: 735px) {
+  html body > section:not(.hero) :is(.wrap, .wrap-wide) > :is(.body, .sub),
+  html body > section:not(.hero) :is(.wrap, .wrap-wide) > p:not(.eyebrow):not(.fine):not(.small):not(.note) { font-size: clamp(1.1875rem, 1.9vw, 1.3125rem) !important; line-height: 1.42 !important; }
+}
+
+/* ===== Mobile 2-up cards tuned to Apple: near-square, 4.4% gap, small centered copy ===== */
+@media (max-width: 734px) {
+  html body .grid.duo { gap: 5.5vw !important; }
+  html body .grid.duo > .card { aspect-ratio: 1 / 1; min-height: auto !important; padding: 24px 14px !important; border-radius: 28px !important; }
+  html body .grid.duo > .card:last-child:nth-child(odd) { aspect-ratio: auto; min-height: 0; padding: 26px 18px !important; }
+  html body .grid.duo > .card h3 { font-size: clamp(1rem, 4.6vw, 1.25rem) !important; line-height: 1.25 !important; margin: 0 0 .45rem !important; }
+  html body .grid.duo > .card p, html body .grid.duo > .card li { font-size: clamp(.8125rem, 3.5vw, .9375rem) !important; line-height: 1.43 !important; }
+  html body .grid.duo > .card .num, html body .grid.duo > .card .n { font-size: clamp(2rem, 9vw, 2.75rem) !important; line-height: 1 !important; margin-bottom: .4rem !important; }
+}
+
+/* 코인 로고 배지 */
+.pj { min-width: 0 !important; width: 3.5rem; height: 3.5rem; padding: 0 !important; background: none !important; box-shadow: none !important; overflow: hidden; border-radius: 50% !important; }
+.pj img { width: 100% !important; height: 100% !important; border-radius: 50% !important; display: block; }
+.pj-row { flex-direction: column; gap: .5rem !important; }
+
+/* 푸터(법적 고지·유의사항·출처): 연한 회색, 본문보다 작게 */
+html body footer p { color: #a1a1a6 !important; font-size: .8125rem !important; line-height: 1.7 !important; }
+html body footer strong { color: #86868b !important; font-weight: 600 !important; }
+html body footer a { color: #86868b !important; text-decoration-color: rgba(134,134,139,.45) !important; }
+
+/* 사례 카드: 모든 카드 같은 높이, 내용은 위에서부터 동일 간격 */
+.grid:has(.pj-row) { grid-auto-rows: 1fr; }
+.grid:has(.pj-row) > .card { justify-content: flex-start !important; padding-top: 2rem !important; }
+.grid:has(.pj-row) > .card ul { margin-top: 1.1rem !important; }
+.grid:has(.pj-row) > .card h3 { margin-top: 0 !important; }
+
+/* 짧은 섹션 방지: 모든 일반 섹션이 최소 화면 높이의 일정 비율을 갖고, 내용은 세로 중앙 */
+@media (min-width: 735px) {
+  html body > section:not(.hero):not(#top) { min-height: clamp(620px, 76svh, 880px) !important; display: flex !important; flex-direction: column; justify-content: center; }
+  html body > section:not(.hero):not(#top) > * { width: 100%; }
+}
+@media (max-width: 734px) {
+  html body > section:not(.hero):not(#top) { min-height: clamp(520px, 70svh, 760px) !important; display: flex !important; flex-direction: column; justify-content: center; }
+  html body > section:not(.hero):not(#top) > * { width: 100%; }
+}
+
+/* ===== 글씨는 처음부터 전부 보이게: 스크롤 등장·단어별 점등·줄 올라오기·히어로 이동 모두 해제 ===== */
+.js .w, .js .w.on, .js .w.in, .js .w.lit { opacity: 1 !important; transition: none !important; }
+.js .ln { overflow: visible !important; }
+.js .ln > span { transform: none !important; transition: none !important; }
+.js .scroll-hero, .js .hero .scroll-hero { translate: none !important; scale: none !important; opacity: 1 !important; transform: none !important; }
+html.js .reveal:not(.video-wrap):not(.cover):not(.banner):not(figure),
+html.js .stagger-item:not(.video-wrap):not(.cover):not(.banner):not(figure),
+html.js .hero :is(.badge, .eyebrow, h1, .sub, .body, .chips, .track, .cta-row, .fine, .fnotice, .next) {
+  opacity: 1 !important; transform: none !important; translate: none !important; scale: none !important; filter: none !important; clip-path: none !important; transition: none !important;
+}
+html.js .banner, html.js .banner.reveal { opacity: 1 !important; transform: none !important; clip-path: none !important; transition: none !important; scale: none !important; }
+
+/* ===== Mobile only: 섹션 제목 한 단계 작게(약 -11%), 2열 카드 높이 통일 ===== */
+@media (max-width: 734px) {
+  html body > section:not(.hero) h2, html body > section:not(.hero) h2.display-md, html body > section:not(.hero) .display-md {
+    font-size: clamp(2rem, calc(9.6vw + 2px), 2.75rem) !important; line-height: 1.16 !important;
+  }
+  html body .grid.duo { grid-auto-rows: 1fr !important; align-items: stretch !important; }
+  html body .grid.duo > .card, html body .grid.duo > .card:last-child:nth-child(odd) {
+    aspect-ratio: auto !important; min-height: 0 !important; height: auto; padding: 26px 14px !important; justify-content: center !important;
+  }
+  html body .grid.duo > .card:last-child:nth-child(odd) { padding-left: 24px !important; padding-right: 24px !important; }
+}
+@media (max-width: 734px) {
+  html body .grid.duo { grid-auto-rows: auto !important; }
+  html body .grid.duo > .card, html body .grid.duo > .card:last-child:nth-child(odd) { justify-content: flex-start !important; padding-top: 28px !important; padding-bottom: 28px !important; }
+}
+
+/* ===== Mobile: Apple(맥북 프로 KR) 실측 간격 — 제목 줄 간격 ≈1.36, 본문 17px/1.6, 부제 24px/1.28, 제목→본문 간격 넓게 ===== */
+@media (max-width: 734px) {
+  html body > section:not(.hero) h2, html body > section:not(.hero) h2.display-md, html body > section:not(.hero) .display-md { line-height: 1.34 !important; }
+  html body > section:not(.hero) :is(.wrap, .wrap-wide) > :is(.body, .sub),
+  html body > section:not(.hero) :is(.wrap, .wrap-wide) > p:not(.eyebrow):not(.fine):not(.small):not(.note) {
+    font-size: clamp(1rem, 3.95vw, 1.0625rem) !important; line-height: 1.6 !important;
+  }
+  html body > section:not(.hero) :is(.wrap, .wrap-wide) > .sub { font-size: clamp(1.25rem, 5.4vw, 1.5rem) !important; line-height: 1.3 !important; }
+  html body > section:not(.hero) h2 + :is(p, .sub, .body) { margin-top: 1.5rem !important; }
+  html body > section:not(.hero) :is(.body, .sub) + :is(.body, .sub, p) { margin-top: 1.25rem !important; }
+  html body > section:not(.hero) .eyebrow { margin-bottom: 1rem !important; }
+  html body > section:not(.hero) .card p, html body > section:not(.hero) .card li { line-height: 1.5 !important; }
+}
+
+/* ===== 애플식 스크롤 연동 등장 (값은 JS가 스크롤에 맞춰 --so/--sx/--sy/--ss 로 전달) ===== */
+html.js body .sx.sx:not(#_):not(.sx-done) { opacity: var(--so, 1) !important; translate: var(--sx, 0) var(--sy, 0) !important; scale: var(--ss, 1) !important; transition: none !important; will-change: opacity, translate, scale; }
+html.js body .sx.sx.sx-done:not(#_) { opacity: 1 !important; translate: none !important; scale: none !important; transition: none !important; }
+@media (prefers-reduced-motion: reduce) { html.js body .sx.sx:not(#_) { opacity: 1 !important; translate: none !important; scale: none !important; } }
+body > section { overflow-x: clip; } html, body { overflow-x: clip; }
+
+/* ---- 이전 버튼 글씨 축소 / 메인 페이지 폰 캡처를 아이폰 프레임에 맞춤 ---- */
+html body .nav .nav-logo { font-size: .9rem !important; font-weight: 500 !important; letter-spacing: -.01em !important; }
+@media (max-width: 734px) { html body .nav .nav-logo { font-size: .85rem !important; } }
+html body .phones figure .shot { width: min(100%, 250px) !important; margin: 0 auto !important; }
+html body .phones figure .shot img { width: 100% !important; height: auto !important; aspect-ratio: 600 / 1300 !important; object-fit: contain !important; object-position: top !important; border-radius: 46px !important; box-shadow: none !important; background: #000 !important; }
+html body .phones figure { overflow: visible !important; }
+html body .phones { row-gap: 3rem !important; }
+@media (max-width: 734px) { html body .phones figure .shot { width: min(100%, 240px) !important; } }
+
+/* 하단 '다음 단계' 버튼 글씨 -1 (모바일) */
+@media (max-width: 734px) { html body .gate .gate-next { font-size: .9375rem !important; line-height: 1.4 !important; padding-left: 1rem !important; padding-right: 1rem !important; } }
+
+/* YVVY 컬러 버전 — 금색 톤 배경 영상·포스터를 시안 톤으로 이동 (hue-rotate) */
+.hero-bg { filter: hue-rotate(150deg) saturate(1.05); }
+
+/* YVVY 컬러 버전 — 접근성(WCAG AA 4.5:1) 보정
+   · 밝은 섹션(.lt)의 카드 태그: 시안(#19D3F0)은 흰 배경에서 대비 1.8:1 → 진한 청록 사용
+   · 밝은 푸터/각주의 연한 회색: 원본에서 대비 2.4~3.3:1 → 4.6:1 이상으로 진하게 (문구는 변경 없음) */
+.lt .tag, .lt .card .tag { color: #0e7490; }
+.lt .fine { color: #6e6e73; }
+html body footer p { color: #6e6e73 !important; }
+html body footer strong, html body footer a { color: #515154 !important; text-decoration-color: rgba(81,81,84,.45) !important; }

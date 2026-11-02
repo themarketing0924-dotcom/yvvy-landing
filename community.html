@@ -1,0 +1,205 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>YVVY 인센티브 구조 — 추천·등급·누적 풀 규칙 분석</title>
+<meta name="description" content="YVVY 백서의 1·2티어 추천 인센티브, V1–V6 등급, 최초 5명 누적 풀 규칙을 구조화해 정리하고 미정 사항을 표시합니다.">
+<style>
+:root{--bg:#000;--bg2:#0e1317;--card:#11161a;--line:rgba(255,255,255,.14);--tx:#f5f5f7;--mu:#86868b;--lt:#f5f5f7;--ltx:#1d1d1f;--ltm:#6e6e73;
+--gold:linear-gradient(135deg,#cff7fd 0%,#19D3F0 45%,#0fa5c0 100%);--pad:max(1.25rem,calc(50vw - 540px))}
+*{box-sizing:border-box;margin:0}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--tx);font-family:-apple-system,BlinkMacSystemFont,"Pretendard","Apple SD Gothic Neo","Noto Sans KR",sans-serif;line-height:1.65;-webkit-font-smoothing:antialiased;word-break:keep-all}
+a{color:inherit;text-decoration:none}
+.nav{position:fixed;top:0;left:0;right:0;z-index:50;height:52px;padding:0 var(--pad);display:flex;align-items:center;justify-content:space-between;background:rgba(17,22,26,.8);backdrop-filter:saturate(180%) blur(20px);-webkit-backdrop-filter:saturate(180%) blur(20px);border-bottom:1px solid var(--line)}
+.logo{font-weight:600;font-size:1.15rem;letter-spacing:-.02em}
+.menu{display:flex;align-items:center;gap:1.7rem;font-size:.85rem;color:#a1a1a6}
+.menu a:hover{color:var(--tx)}
+.pill{height:30px;padding:0 1rem;display:inline-flex;align-items:center;border-radius:980px;background:var(--gold);color:#04141a!important;font-weight:600;font-size:.85rem}
+@media(max-width:760px){.menu a:not(.pill){display:none}}
+section{padding:7rem var(--pad);text-align:center}
+section.lt{background:var(--lt);color:var(--ltx)}
+section.alt{background:var(--bg2)}
+.wrap{max-width:1080px;margin:0 auto}
+.eyebrow{font-size:clamp(1rem,1.8vw,1.3rem);font-weight:600;letter-spacing:-.02em;margin-bottom:1.1rem}
+h1,h2{font-weight:700;letter-spacing:-.04em;line-height:1.12;text-wrap:balance}
+h1{font-size:clamp(2.3rem,6.2vw,4.5rem)}
+h1{font-weight:900;letter-spacing:-.035em}
+.hero .sub,.hero .body{max-width:min(100%,var(--hw,560px))!important;margin-left:auto!important;margin-right:auto!important;text-wrap:balance;word-break:keep-all}
+h2{font-size:clamp(1.9rem,4.6vw,3.2rem)}
+.gold{background:var(--gold);-webkit-background-clip:text;background-clip:text;color:transparent}
+.sub{margin-top:1.6rem;font-size:clamp(1.15rem,2.2vw,1.6rem);font-weight:600;letter-spacing:-.025em;color:var(--mu);line-height:1.35}
+.sub em{font-style:normal;color:var(--tx)}
+.body{max-width:35rem;margin:1.6rem auto 0;color:var(--mu);font-size:clamp(1rem,1.5vw,1.125rem);text-wrap:pretty}
+.body strong{color:var(--tx)}
+.lt .sub,.lt .body{color:var(--ltm)}.lt .sub em,.lt .body strong{color:var(--ltx)}
+.hero{padding-top:9rem}
+.video{max-width:880px;margin:3.5rem auto 0;aspect-ratio:16/9;border-radius:22px;overflow:hidden;position:relative;background:#0a0e0c;border:1px solid var(--line);box-shadow:0 40px 100px rgba(0,0,0,.6),0 0 120px rgba(25,211,240,.08)}
+.video iframe,.video img{position:absolute;inset:0;width:100%;height:100%;border:0;object-fit:cover}
+.vph{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:.8rem;color:var(--mu);font-size:.95rem}
+.play{width:76px;height:76px;border-radius:50%;background:rgba(255,255,255,.14);backdrop-filter:blur(10px);display:grid;place-items:center;border:1px solid rgba(255,255,255,.3);cursor:pointer}
+.play::after{content:"";border-left:22px solid #fff;border-top:13px solid transparent;border-bottom:13px solid transparent;margin-left:6px}
+.cap{margin-top:1rem;font-size:.85rem;color:var(--mu)}
+.grid{display:grid;gap:1.1rem;margin-top:3.5rem;text-align:left}
+.g3{grid-template-columns:repeat(3,1fr)}.g2{grid-template-columns:repeat(2,1fr)}
+@media(max-width:860px){.g3,.g2{grid-template-columns:1fr}}
+.card{background:var(--card);border:1px solid var(--line);border-radius:22px;padding:1.9rem 1.7rem}
+.lt .card{background:#fff;border-color:rgba(0,0,0,.08)}
+.card h3{font-size:1.3rem;letter-spacing:-.03em;margin-bottom:.6rem}
+.card p,.card li{color:var(--mu);font-size:.98rem}
+.lt .card p,.lt .card li{color:var(--ltm)}
+.card ul{padding-left:1.1rem;display:grid;gap:.45rem}
+.tag{display:inline-block;font-size:.75rem;font-weight:600;padding:.2rem .65rem;border-radius:980px;margin-bottom:.9rem;border:1px solid var(--line);color:#19D3F0}
+.tag.plan{color:#a1a1a6}
+.nums{display:grid;grid-template-columns:repeat(4,1fr);gap:1rem;margin-top:3.5rem}
+@media(max-width:860px){.nums{grid-template-columns:repeat(2,1fr)}}
+.num b{display:block;font-size:clamp(2rem,4.5vw,3.2rem);font-weight:700;letter-spacing:-.04em}
+.num span{font-size:.9rem;color:var(--mu)}
+.tl{max-width:640px;margin:3.5rem auto 0;text-align:left;border-left:1px solid var(--line);padding-left:1.8rem;display:grid;gap:1.8rem}
+.tl div{position:relative}
+.tl div::before{content:"";position:absolute;left:calc(-1.8rem - 5px);top:.55rem;width:9px;height:9px;border-radius:50%;background:#19D3F0}
+.tl b{display:block;font-size:1.05rem}.tl span{color:var(--mu);font-size:.95rem}
+.note{max-width:40rem;margin:2.2rem auto 0;font-size:.88rem;color:var(--mu);text-wrap:pretty}
+.lt .note{color:var(--ltm)}
+details{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:1.1rem 1.4rem;text-align:left;max-width:760px;margin:.8rem auto 0}
+details summary{cursor:pointer;font-weight:600;list-style:none}
+details summary::-webkit-details-marker{display:none}
+details p{margin-top:.7rem;color:var(--mu);font-size:.97rem}
+.warn{max-width:760px;margin:3rem auto 0;text-align:left;border:1px solid rgba(25,211,240,.45);border-radius:22px;padding:2rem 1.8rem;background:rgba(25,211,240,.05)}
+.warn h3{color:#19D3F0;margin-bottom:1rem;font-size:1.15rem}
+.warn li{color:#c7c7cc;font-size:.95rem;margin-left:1.1rem;margin-bottom:.55rem}
+footer{padding:3rem var(--pad);background:#000;color:#8e8e93;font-size:.8rem;text-align:left;border-top:1px solid var(--line)}
+footer p{max-width:1080px;margin:0 auto .6rem}
+/* axcom-align: 좌우 한 선 */
+.wrap{max-width:1040px}
+.video,details,.warn{max-width:100%}
+section:not(.hero) :is(.wrap,.wrap-wide)>:is(.body,.sub){font-size:1.1875rem!important;font-weight:600!important;line-height:1.5!important}section:not(.hero) :is(.card,details) p,section:not(.hero) .card li{font-size:1.0625rem!important;line-height:1.55!important}
+@media (max-width:734px){section :is(.wrap,.wrap-wide)>:is(.body,.sub,.fine,.note),section :is(.wrap,.wrap-wide)>p:not(.eyebrow),.hero .body{max-width:min(100%,80vw)!important;margin-inline:auto!important}}
+</style>
+<style>
+/* 다른 페이지와 같은 제목·서브카피 크기 */
+h2{font-size:clamp(2.325rem,calc(11.4vw + 2px),3.025rem);line-height:1.18;font-weight:900;letter-spacing:-.032em;word-break:keep-all}
+.hero .sub{font-size:clamp(1.2rem,5.4vw,1.4rem)}
+@media(min-width:735px){h2{font-size:3.25rem;line-height:1.12}.hero .sub{font-size:1.5rem}}
+@media(max-width:734px){body>section{padding-left:6.5vw!important;padding-right:6.5vw!important}.hero .body{font-size:clamp(1.02rem,4.5vw,1.15rem)!important;line-height:1.62!important}}
+@media(min-width:1069px){h2{font-size:clamp(2.75rem,4.3vw,3.5rem)}}
+.tb{display:block;overflow-x:auto;max-width:100%;width:100%;border-collapse:collapse;margin:2.4rem auto 0;max-width:820px;text-align:left;font-size:.95rem}.tb th,.tb td{padding:.75rem .9rem;border-bottom:1px solid var(--line)}.tb th{color:#8eebfa;font-weight:700;font-size:.85rem}.tb td{color:#d2dde2}.lt .tb td{color:var(--ltx)}.lt .tb th{color:#0e7490}.bars{max-width:760px;margin:2.4rem auto 0;display:grid;gap:.7rem;text-align:left}.bars div{display:grid;grid-template-columns:5.5rem 1fr;gap:.8rem;align-items:center;font-size:.92rem}.bars i{display:block;height:28px;border-radius:9px;background:linear-gradient(90deg,#0fa5c0,#8eebfa);width:var(--w);color:#10161a;font:700 .82rem/28px inherit;font-style:normal;padding-left:.6rem;min-width:2.4rem}.bars div.m i{background:#4b5a66;color:#f5f5f7}.lt .bars span{color:var(--ltx)}
+</style>
+</head>
+<body>
+
+<nav class="nav">
+  <a class="logo" href="nocapital.html">YVVY</a>
+  <div class="menu">
+    <a href="#about">구조</a><a href="#bg">추천</a><a href="#roadmap">등급</a><a href="#risk">미정 사항</a>
+    <a class="pill" href="#risk">꼭 읽어주세요</a>
+  </div>
+</nav>
+
+<section class="hero">
+  <div class="wrap">
+    <p class="eyebrow">생태계 기여 인센티브</p>
+    <h1 data-fs="0.8">추천과 등급으로<br><span class="gold">돈이 한 번 더 나뉩니다</span></h1>
+    <p class="sub">백서 13–15쪽의 인센티브를 <em>항목별로 분해</em>했습니다</p>
+    <p class="body">이 페이지는 투자 권유가 아닌 <strong>구조 분석</strong>입니다. 모든 비율은 백서에 적힌 값이며, 재원과 정산 방식 같은 핵심 조건은 백서에 없습니다.</p>
+  </div>
+</section>
+
+<section class="alt" id="about">
+  <div class="wrap">
+    <p class="eyebrow">한눈에 보기</p>
+    <h2>세 가지 층으로<br>이루어집니다.</h2>
+    <p class="body">백서가 제시한 순서대로 정리했습니다. 모두 <strong>설계</strong>이며 지급이 확정된 사실이 아닙니다.</p>
+    <div class="grid g3">
+      <div class="card"><span class="tag">① 기간별 배분</span><h3>회원 30%→80%</h3><p>입금한 자금이 활성인 기간에 따라 적격 순이익을 회원과 회사가 나눕니다.</p></div>
+      <div class="card"><span class="tag">② 추천 인센티브</span><h3>1티어 10% · 2티어 5%</h3><p>추천한 사용자의 전략 수익을 기준으로 계산합니다.</p></div>
+      <div class="card"><span class="tag">③ 등급 풀</span><h3>V1–V6, 합계 30%</h3><p>개인 보유량과 그룹 실적을 모두 채워야 하는 6단계 등급입니다.</p></div>
+    </div>
+    <p class="note">출처: YVVY 백서 12–15쪽</p>
+  </div>
+</section>
+
+<section id="bg">
+  <div class="wrap">
+    <p class="eyebrow">추천 인센티브</p>
+    <h2>수익 계산식은<br><span class="gold">단순합니다.</span></h2>
+    <p class="sub">P = A × r (파라미터 설명용)</p>
+    <div class="nums">
+      <div class="num"><b>A</b><span>요건을 충족하는 활성 트레이딩 AUM</span></div>
+      <div class="num"><b>r</b><span>해당 기간 순이익률 (원문 참고 0.5–1%)</span></div>
+      <div class="num"><b>100 × 1% = 1 SOL</b><span>백서의 하루 계산 예시</span></div>
+      <div class="num"><b>10% / 5%</b><span>1티어 / 2티어 인센티브</span></div>
+    </div>
+    <div class="grid g2">
+      <div class="card"><h3>백서가 명시한 점</h3><ul>
+        <li>1%는 하루 계산 예시이며 <strong style="color:#f5f5f7">실제 수익은 더 낮거나 0이거나 음수</strong>일 수 있습니다.</li>
+        <li>파라미터는 설명용이며 고정 수익 약속이 아닙니다.</li></ul></div>
+      <div class="card"><h3>백서에 없는 점</h3><ul>
+        <li>인센티브를 회사 몫에서 지급하는지, 회원 몫에서 지급하는지.</li>
+        <li>추천인이 받는 금액의 정산 주기와 출금 조건.</li>
+        <li>하위 사용자가 손실일 때 추천 인센티브 처리.</li></ul></div>
+    </div>
+    <p class="note">예시 계산 [계산]: 하위 1티어 사용자의 전략 수익이 1 SOL이면 10%인 0.1 SOL, 2티어 사용자 1 SOL이면 0.05 SOL.</p>
+  </div>
+</section>
+
+<section id="roadmap">
+  <div class="wrap">
+    <p class="eyebrow">V1–V6 등급</p>
+    <h2>등급이 오를수록<br>요건이 <span class="gold">급격히</span> 커집니다.</h2>
+    <p class="body">백서 14–15쪽. 개인 활성 보유량과 적격 그룹 실적을 <strong>동시에</strong> 충족해야 합니다. 단위는 SOL이며 100 USDT = 1 SOL 고정 환산입니다.</p>
+    <table class="tb"><thead><tr><th>등급</th><th>개인(SOL)</th><th>그룹(SOL)</th><th>그룹÷개인</th><th>등급 풀</th><th>누적 배분율</th></tr></thead><tbody>
+      <tr><td>V1</td><td>5</td><td>50</td><td>10배</td><td>8%</td><td>5%</td></tr>
+      <tr><td>V2</td><td>10</td><td>150</td><td>15배</td><td>7%</td><td>11%</td></tr>
+      <tr><td>V3</td><td>50</td><td>1,000</td><td>20배</td><td>6%</td><td>18%</td></tr>
+      <tr><td>V4</td><td>100</td><td>5,000</td><td>50배</td><td>4%</td><td>27%</td></tr>
+      <tr><td>V5</td><td>500</td><td>20,000</td><td>40배</td><td>3%</td><td>37%</td></tr>
+      <tr><td>V6</td><td>1,000</td><td>50,000</td><td>50배</td><td>2%</td><td>50%</td></tr></tbody></table>
+    <p class="note">그룹÷개인은 계산값입니다. V6는 V1보다 그룹 실적이 1,000배 필요하지만 등급 풀 몫은 8%에서 2%로 <strong>오히려 작아집니다</strong> [계산]. 등급 풀 합계는 8+7+6+4+3+2=30%입니다.</p>
+    <div class="bars">
+      <div><span>V1 풀</span><i style="--w:80%">8%</i></div><div><span>V2 풀</span><i style="--w:70%">7%</i></div><div><span>V3 풀</span><i style="--w:60%">6%</i></div><div><span>V4 풀</span><i style="--w:40%">4%</i></div><div><span>V5 풀</span><i style="--w:30%">3%</i></div><div><span>V6 풀</span><i style="--w:20%">2%</i></div>
+    </div>
+    <div class="tl">
+      <div><b>달성자가 없으면 누적</b><span>해당 등급 몫이 풀에 쌓입니다</span></div>
+      <div><b>첫 달성자 등장 → 누적 중단</b><span>그 시점의 누적 풀이 고정됩니다</span></div>
+      <div><b>최초 5명이 30·25·20·15·10%로 분배</b><span>합계 100% [계산]</span></div>
+      <div><b>다음 날부터 균등 분배</b><span>신규 배당은 달성자 수에 따라 똑같이 나눕니다</span></div>
+    </div>
+    <p class="note">백서 15쪽은 누적 풀의 보관·정산 시점과 5명 미만일 때의 지급 방법을 별도로 정해야 한다고 밝힙니다. 즉 현재는 미정입니다.</p>
+  </div>
+</section>
+
+<section class="alt" id="risk">
+  <div class="wrap">
+    <p class="eyebrow">꼭 읽어주세요</p>
+    <h2>시작하기 전에<br>확인할 것들.</h2>
+    <div class="warn">
+      <h3>고지 사항</h3>
+      <ul>
+        <li>이 페이지는 공개 백서를 바탕으로 한 <b>정보 제공·분석 목적</b>이며 투자 권유, 가입 권유, 금융 자문이 아닙니다.</li>
+        <li>수익을 보장하거나 암시하지 않습니다. 순이익이 없으면 배분도 없습니다.</li>
+        <li>등급·추천 인센티브는 '네트워크 마케팅' 성격의 구조이므로 거주 국가의 다단계·유사수신 관련 법령을 반드시 확인하세요.</li>
+        <li>누적 배분율(5%→50%)의 기준이 '등급 풀 30%'와 어떻게 다른지 백서에서 정의되지 않았습니다.</li>
+        <li>운영 주체와 라이선스는 이 사이트에서 검증하지 못했습니다.</li>
+        <li>지인에게 소개할 때 수익을 약속하는 표현은 사용하지 마세요.</li>
+      </ul>
+    </div>
+
+    <details><summary>추천하지 않아도 참여할 수 있나요?</summary><p>백서에 따르면 기간별 배분(회원 30%→80%)은 추천과 별개로 설명됩니다. 추천 인센티브와 등급 풀은 별도 규칙입니다.</p></details>
+    <details><summary>등급 풀은 누구 돈에서 나오나요?</summary><p>백서에 재원이 명시되어 있지 않습니다. 최종 약관에서 확인해야 합니다.</p></details>
+    <details><summary>V6까지 가면 얼마를 받나요?</summary><p>금액은 계산할 수 없습니다. 풀의 총액은 전체 거래 수익에 달려 있고, 달성자가 여러 명이면 균등 분배됩니다.</p></details>
+    <details><summary>정보는 어디서 확인하나요?</summary><p>백서 원문(19쪽)과 최종 약관을 기준으로 하며, 이후 달라질 수 있으므로 최신 내용은 반드시 공식 채널에서 확인하세요.</p></details>
+  </div>
+</section>
+
+<footer>
+  <p><strong>법적 고지</strong> 본 사이트는 「YVVY 생태계 소개(리디자인 SOL 편집본)」(이하 백서, 19쪽)의 내용을 정리하고 숫자를 다시 계산해 보여 드리는 <strong>정보 제공 목적</strong>의 사이트입니다. 백서의 내용은 사업자의 계획과 주장이며 확정된 사항이 아닙니다. 백서 스스로 '고정 수익 약속이 아니며' 실제 배분은 순결과와 최종 약관에 따른다고 밝힙니다. 사업자 정보, 파트너십, 라이선스, 운용 실적은 이 사이트에서 독립적으로 검증되지 않았습니다. 본 사이트는 <strong>투자 알선·중개·유치를 하지 않으며</strong>, 투자나 가입을 권유하지 않고, 어떠한 자금도 접수하지 않습니다. 참여 여부는 공식 자료를 직접 확인한 뒤 본인이 판단하며, 그 결과에 대한 책임은 본인에게 있습니다.</p>
+  <p><strong>투자 유의사항</strong> 본 페이지의 계산 예시는 백서 규칙을 곱하고 나눈 산수이며 수익 전망이 아닙니다. 실제 수익은 0이거나 음수일 수 있고, 가상자산과 유동성 공급(LP)에는 가격 변동, 비영구적 손실, 스마트 컨트랙트·운영 위험으로 인한 원금 손실이 발생할 수 있습니다. 모든 판단과 책임은 본인에게 있습니다.</p>
+  <p><strong>자료 출처</strong> 「YVVY 생태계 소개」 백서 · <a href="https://www.theblock.co/post/408591/dune-research-finds-85-of-concentrated-defi-liquidity-is-underutilized-with-150m-in-annual-fees-foregone" target="_blank" rel="noopener">The Block, Dune·1inch 연구 보도</a> · <a href="https://docs.meteora.ag/user-faq/dlmm-faq" target="_blank" rel="noopener">Meteora DLMM FAQ</a> · <a href="https://www.cnbc.com/2026/09/15/senate-cloture-vote-on-clarity-act-fails-dealing-regulatory-setback-to-crypto-industry.html" target="_blank" rel="noopener">CNBC, CLARITY Act 상원 표결</a></p>
+  <p>© 2026 YVVY 백서 데이터 분석</p>
+</footer>
+
+<script src="nocapital-apple3.js?v=yvvy20261102b"></script>
+</body>
+</html>
