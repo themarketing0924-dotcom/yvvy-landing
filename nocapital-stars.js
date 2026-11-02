@@ -12,7 +12,7 @@
   if (!ctx) return;
 
   var w = 0, h = 0, stars = [], shoot = null, nextShoot = 0, raf = 0, last = 0, visible = true, t0 = performance.now();
-  var GOLD = '142,235,250', WHITE = '255,255,255';
+  var GOLD = '94,234,212', WHITE = '255,255,255';
 
   function rand(a, b) { return a + Math.random() * (b - a); }
 
@@ -61,8 +61,8 @@
         var ux = shoot.dx / shoot.len, uy = shoot.dy / shoot.len;
         var g2 = ctx.createLinearGradient(x, y, x - ux * L, y - uy * L);
         var al = Math.sin(p * Math.PI);
-        g2.addColorStop(0, 'rgba(207,247,253,' + (0.9 * al).toFixed(3) + ')');
-        g2.addColorStop(1, 'rgba(207,247,253,0)');
+        g2.addColorStop(0, 'rgba(204,251,241,' + (0.9 * al).toFixed(3) + ')');
+        g2.addColorStop(1, 'rgba(204,251,241,0)');
         ctx.strokeStyle = g2; ctx.lineWidth = 1.4; ctx.beginPath(); ctx.moveTo(x, y); ctx.lineTo(x - ux * L, y - uy * L); ctx.stroke();
       }
     }

@@ -175,7 +175,7 @@ body > section:not(.hero) .eyebrow { font-size: 1.25rem !important; font-weight:
 .calc-row input { font: inherit; font-size: 1.1rem; padding: .85rem 1rem; border-radius: 14px; border: 1px solid rgba(128,128,128,.4); background: rgba(255,255,255,.06); color: inherit; width: 100%; box-sizing: border-box; }
 .lt .calc-row input { background: #f5f5f7; }
 .calc-out { margin: 1.4rem auto 0; max-width: 28rem; display: grid; gap: .55rem; text-align: left; }
-.calc-line { display: flex; justify-content: space-between; gap: 1rem; align-items: baseline; padding: .7rem 1rem; border-radius: 14px; background: rgba(25,211,240,.12); }
+.calc-line { display: flex; justify-content: space-between; gap: 1rem; align-items: baseline; padding: .7rem 1rem; border-radius: 14px; background: rgba(45,212,191,.12); }
 .calc-line span { font-size: .95rem; } .calc-line b { font-size: 1.1rem; white-space: nowrap; }
 .calc .fine { font-size: .82rem; line-height: 1.6; max-width: 34rem; margin-inline: auto; }
 #cases .fine a { text-decoration: underline; }
@@ -238,18 +238,18 @@ footer .contact a { color: inherit; text-decoration: underline; text-underline-o
 .ref-verify .ref-full { word-break: break-all; font-family: ui-monospace, Menlo, monospace; font-size: .85em; }
 .ref-box strong { color: var(--lt-text, #1d1d1f); font-weight: 700; }
 .ref-input { display: grid; grid-template-columns: 1fr auto; gap: .6rem; margin: 1.4rem auto 0; max-width: 34rem; }
-.ref-input input { min-width: 0; padding: .95rem 1.1rem; border-radius: 14px; border: 1px solid #19D3F0; background: #f5f5f7; color: #1d1d1f; font: inherit; font-size: 1rem; }
-.ref-input input:focus { outline: 2px solid #19D3F0; outline-offset: 1px; }
+.ref-input input { min-width: 0; padding: .95rem 1.1rem; border-radius: 14px; border: 1px solid #2dd4bf; background: #f5f5f7; color: #1d1d1f; font: inherit; font-size: 1rem; }
+.ref-input input:focus { outline: 2px solid #2dd4bf; outline-offset: 1px; }
 .ref-input .btn { white-space: nowrap; }
 .ref-msg { grid-column: 1 / -1; margin: 0; min-height: 1.2em; font-size: .88rem; line-height: 1.5; color: #d1362a; text-align: left; }
 .ref-alt { display: flex; flex-wrap: wrap; gap: .6rem; justify-content: center; margin-top: 1.2rem; }
 .ref-steps { list-style: none; margin: 1.8rem auto 0; padding: 0; display: grid; grid-template-columns: repeat(3, 1fr); gap: .7rem; counter-reset: s; max-width: 34rem; }
 .ref-steps li { counter-increment: s; background: #f5f5f7; border-radius: 16px; padding: 1rem .8rem; text-align: center; }
-.ref-steps li::before { content: counter(s); display: grid; place-items: center; width: 1.8rem; height: 1.8rem; margin: 0 auto .6rem; border-radius: 50%; background: #19D3F0; color: #1d1d1f; font-weight: 800; }
+.ref-steps li::before { content: counter(s); display: grid; place-items: center; width: 1.8rem; height: 1.8rem; margin: 0 auto .6rem; border-radius: 50%; background: #2dd4bf; color: #1d1d1f; font-weight: 800; }
 .ref-steps b { display: block; font-size: 1rem; color: #1d1d1f; }
 .ref-steps span { display: block; margin-top: .3rem; font-size: .85rem; line-height: 1.45; color: #6e6e73; }
-.ref-pc { margin: 1.2rem auto 0; max-width: 34rem; padding: .9rem 1rem; border-radius: 14px; background: #ecfeff; color: #155e75; font-size: .92rem; line-height: 1.55; }
-.ref-change { margin-top: 1.4rem; background: none; border: 0; color: #155e75; font: inherit; font-size: .92rem; font-weight: 600; text-decoration: underline; text-underline-offset: 3px; cursor: pointer; }
+.ref-pc { margin: 1.2rem auto 0; max-width: 34rem; padding: .9rem 1rem; border-radius: 14px; background: #f0fdfa; color: #115e59; font-size: .92rem; line-height: 1.55; }
+.ref-change { margin-top: 1.4rem; background: none; border: 0; color: #115e59; font: inherit; font-size: .92rem; font-weight: 600; text-decoration: underline; text-underline-offset: 3px; cursor: pointer; }
 @media (max-width: 600px) {
   .ref-input { grid-template-columns: 1fr; }
   .ref-steps { grid-template-columns: 1fr; }
@@ -261,7 +261,7 @@ footer .contact a { color: inherit; text-decoration: underline; text-underline-o
 .ref-act h3 { margin: 0; font-size: 1.1rem; font-weight: 700; color: #1d1d1f; }
 .ref-act p { margin: 0; font-size: .88rem; line-height: 1.5; color: #6e6e73; flex: 1; text-wrap: balance; }
 .ref-act .btn { width: 100%; justify-content: center; }
-.ref-sub { background: none; border: 0; font: inherit; font-size: .9rem; font-weight: 600; color: #155e75; text-decoration: underline; text-underline-offset: 3px; cursor: pointer; }
+.ref-sub { background: none; border: 0; font: inherit; font-size: .9rem; font-weight: 600; color: #115e59; text-decoration: underline; text-underline-offset: 3px; cursor: pointer; }
 @media (max-width: 600px) { .ref-actions { grid-template-columns: 1fr; } }
 .ref-box .ref-code { display: flex; align-items: center; justify-content: space-between; gap: .6rem; flex-wrap: nowrap; max-width: 34rem; margin-inline: auto; }
 .ref-box .ref-code span { white-space: nowrap; font-size: clamp(1rem, 4.6vw, 1.3rem); }
@@ -340,7 +340,7 @@ section:not(.hero) .wrap > :is(.grid, .tbl-wrap) + :is(.body, .sub, p:not(.fine)
 /* 사례 카드: 토큰 약칭 배지(공식 로고 파일을 받으면 <img>로 교체) */
 .pj-row { display: flex; align-items: center; justify-content: center; gap: .75rem; margin-bottom: .6rem; flex-wrap: wrap; }
 .pj-row .tag { margin: 0 !important; }
-.pj { flex: none; display: inline-grid; place-items: center; min-width: 3rem; height: 3rem; padding: 0 .5rem; border-radius: 999px; font-size: .8125rem; font-weight: 800; letter-spacing: .02em; color: #1d1d1f; background: linear-gradient(135deg, #8eebfa, #19D3F0); box-shadow: 0 0 0 4px rgba(25,211,240,.16); }
+.pj { flex: none; display: inline-grid; place-items: center; min-width: 3rem; height: 3rem; padding: 0 .5rem; border-radius: 999px; font-size: .8125rem; font-weight: 800; letter-spacing: .02em; color: #1d1d1f; background: linear-gradient(135deg, #5eead4, #2dd4bf); box-shadow: 0 0 0 4px rgba(45,212,191,.16); }
 .pj img { width: 100%; height: 100%; object-fit: contain; border-radius: 50%; }
 
 /* 히어로 서브·본문은 제목 폭(--hw)에 묶이지 않게: 태블릿 약 34rem, 데스크톱 약 44rem까지 */
@@ -359,7 +359,7 @@ body > section.hero:has(.hero-bg.deep) { justify-content: center !important; pad
 @media (max-width: 734px) { body > section.hero:has(.hero-bg.deep) { min-height: 0 !important; padding-top: 7rem !important; padding-bottom: 5rem !important; } }
 
 /* ===== company: whitepaper cover small; consistent block widths (desktop/tablet/mobile) ===== */
-.hero .cover { width: min(100%, 15rem); max-width: 15rem !important; margin: 2.25rem auto 0 !important; border-radius: 18px !important; box-shadow: 0 24px 60px rgba(0,0,0,.55), 0 0 0 1px rgba(25,211,240,.3), 0 0 50px rgba(25,211,240,.12) !important; }
+.hero .cover { width: min(100%, 15rem); max-width: 15rem !important; margin: 2.25rem auto 0 !important; border-radius: 18px !important; box-shadow: 0 24px 60px rgba(0,0,0,.55), 0 0 0 1px rgba(45,212,191,.3), 0 0 50px rgba(45,212,191,.12) !important; }
 @media (min-width: 735px) { .hero .cover { width: 17rem; max-width: 17rem !important; } }
 @media (min-width: 1069px) {
   .hero .video-wrap { max-width: min(62vw, 860px) !important; margin-inline: auto !important; }
@@ -579,13 +579,13 @@ html body .phones { row-gap: 3rem !important; }
 /* 하단 '다음 단계' 버튼 글씨 -1 (모바일) */
 @media (max-width: 734px) { html body .gate .gate-next { font-size: .9375rem !important; line-height: 1.4 !important; padding-left: 1rem !important; padding-right: 1rem !important; } }
 
-/* YVVY 컬러 버전 — 금색 톤 배경 영상·포스터를 시안 톤으로 이동 (hue-rotate) */
-.hero-bg { filter: hue-rotate(150deg) saturate(1.05); }
+/* YVVY 컬러 버전 — 금색 톤 배경 영상·포스터를 민트 톤으로 이동 (hue-rotate) */
+.hero-bg { filter: hue-rotate(133deg) saturate(1.05); }
 
 /* YVVY 컬러 버전 — 접근성(WCAG AA 4.5:1) 보정
-   · 밝은 섹션(.lt)의 카드 태그: 시안(#19D3F0)은 흰 배경에서 대비 1.8:1 → 진한 청록 사용
+   · 밝은 섹션(.lt)의 카드 태그: 민트(#2dd4bf)은 흰 배경에서 대비 1.8:1 → 진한 청록 사용
    · 밝은 푸터/각주의 연한 회색: 원본에서 대비 2.4~3.3:1 → 4.6:1 이상으로 진하게 (문구는 변경 없음) */
-.lt .tag, .lt .card .tag { color: #0e7490; }
+.lt .tag, .lt .card .tag { color: #0f766e; }
 .lt .fine { color: #6e6e73; }
 html body footer p { color: #6e6e73 !important; }
 html body footer strong, html body footer a { color: #515154 !important; text-decoration-color: rgba(81,81,84,.45) !important; }

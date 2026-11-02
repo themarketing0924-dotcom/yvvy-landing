@@ -7,7 +7,7 @@
 <meta name="description" content="YVVY 백서의 1·2티어 추천 인센티브, V1–V6 등급, 최초 5명 누적 풀 규칙을 구조화해 정리하고 미정 사항을 표시합니다.">
 <style>
 :root{--bg:#000;--bg2:#0e1317;--card:#11161a;--line:rgba(255,255,255,.14);--tx:#f5f5f7;--mu:#86868b;--lt:#f5f5f7;--ltx:#1d1d1f;--ltm:#6e6e73;
---gold:linear-gradient(135deg,#cff7fd 0%,#19D3F0 45%,#0fa5c0 100%);--pad:max(1.25rem,calc(50vw - 540px))}
+--gold:linear-gradient(135deg,#ccfbf1 0%,#2dd4bf 45%,#14b8a6 100%);--pad:max(1.25rem,calc(50vw - 540px))}
 *{box-sizing:border-box;margin:0}
 html{scroll-behavior:smooth}
 body{background:var(--bg);color:var(--tx);font-family:-apple-system,BlinkMacSystemFont,"Pretendard","Apple SD Gothic Neo","Noto Sans KR",sans-serif;line-height:1.65;-webkit-font-smoothing:antialiased;word-break:keep-all}
@@ -35,7 +35,7 @@ h2{font-size:clamp(1.9rem,4.6vw,3.2rem)}
 .body strong{color:var(--tx)}
 .lt .sub,.lt .body{color:var(--ltm)}.lt .sub em,.lt .body strong{color:var(--ltx)}
 .hero{padding-top:9rem}
-.video{max-width:880px;margin:3.5rem auto 0;aspect-ratio:16/9;border-radius:22px;overflow:hidden;position:relative;background:#0a0e0c;border:1px solid var(--line);box-shadow:0 40px 100px rgba(0,0,0,.6),0 0 120px rgba(25,211,240,.08)}
+.video{max-width:880px;margin:3.5rem auto 0;aspect-ratio:16/9;border-radius:22px;overflow:hidden;position:relative;background:#0a0e0c;border:1px solid var(--line);box-shadow:0 40px 100px rgba(0,0,0,.6),0 0 120px rgba(45,212,191,.08)}
 .video iframe,.video img{position:absolute;inset:0;width:100%;height:100%;border:0;object-fit:cover}
 .vph{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:.8rem;color:var(--mu);font-size:.95rem}
 .play{width:76px;height:76px;border-radius:50%;background:rgba(255,255,255,.14);backdrop-filter:blur(10px);display:grid;place-items:center;border:1px solid rgba(255,255,255,.3);cursor:pointer}
@@ -50,7 +50,7 @@ h2{font-size:clamp(1.9rem,4.6vw,3.2rem)}
 .card p,.card li{color:var(--mu);font-size:.98rem}
 .lt .card p,.lt .card li{color:var(--ltm)}
 .card ul{padding-left:1.1rem;display:grid;gap:.45rem}
-.tag{display:inline-block;font-size:.75rem;font-weight:600;padding:.2rem .65rem;border-radius:980px;margin-bottom:.9rem;border:1px solid var(--line);color:#19D3F0}
+.tag{display:inline-block;font-size:.75rem;font-weight:600;padding:.2rem .65rem;border-radius:980px;margin-bottom:.9rem;border:1px solid var(--line);color:#2dd4bf}
 .tag.plan{color:#a1a1a6}
 .nums{display:grid;grid-template-columns:repeat(4,1fr);gap:1rem;margin-top:3.5rem}
 @media(max-width:860px){.nums{grid-template-columns:repeat(2,1fr)}}
@@ -58,7 +58,7 @@ h2{font-size:clamp(1.9rem,4.6vw,3.2rem)}
 .num span{font-size:.9rem;color:var(--mu)}
 .tl{max-width:640px;margin:3.5rem auto 0;text-align:left;border-left:1px solid var(--line);padding-left:1.8rem;display:grid;gap:1.8rem}
 .tl div{position:relative}
-.tl div::before{content:"";position:absolute;left:calc(-1.8rem - 5px);top:.55rem;width:9px;height:9px;border-radius:50%;background:#19D3F0}
+.tl div::before{content:"";position:absolute;left:calc(-1.8rem - 5px);top:.55rem;width:9px;height:9px;border-radius:50%;background:#2dd4bf}
 .tl b{display:block;font-size:1.05rem}.tl span{color:var(--mu);font-size:.95rem}
 .note{max-width:40rem;margin:2.2rem auto 0;font-size:.88rem;color:var(--mu);text-wrap:pretty}
 .lt .note{color:var(--ltm)}
@@ -66,8 +66,8 @@ details{background:var(--card);border:1px solid var(--line);border-radius:16px;p
 details summary{cursor:pointer;font-weight:600;list-style:none}
 details summary::-webkit-details-marker{display:none}
 details p{margin-top:.7rem;color:var(--mu);font-size:.97rem}
-.warn{max-width:760px;margin:3rem auto 0;text-align:left;border:1px solid rgba(25,211,240,.45);border-radius:22px;padding:2rem 1.8rem;background:rgba(25,211,240,.05)}
-.warn h3{color:#19D3F0;margin-bottom:1rem;font-size:1.15rem}
+.warn{max-width:760px;margin:3rem auto 0;text-align:left;border:1px solid rgba(45,212,191,.45);border-radius:22px;padding:2rem 1.8rem;background:rgba(45,212,191,.05)}
+.warn h3{color:#2dd4bf;margin-bottom:1rem;font-size:1.15rem}
 .warn li{color:#c7c7cc;font-size:.95rem;margin-left:1.1rem;margin-bottom:.55rem}
 footer{padding:3rem var(--pad);background:#000;color:#8e8e93;font-size:.8rem;text-align:left;border-top:1px solid var(--line)}
 footer p{max-width:1080px;margin:0 auto .6rem}
@@ -84,7 +84,7 @@ h2{font-size:clamp(2.325rem,calc(11.4vw + 2px),3.025rem);line-height:1.18;font-w
 @media(min-width:735px){h2{font-size:3.25rem;line-height:1.12}.hero .sub{font-size:1.5rem}}
 @media(max-width:734px){body>section{padding-left:6.5vw!important;padding-right:6.5vw!important}.hero .body{font-size:clamp(1.02rem,4.5vw,1.15rem)!important;line-height:1.62!important}}
 @media(min-width:1069px){h2{font-size:clamp(2.75rem,4.3vw,3.5rem)}}
-.tb{display:block;overflow-x:auto;max-width:100%;width:100%;border-collapse:collapse;margin:2.4rem auto 0;max-width:820px;text-align:left;font-size:.95rem}.tb th,.tb td{padding:.75rem .9rem;border-bottom:1px solid var(--line)}.tb th{color:#8eebfa;font-weight:700;font-size:.85rem}.tb td{color:#d2dde2}.lt .tb td{color:var(--ltx)}.lt .tb th{color:#0e7490}.bars{max-width:760px;margin:2.4rem auto 0;display:grid;gap:.7rem;text-align:left}.bars div{display:grid;grid-template-columns:5.5rem 1fr;gap:.8rem;align-items:center;font-size:.92rem}.bars i{display:block;height:28px;border-radius:9px;background:linear-gradient(90deg,#0fa5c0,#8eebfa);width:var(--w);color:#10161a;font:700 .82rem/28px inherit;font-style:normal;padding-left:.6rem;min-width:2.4rem}.bars div.m i{background:#4b5a66;color:#f5f5f7}.lt .bars span{color:var(--ltx)}
+.tb{display:block;overflow-x:auto;max-width:100%;width:100%;border-collapse:collapse;margin:2.4rem auto 0;max-width:820px;text-align:left;font-size:.95rem}.tb th,.tb td{padding:.75rem .9rem;border-bottom:1px solid var(--line)}.tb th{color:#5eead4;font-weight:700;font-size:.85rem}.tb td{color:#d2dde2}.lt .tb td{color:var(--ltx)}.lt .tb th{color:#0f766e}.bars{max-width:760px;margin:2.4rem auto 0;display:grid;gap:.7rem;text-align:left}.bars div{display:grid;grid-template-columns:5.5rem 1fr;gap:.8rem;align-items:center;font-size:.92rem}.bars i{display:block;height:28px;border-radius:9px;background:linear-gradient(90deg,#14b8a6,#5eead4);width:var(--w);color:#10161a;font:700 .82rem/28px inherit;font-style:normal;padding-left:.6rem;min-width:2.4rem}.bars div.m i{background:#4b5a66;color:#f5f5f7}.lt .bars span{color:var(--ltx)}
 </style>
 </head>
 <body>
@@ -200,6 +200,6 @@ h2{font-size:clamp(2.325rem,calc(11.4vw + 2px),3.025rem);line-height:1.18;font-w
   <p>© 2026 YVVY 백서 데이터 분석</p>
 </footer>
 
-<script src="nocapital-apple3.js?v=yvvy20261102b"></script>
+<script src="nocapital-apple3.js?v=mint20261103"></script>
 </body>
 </html>

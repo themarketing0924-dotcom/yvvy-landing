@@ -24,13 +24,13 @@
   .tbl-wrap table, table { min-width: 0 !important; width: 100%; background: none !important; border: 0; }
   table thead { display: none; }
   table, table tbody, table tr, table td { display: block; width: 100%; }
-  table tr { margin: 0 0 .9rem; border: 1px solid var(--gold-line, rgba(25,211,240,.38)); border-radius: 16px; background: var(--card, #11161a); overflow: hidden; }
+  table tr { margin: 0 0 .9rem; border: 1px solid var(--gold-line, rgba(45,212,191,.38)); border-radius: 16px; background: var(--card, #11161a); overflow: hidden; }
   table td { border: 0 !important; border-bottom: 1px solid rgba(255,255,255,.08) !important; padding: .75rem 1rem; text-align: left !important; background: transparent !important; }
   table td:last-child { border-bottom: 0 !important; }
-  table td[data-label]::before { content: attr(data-label); display: block; font-size: 12px; font-weight: 700; letter-spacing: .02em; color: #19D3F0; margin-bottom: .15rem; }
+  table td[data-label]::before { content: attr(data-label); display: block; font-size: 12px; font-weight: 700; letter-spacing: .02em; color: #2dd4bf; margin-bottom: .15rem; }
   .lt table tr { background: #fff; border-color: rgba(0,0,0,.1); }
   .lt table td { border-bottom-color: #e8e8ed !important; }
-  .lt table td[data-label]::before { color: #155e75; }
+  .lt table td[data-label]::before { color: #115e59; }
 }
 
 /* 5) 아이폰 노치·홈바 안전 영역 */
@@ -121,7 +121,7 @@ section { padding-left: var(--gutter) !important; padding-right: var(--gutter) !
 .flowline > div .ico { margin: 0 auto 1rem; width: 52px; height: 52px; border-radius: 16px; }
 .flowline > div .ico svg { width: 26px; height: 26px; }
 .flowline .stp { font-style: normal; font-size: .78rem; font-weight: 700; letter-spacing: .16em; margin-bottom: .4rem;
-  background: linear-gradient(135deg, #19D3F0, #0fa5c0); -webkit-background-clip: text; background-clip: text; color: transparent; }
+  background: linear-gradient(135deg, #2dd4bf, #14b8a6); -webkit-background-clip: text; background-clip: text; color: transparent; }
 .flowline b { font-size: clamp(1.15rem, 1rem + .7vw, 1.4rem); font-weight: 700; letter-spacing: -.03em; color: #f5f5f7; }
 .lt .flowline b { color: #1d1d1f; }
 .flowline span:not(.ico) { margin-top: .45rem; font-size: clamp(.95rem, .9rem + .3vw, 1.05rem); line-height: 1.5; }
@@ -132,5 +132,5 @@ section { padding-left: var(--gutter) !important; padding-right: var(--gutter) !
   .g3 > :last-child:nth-child(odd) { grid-column: 1 / -1; }
 }
 .lt .display .gold, .lt .display-md .gold, section.lt .display .gold, section.lt .display-md .gold {
-  background: linear-gradient(135deg, #0891b2 0%, #0e7490 50%, #155e75 100%); -webkit-background-clip: text; background-clip: text; color: transparent; }
+  background: linear-gradient(135deg, #0d9488 0%, #0f766e 50%, #115e59 100%); -webkit-background-clip: text; background-clip: text; color: transparent; }
 .flowline > div .ico { color: #04141a !important; }
