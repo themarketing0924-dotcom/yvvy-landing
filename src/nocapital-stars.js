@@ -61,8 +61,8 @@
         var ux = shoot.dx / shoot.len, uy = shoot.dy / shoot.len;
         var g2 = ctx.createLinearGradient(x, y, x - ux * L, y - uy * L);
         var al = Math.sin(p * Math.PI);
-        g2.addColorStop(0, 'rgba(207,247,253,' + (0.9 * al).toFixed(3) + ')');
-        g2.addColorStop(1, 'rgba(207,247,253,0)');
+        g2.addColorStop(0, 'rgba(204,251,241,' + (0.9 * al).toFixed(3) + ')');
+        g2.addColorStop(1, 'rgba(204,251,241,0)');
         ctx.strokeStyle = g2; ctx.lineWidth = 1.4; ctx.beginPath(); ctx.moveTo(x, y); ctx.lineTo(x - ux * L, y - uy * L); ctx.stroke();
       }
     }

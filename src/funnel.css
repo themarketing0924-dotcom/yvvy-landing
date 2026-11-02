@@ -2,18 +2,18 @@
 .fprog { position: fixed; top: 48px; left: 0; right: 0; z-index: 850; display: flex; gap: 4px; padding: .5rem 1rem; justify-content: center;
   background: rgba(17,22,26,.82); backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px); border-bottom: 1px solid rgba(255,255,255,.06); }
 .fprog a, .fprog span { flex: 1; max-width: 160px; text-align: center; font-size: .72rem; font-weight: 600; letter-spacing: -.01em; padding: .35rem .3rem; border-radius: 999px; text-decoration: none; color: #86868b; background: rgba(255,255,255,.06); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
-.fprog .done { color: #19D3F0; } .fprog .cur { background: #f5f5f7; color: #1d1d1f; }
+.fprog .done { color: #2dd4bf; } .fprog .cur { background: #f5f5f7; color: #1d1d1f; }
 body.has-fprog .hero { padding-top: 8.5rem; }
 
-.gate { max-width: 720px; margin: 3.5rem auto 0; padding: 2.2rem 1.6rem; border-radius: 28px; text-align: left; background: #1d1d1f; border: 1px solid rgba(25,211,240,.4); }
-.gate small { display: block; font-size: .78rem; font-weight: 700; letter-spacing: .08em; color: #19D3F0; }
+.gate { max-width: 720px; margin: 3.5rem auto 0; padding: 2.2rem 1.6rem; border-radius: 28px; text-align: left; background: #1d1d1f; border: 1px solid rgba(45,212,191,.4); }
+.gate small { display: block; font-size: .78rem; font-weight: 700; letter-spacing: .08em; color: #2dd4bf; }
 .gate h3 { font-size: clamp(1.4rem, 3.4vw, 2rem); font-weight: 700; letter-spacing: -.03em; color: #f5f5f7; margin: .6rem 0 1.2rem; }
 .gate label { display: flex; gap: .8rem; align-items: flex-start; padding: .95rem 1rem; margin-top: .6rem; border-radius: 14px; cursor: pointer; background: rgba(255,255,255,.05); color: #d5dee6; font-size: 1rem; line-height: 1.55; }
-.gate input { width: 20px; height: 20px; margin-top: .15rem; accent-color: #19D3F0; flex: none; }
+.gate input { width: 20px; height: 20px; margin-top: .15rem; accent-color: #2dd4bf; flex: none; }
 .gate .gate-next { display: block; text-align: center; margin-top: 1.4rem; }
 .gate .gate-next[aria-disabled="true"] { opacity: .35; pointer-events: none; }
 .gate .gate-hint { margin-top: .7rem; font-size: .82rem; color: #86868b; text-align: center; }
 .gate-prev { display: block; text-align: center; margin-top: 1.2rem; font-size: .9rem; color: #86868b; text-decoration: none; }
 .lt .gate { background: #fff; box-shadow: 0 2px 20px rgba(0,0,0,.06); } .lt .gate h3 { color: #1d1d1f; } .lt .gate label { background: #f5f5f7; color: #1d1d1f; }
-.fnotice { max-width: 720px; margin: 1.5rem auto 0; padding: 1rem 1.2rem; border-radius: 14px; font-size: .92rem; line-height: 1.6; text-align: left; background: rgba(25,211,240,.14); color: #8eebfa; border: 1px solid rgba(25,211,240,.4); }
-.fnotice a { color: #8eebfa; font-weight: 700; }
+.fnotice { max-width: 720px; margin: 1.5rem auto 0; padding: 1rem 1.2rem; border-radius: 14px; font-size: .92rem; line-height: 1.6; text-align: left; background: rgba(45,212,191,.14); color: #5eead4; border: 1px solid rgba(45,212,191,.4); }
+.fnotice a { color: #5eead4; font-weight: 700; }
