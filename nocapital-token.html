@@ -9,17 +9,9 @@
 <meta property="og:image" content="assets/og.png">
 <meta property="og:locale" content="ko_KR">
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700;900&family=Noto+Serif+KR:wght@700;900&display=swap">
-<link rel="stylesheet" href="nocapital.css?v=yvvy20261102b">
-<link rel="stylesheet" href="nocapital-apple.css?v=yvvy20261102b">
-<link rel="stylesheet" href="funnel.css?v=yvvy20261102b">
-<link rel="stylesheet" href="nocapital-bg.css?v=yvvy20261102b">
-<link rel="stylesheet" href="nocapital-type.css?v=yvvy20261102b">
-<link rel="stylesheet" href="nocapital-apple2.css?v=yvvy20261102b">
-<link rel="stylesheet" href="nocapital-responsive.css?v=yvvy20261102b">
-<link rel="stylesheet" href="nocapital-tune.css?v=yvvy20261102b">
-<link rel="stylesheet" href="nocapital-apple3.css?v=yvvy20261102b">
-<link rel="stylesheet" href="token-viz.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;600;700&display=swap">
+<meta name="theme-color" content="#000000">
+<link rel="stylesheet" href="site.css?v=yvvy20261102b">
 <script>document.documentElement.classList.add('js');</script>
 </head>
 <body>
@@ -28,7 +20,7 @@
 <section class="hero">
   <div class="wrap">
     <div class="eyebrow reveal">데이터 분석 · 수익 배분</div>
-    <h1 class="display reveal" data-fs="0.8">돈은<br><span class="gold">누구에게 얼마나</span> 가나</h1>
+    <h1 class="display reveal">돈은<br><span class="gold">누구에게 얼마나</span> 가나</h1>
     <p class="sub reveal">백서의 배분 표를 <em>곡선과 막대</em>로 다시 그렸습니다</p>
     <p class="body reveal">이 페이지의 모든 숫자는 세 가지로 구분됩니다. <b>[백서]</b>는 원문에 있는 값, <b>[계산]</b>은 원문 규칙을 곱하고 더한 산수, <b>[가정]</b>은 독자가 바꿔볼 수 있는 입력값입니다. 수익 전망은 포함하지 않습니다.</p>
   </div>
@@ -37,7 +29,7 @@
   <div class="wrap-wide" style="text-align:center">
     <div class="eyebrow reveal">1 · 배분 구조</div>
     <h2 class="display-md reveal">회사와 회원의 <span class="gold">몫은 이렇게 바뀝니다</span></h2>
-    <p class="body reveal" style="max-width:640px;margin-left:auto;margin-right:auto">[백서] 자금 활성 기간에 따라 회원 배분율이 30%에서 80%로 오릅니다.</p>
+    <p class="body reveal" style="max-width:640px;margin-left:auto;margin-right:auto">[백서] 자금 활성 기간에 따라 <strong>회원 배분율이 30%에서 80%로 오릅니다</strong>.</p>
 <div class="vz reveal">
   <h3>기간별 회원·회사 배분</h3>
   <p class="vz-cap">[백서] 적격 순이익을 나누는 비율</p>
@@ -51,7 +43,7 @@
   <div class="wrap-wide" style="text-align:center">
     <div class="eyebrow reveal">2 · 누적 배분</div>
     <h2 class="display-md reveal">같은 100 SOL, <span class="gold">기간이 곡선을 바꿉니다</span></h2>
-    <p class="body reveal" style="max-width:640px;margin-left:auto;margin-right:auto">[가정] 입금 100 SOL을 유지하고 매일 순이익률 r이 일정하다고 놓았을 때 회원 누적 배분(SOL). 복리 재투자와 비용은 반영하지 않았습니다.</p>
+    <p class="body reveal" style="max-width:640px;margin-left:auto;margin-right:auto">[가정] 입금 100 SOL을 유지하고 <strong>매일 순이익률 r이 일정하다</strong>고 놓았을 때 회원 누적 배분(SOL). 복리 재투자와 비용은 반영하지 않았습니다.</p>
 <div class="vz reveal">
   <h3>회원 누적 배분 곡선 (SOL)</h3>
   <p class="vz-cap">[계산] 100 × r × Σ(일별 회원 배분율). 점선은 배분율이 바뀌는 날(7·30·60·90·180일)</p>
@@ -66,7 +58,7 @@
   <div class="wrap-wide" style="text-align:center">
     <div class="eyebrow reveal">3 · 시나리오</div>
     <h2 class="display-md reveal">수익률이 <span class="gold">0일 때와 음수일 때</span></h2>
-    <p class="body reveal" style="max-width:640px;margin-left:auto;margin-right:auto">백서는 '실제 수익은 더 낮거나 0이거나 음수일 수 있다'고 밝힙니다. 세 경우를 나란히 놓습니다.</p>
+    <p class="body reveal" style="max-width:640px;margin-left:auto;margin-right:auto">백서는 '실제 수익은 <strong>더 낮거나 0이거나 음수일 수 있다</strong>'고 밝힙니다. 세 경우를 나란히 놓습니다.</p>
 <div class="tbl-wrap reveal"><table><thead><tr><th>일 순이익률 r</th><th>연환산(단순) [계산]</th><th>연환산(복리) [계산]</th><th>180일 회원 배분 [계산]</th><th>해석</th></tr></thead><tbody><tr><td>1.0%</td><td>365%</td><td>약 +3,678% (37.8배)</td><td>107.3 SOL</td><td>백서 예시 상단. 지속 가능 근거 없음</td></tr><tr><td>0.5%</td><td>182.5%</td><td>약 +517% (6.2배)</td><td>53.7 SOL</td><td>백서 예시 하단</td></tr><tr><td>0%</td><td>0%</td><td>0%</td><td>0 SOL</td><td>배분 없음, 원금은 시장 변동에 노출</td></tr><tr><td>음수</td><td>—</td><td>—</td><td>규정 없음</td><td>손실 분담은 백서에 없음</td></tr></tbody></table></div>
     <div class="risk reveal"><p><b>분석 의견.</b> 백서의 r 0.5–1%는 '일' 단위입니다. 연환산하면 수백 퍼센트이며, Dune 연구가 범위 안 자본의 수수료율로 쓴 값(연 약 35센트/1달러, 즉 약 35%)과 비교해도 큰 차이가 있습니다. 이 수치를 뒷받침하는 운용 실적은 백서에 없습니다. 숫자를 '설명용 파라미터'로만 읽어야 하는 이유입니다.</p></div>
   </div>
@@ -89,7 +81,7 @@
   <div class="wrap-wide" style="text-align:center">
     <div class="eyebrow reveal">5 · 등급</div>
     <h2 class="display-md reveal">V1에서 V6까지의 <span class="gold">진입 장벽</span></h2>
-    <p class="body reveal" style="max-width:640px;margin-left:auto;margin-right:auto">[백서] 개인 활성 보유량과 적격 그룹 실적을 동시에 충족해야 합니다.</p>
+    <p class="body reveal" style="max-width:640px;margin-left:auto;margin-right:auto">[백서] 개인 활성 보유량과 적격 그룹 실적을 <strong>동시에 충족</strong>해야 합니다.</p>
 <div class="tbl-wrap reveal"><table><thead><tr><th>등급</th><th>개인 보유(SOL)</th><th>그룹 실적(SOL)</th><th>그룹÷개인 [계산]</th><th>누적 적용 배분율 [백서]</th></tr></thead><tbody><tr><td>V1</td><td>5</td><td>50</td><td>10배</td><td>5%</td></tr><tr><td>V2</td><td>10</td><td>150</td><td>15배</td><td>11%</td></tr><tr><td>V3</td><td>50</td><td>1,000</td><td>20배</td><td>18%</td></tr><tr><td>V4</td><td>100</td><td>5,000</td><td>50배</td><td>27%</td></tr><tr><td>V5</td><td>500</td><td>20,000</td><td>40배</td><td>37%</td></tr><tr><td>V6</td><td>1,000</td><td>50,000</td><td>50배</td><td>50%</td></tr></tbody></table></div>
     <div class="vz reveal">
   <h3>그룹 실적 요건 (SOL)</h3>
@@ -144,12 +136,13 @@ const io = new IntersectionObserver((es) => es.forEach(e => { if (e.isIntersecti
 document.querySelectorAll('.reveal').forEach(el => io.observe(el));
 addEventListener('scroll', () => document.querySelector('.sticky').classList.toggle('on', scrollY > 500), { passive: true });
 </script>
-<script src="nocapital-apple.js?v=yvvy20261102b"></script>
-<script src="nocapital-icons.js?v=yvvy20261102b"></script>
-<script src="nocapital-motion.js?v=yvvy20261102b"></script>
-<script src="nocapital-scroll.js?v=yvvy20261102b"></script>
-<script src="funnel.js?v=yvvy20261102b"></script>
-<script src="nocapital-responsive.js?v=yvvy20261102b"></script>
-<script src="nocapital-apple3.js?v=yvvy20261102b"></script>
+<script src="nocapital-apple.js?v=yvvy20261102b" defer></script>
+<script src="nocapital-icons.js?v=yvvy20261102b" defer></script>
+<script src="nocapital-motion.js?v=yvvy20261102b" defer></script>
+<script src="nocapital-scroll.js?v=yvvy20261102b" defer></script>
+<script src="funnel.js?v=yvvy20261102b" defer></script>
+<script src="nocapital-responsive.js?v=yvvy20261102b" defer></script>
+<script src="nocapital-apple3.js?v=yvvy20261102b" defer></script>
+<script src="yvvy-apple.js?v=yvvy20261102b" defer></script>
 </body>
 </html>

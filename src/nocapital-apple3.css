@@ -34,7 +34,7 @@
 }
 
 /* ---- 히어로: 헤드카피 굵게 + 서브카피를 헤드카피 줄 폭에 맞춤 ---- */
-.hero h1, body > section.hero h1, body > section#top h1{font-weight:900!important;letter-spacing:-.035em}
+.hero h1, body > section.hero h1, body > section#top h1{font-weight:600!important}
 .hero h1 .gold{font-weight:900}
 .hero .sub, .hero .body{
   width:auto!important;
@@ -469,7 +469,7 @@ body > section.lt .card p :is(b, strong), body > section.alt .card p :is(b, stro
 
 /* ===== Apple typography fine-tune: weight, tracking, leading, body size ===== */
 html body > section:not(.hero) h2, html body > section:not(.hero) .display-md, html body > section:not(.hero) h2.display-md { font-weight: 700 !important; letter-spacing: -0.03em !important; line-height: 1.14 !important; word-break: keep-all; text-wrap: balance; }
-html body > section.hero h1, html body > section#top h1 { font-weight: 800 !important; letter-spacing: -0.032em !important; line-height: 1.1 !important; word-break: keep-all; }
+html body > section.hero h1, html body > section#top h1 { font-weight: 600 !important; letter-spacing: -0.015em !important; line-height: 1.05 !important; word-break: keep-all; }
 html body > section:not(.hero) :is(.wrap, .wrap-wide) > :is(.body, .sub),
 html body > section:not(.hero) :is(.wrap, .wrap-wide) > p:not(.eyebrow):not(.fine):not(.small):not(.note) {
   font-size: clamp(1rem, 3.5vw, 1.0625rem) !important; font-weight: 600 !important; letter-spacing: -0.022em !important; line-height: 1.47 !important; word-break: keep-all; text-wrap: pretty;
