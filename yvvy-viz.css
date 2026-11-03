@@ -1,0 +1,71 @@
+/* YVVY 시각 요소 — 차트·계산기·영상 배경 (바닐라 SVG, 외부 라이브러리 없음)
+   타이포: 애플 Mac 제품 페이지의 실측 스케일을 따름 (캡션 12 / 라벨 14 / 소제목 21 / 수치 32) */
+.yz { max-width: 920px; margin: 3.5rem auto 0; padding: clamp(1.4rem, 3.4vw, 2.6rem); border-radius: 28px; text-align: left;
+  background: #1d1d1f; color: #f5f5f7; box-shadow: inset 0 0 0 1px rgba(255,255,255,.07); font-family: var(--sans, -apple-system, BlinkMacSystemFont, "SF Pro KR", "SF Pro Display", "Apple SD Gothic Neo", "Pretendard", "Noto Sans KR", sans-serif); }
+.yz h3 { font-size: 21px; font-weight: 600; line-height: 1.19048; letter-spacing: .011em; color: #f5f5f7; margin: 0; }
+.yz .yz-cap { margin: .45rem 0 0; font-size: 12px; line-height: 1.33337; letter-spacing: -.01em; color: #86868b; font-weight: 400; }
+.yz .yz-src { margin: 1.4rem 0 0; font-size: 12px; line-height: 1.33337; letter-spacing: -.01em; color: #86868b; }
+.yz-grid { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: clamp(1.2rem, 3vw, 2.6rem); align-items: center; margin-top: 1.6rem; }
+@media (max-width: 734px) { .yz-grid { grid-template-columns: minmax(0, 1fr); } }
+.yz svg { display: block; width: 100%; height: auto; overflow: visible; }
+.yz text { font-family: inherit; fill: #a1a1a6; font-size: 12px; letter-spacing: -.01em; }
+.yz .yz-n { font-size: 32px; font-weight: 600; fill: #f5f5f7; letter-spacing: .004em; }
+.yz .yz-l { font-size: 12px; fill: #86868b; }
+.yz .grid-l { stroke: rgba(255,255,255,.12); fill: none; stroke-width: 1; }
+.yz .axis-l { stroke: rgba(255,255,255,.08); stroke-width: 1; }
+
+/* 범례·수치 */
+.yz-leg { display: flex; flex-wrap: wrap; gap: .5rem 1.1rem; margin-top: 1rem; font-size: 14px; font-weight: 600; line-height: 1.43; letter-spacing: -.016em; color: #d2d2d7; }
+.yz-leg i { display: inline-block; width: 10px; height: 10px; border-radius: 3px; margin-right: .45rem; vertical-align: -1px; }
+.yz-list { display: grid; gap: .55rem; margin: 0; padding: 0; list-style: none; font-size: 14px; line-height: 1.43; letter-spacing: -.016em; }
+.yz-list li { display: flex; justify-content: space-between; gap: 1rem; padding-bottom: .55rem; border-bottom: 1px solid rgba(255,255,255,.08); color: #a1a1a6; }
+.yz-list li b { color: #f5f5f7; font-weight: 600; }
+.yz-big { font-size: 32px; font-weight: 600; line-height: 1.125; letter-spacing: .004em; color: #2dd4bf; }
+.yz-big small { font-size: 14px; font-weight: 600; color: #a1a1a6; letter-spacing: -.016em; margin-left: .35rem; }
+.yz-note { margin-top: .9rem; font-size: 12px; line-height: 1.5; letter-spacing: -.01em; color: #86868b; }
+
+/* 입력 */
+.yz label { display: block; margin-top: 1.1rem; font-size: 14px; font-weight: 600; letter-spacing: -.016em; color: #d2d2d7; }
+.yz label span { float: right; color: #2dd4bf; font-variant-numeric: tabular-nums; }
+.yz input[type=range] { width: 100%; margin-top: .6rem; accent-color: #2dd4bf; height: 28px; }
+.yz input[type=number] { width: 100%; margin-top: .5rem; padding: .7rem .9rem; border-radius: 12px; border: 1px solid rgba(255,255,255,.16); background: #0a0e0c; color: #f5f5f7; font: 600 17px/1.2 inherit; font-variant-numeric: tabular-nums; }
+.yz input[type=number]:focus-visible, .yz input[type=range]:focus-visible { outline: 2px solid #2dd4bf; outline-offset: 2px; }
+.yz-row2 { display: grid; grid-template-columns: 1fr 1fr; gap: .9rem; }
+@media (max-width: 480px) { .yz-row2 { grid-template-columns: 1fr; } }
+.yz-ticks { display: flex; justify-content: space-between; margin-top: .2rem; font-size: 12px; color: #86868b; }
+
+/* 가로 누적 막대 */
+.yz-stack { display: flex; height: 14px; border-radius: 999px; overflow: hidden; background: rgba(255,255,255,.08); margin-top: .8rem; }
+.yz-stack i { display: block; height: 100%; transition: width .5s cubic-bezier(.28,.11,.32,1); }
+
+/* 등장 애니메이션 (애플식: 짧은 페이드) */
+.yz-js .yz .anim-stroke { transition: stroke-dasharray 1.1s cubic-bezier(.28,.11,.32,1), stroke-dashoffset 1.1s cubic-bezier(.28,.11,.32,1); }
+.yz-js .yz .anim-scale { transform: scale(.001); transform-origin: var(--cx, 50%) var(--cy, 50%); transform-box: view-box; transition: transform 1s cubic-bezier(.28,.11,.32,1); }
+.yz-js .yz.on .anim-scale { transform: none; }
+.yz-js .yz .anim-line { stroke-dasharray: 1; stroke-dashoffset: 1; transition: stroke-dashoffset 1.4s cubic-bezier(.28,.11,.32,1); }
+.yz-js .yz.on .anim-line { stroke-dashoffset: 0; }
+.yz-js .yz .anim-fade { opacity: 0; transition: opacity .7s ease .5s; }
+.yz-js .yz.on .anim-fade { opacity: 1; }
+.yz-js .yz .anim-bar { transform: scaleY(.001); transform-origin: bottom; transform-box: fill-box; transition: transform .9s cubic-bezier(.28,.11,.32,1); }
+.yz-js .yz.on .anim-bar { transform: none; }
+@media (prefers-reduced-motion: reduce) {
+  .yz-js .yz .anim-stroke, .yz-js .yz .anim-scale, .yz-js .yz .anim-line, .yz-js .yz .anim-fade, .yz-js .yz .anim-bar { transition: none !important; transform: none !important; opacity: 1 !important; stroke-dashoffset: 0 !important; }
+}
+
+/* 히어로 3D 이미지 (백서 추출본, 블루 → 민트 톤 이동) */
+.yz-img { display: block; width: min(100%, 300px); height: auto; margin: 2.4rem auto 0; filter: hue-rotate(-42deg) saturate(.95) drop-shadow(0 30px 50px rgba(45,212,191,.18)); animation: yzfloat 9s ease-in-out infinite alternate; }
+.yz-img.sm { width: min(100%, 220px); }
+@keyframes yzfloat { from { transform: translateY(-6px) rotate(-1.2deg); } to { transform: translateY(8px) rotate(1.2deg); } }
+@media (prefers-reduced-motion: reduce) { .yz-img { animation: none; } }
+
+/* 영상 배경: 화면에 들어올 때만 로드·재생, 모션 줄이기·데이터 절약이면 포스터만 */
+section.has-vbg { position: relative; overflow: hidden; isolation: isolate; }
+.vbg { position: absolute; inset: 0; z-index: -1; background: #0a0e0c center / cover no-repeat; filter: hue-rotate(133deg) saturate(1.05); pointer-events: none; }
+.vbg video { width: 100%; height: 100%; object-fit: cover; display: block; opacity: 0; transition: opacity 1.2s ease; filter: brightness(.6); }
+.vbg video.ready { opacity: 1; }
+.vbg::after { content: ""; position: absolute; inset: 0; background: linear-gradient(180deg, #0a0e0c 0%, rgba(10,14,12,.62) 22%, rgba(10,14,12,.62) 78%, #0a0e0c 100%); }
+.vbg.flip video { transform: scaleX(-1); }
+@media (prefers-reduced-motion: reduce) { .vbg video { display: none; } }
+
+/* 좁은 화면에서 V1–V6 표가 화면 밖으로 넘치지 않도록 표만 가로 스크롤 */
+@media (max-width: 560px) { section#roadmap table.tb { display: block; max-width: 100%; overflow-x: auto; -webkit-overflow-scrolling: touch; } }

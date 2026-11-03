@@ -13,6 +13,7 @@
 <meta name="theme-color" content="#000000">
 <link rel="stylesheet" href="site.css?v=yvvy20261102b">
 <script>document.documentElement.classList.add('js');</script>
+<link rel="stylesheet" href="yvvy-viz.css?v=mint20261103b">
 </head>
 <body>
 <nav class="nav">
@@ -25,6 +26,7 @@
     <div class="eyebrow reveal">기대와 위험</div>
     <h1 class="display reveal">참여하면<br><span class="gold">무엇을 얻고 잃나요?</span></h1>
     <p class="sub reveal">백서가 말하는 기대와, <em>반드시 알아야 할 조건</em>을<br>한 표에 놓았습니다</p>
+  <img class="yz-img sm" src="assets/yvvy-shield.webp" width="342" height="323" alt="보호 방패 3D 이미지(백서 2쪽)" loading="eager" decoding="async">
   </div>
 </section>
 <section class="alt">
@@ -39,10 +41,12 @@
     <div class="eyebrow reveal">이익과 조건, 한눈에</div>
     <h2 class="display-md reveal"><span class="gold">좋은 점만</span> 말하지 않겠습니다</h2>
 <div class="tbl-wrap reveal"><table><thead><tr><th>기대 요소</th><th>필요한 것</th><th>알아야 할 한계</th></tr></thead><tbody><tr><td>수수료 수익</td><td>거래량, 구간 내 가격</td><td>범위 이탈 시 수수료 0 · 자산이 한쪽 토큰으로 쏠림</td></tr><tr><td>배분율 상승</td><td>장기 보유(181일 이상 80%)</td><td>단기 보유 시 회사 몫이 더 큼 · 출금 규정 없음</td></tr><tr><td>추천 인센티브</td><td>하위 사용자의 전략 수익</td><td>수익이 없으면 0 · 재원 미공개</td></tr><tr><td>등급 풀</td><td>개인 보유 + 그룹 실적 동시 충족</td><td>V6 요건은 그룹 5만 SOL · 5명 미만 시 지급 미정</td></tr></tbody></table></div>
+<div data-yz="scen" data-title="하루 순이익률별 회원 몫" data-cap="참여 금액과 r에 따라 구간별 회원 몫(SOL)이 어떻게 달라지는지 계산" data-src="출처: 백서 12–13쪽 규칙을 곱한 산수 · r은 설명용 수치(0.5–1%)와 가정이며 전망이 아닙니다"></div>
     <div class="risk reveal"><p><b>꼭 기억하세요.</b> 배분율은 원금 수익률이 아닙니다. 수익이 0이거나 음수여도 백서의 어떤 규칙도 원금을 지켜 주지 않습니다.</p></div>
   </div>
 </section>
-<section id="risk" class="alt">
+<section id="risk" class="has-vbg alt">
+  <div class="vbg" data-src="hero-bg.mp4" data-poster="hero-bg-poster.jpg" aria-hidden="true"></div>
   <div class="wrap-wide" style="text-align:center">
     <div class="eyebrow reveal">Meteora DLMM 위험</div>
     <h2 class="display-md reveal">구조 자체의 <span class="gold">위험 4가지</span></h2>
@@ -91,5 +95,6 @@ addEventListener('scroll', () => document.querySelector('.sticky').classList.tog
 <script src="nocapital-responsive.js?v=yvvy20261102b" defer></script>
 <script src="nocapital-apple3.js?v=yvvy20261102b" defer></script>
 <script src="yvvy-apple.js?v=yvvy20261102b" defer></script>
+<script src="yvvy-viz.js?v=mint20261103b" defer></script>
 </body>
 </html>
