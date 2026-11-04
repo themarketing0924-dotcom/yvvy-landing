@@ -25,6 +25,7 @@
     globe: '<circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c3 3 3 15 0 18M12 3c-3 3-3 15 0 18"/>'
   };
   var MAP = [
+    [/bin|구간|구조적/, 'cube'], [/범위를 벗어/, 'alert'], [/임대료|포지션/, 'wallet'], [/Spot|Curve|Bid-Ask|전략/, 'chart'],
     [/에어드롭 설계|무료 에어드롭/, 'gift'], [/추천·레퍼럴|추천 기록|레퍼럴/, 'users'], [/기여 보상/, 'award'],
     [/구조 이해|구조를 이해/, 'book'], [/검증/, 'shield'], [/가입 절차|가이드|지갑/, 'wallet'], [/위험|한계/, 'alert'],
     [/회사|Binance|거래·금융/, 'building'], [/프로젝트 성공|CoinMarketCap|데이터/, 'chart'],
