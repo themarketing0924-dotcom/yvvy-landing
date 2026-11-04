@@ -80,3 +80,9 @@ section.has-vbg { position: relative; overflow: hidden; isolation: isolate; }
 .nav-logo .yz-logo.nav { position: static !important; height: 22px !important; width: 96px !important; max-width: none !important; border: 0 !important; object-fit: contain; margin: 0; flex: none; filter: hue-rotate(-42deg) brightness(1.25); }
 html body .nav .nav-logo img.yz-logo { background: none !important; padding: 0 !important; border-radius: 0 !important; box-shadow: none !important; min-width: 0 !important; width: 96px !important; height: 22px !important; }
 html body img.yz-logo:not(.nav) { background: none !important; padding: 0 !important; border-radius: 0 !important; box-shadow: none !important; width: auto !important; height: 40px !important; }
+
+/* 메인 히어로 럭셔리 영상: 색상 회전 없이 원본 민트·골드 그대로, 글자 가독성을 위해 어둡게 */
+.vbg.raw { filter: none; background-image: var(--poster, none); }
+.vbg.raw video { filter: brightness(.72) saturate(1.05); }
+.vbg.raw::after { background: linear-gradient(180deg, rgba(10,14,12,.55) 0%, rgba(10,14,12,.38) 40%, rgba(10,14,12,.5) 75%, #0a0e0c 100%); }
+section.hero.has-vbg .hero-canvas, section.hero.has-vbg .hero-halo { display: none; }
