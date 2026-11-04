@@ -69,3 +69,14 @@ section.has-vbg { position: relative; overflow: hidden; isolation: isolate; }
 
 /* 좁은 화면에서 V1–V6 표가 화면 밖으로 넘치지 않도록 표만 가로 스크롤 */
 @media (max-width: 560px) { section#roadmap table.tb { display: block; max-width: 100%; overflow-x: auto; -webkit-overflow-scrolling: touch; } }
+
+/* 로고 */
+.yz-logo { position: static; inset: auto; height: 40px; width: auto; display: block; filter: hue-rotate(-42deg); }
+.yz-logo.nav { height: 22px; display: inline-block; vertical-align: middle; margin-right: .5rem; }
+.yz-chips { display: flex; flex-wrap: wrap; align-items: center; justify-content: center; gap: .9rem 1.1rem; margin: 2rem auto; }
+.yz-chip { padding: .5rem 1.1rem; border-radius: 999px; border: 1px solid rgba(45,212,191,.4); color: #2dd4bf; font-weight: 600; font-size: 14px; letter-spacing: -.016em; }
+.yz-x { color: #86868b; font-size: 17px; }
+.nav-logo { display: inline-flex !important; align-items: center; gap: .6rem; line-height: 1; }
+.nav-logo .yz-logo.nav { position: static !important; height: 22px !important; width: 96px !important; max-width: none !important; border: 0 !important; object-fit: contain; margin: 0; flex: none; filter: hue-rotate(-42deg) brightness(1.25); }
+html body .nav .nav-logo img.yz-logo { background: none !important; padding: 0 !important; border-radius: 0 !important; box-shadow: none !important; min-width: 0 !important; width: 96px !important; height: 22px !important; }
+html body img.yz-logo:not(.nav) { background: none !important; padding: 0 !important; border-radius: 0 !important; box-shadow: none !important; width: auto !important; height: 40px !important; }
