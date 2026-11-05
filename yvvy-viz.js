@@ -143,6 +143,23 @@
     inp.addEventListener('input', upd); upd();
   };
 
+
+  /* ---------- 흐름도: 단계 카드 + 화살표 ---------- */
+  R.flow = function (el) {
+    var st = J(el.dataset.steps, []);
+    el.innerHTML = '<ol class="yz-flow">' + st.map(function (x, i) {
+      return '<li class="anim-fade" style="transition-delay:' + (i * .12) + 's"><span class="yz-fn">' + (i + 1) + '</span><b>' + x.t + '</b><small>' + x.d + '</small>' + (x.tag ? '<em>' + x.tag + '</em>' : '') + '</li>';
+    }).join('') + '</ol>';
+  };
+
+  /* ---------- 가로 막대 비교 ---------- */
+  R.bars = function (el) {
+    var it = J(el.dataset.items, []), max = +el.dataset.max || Math.max.apply(null, it.map(function (x) { return x.v; })), unit = el.dataset.unit || '';
+    el.innerHTML = '<div class="yz-bars">' + it.map(function (x, i) {
+      return '<div class="yz-bar"><span>' + x.l + '</span><div class="yz-bt"><i class="anim-w" style="--w:' + (x.v / max * 100).toFixed(1) + '%;background:' + (x.c || PAL[i % PAL.length]) + ';transition-delay:' + (i * .12) + 's"></i></div><b>' + f(x.v, 1) + unit + (x.t ? '<small>' + x.t + '</small>' : '') + '</b></div>';
+    }).join('') + '</div>';
+  };
+
   /* ---------- 초기화 ---------- */
   document.querySelectorAll('[data-yz]').forEach(function (el, i) {
     var t = el.dataset.yz; if (!R[t]) return;

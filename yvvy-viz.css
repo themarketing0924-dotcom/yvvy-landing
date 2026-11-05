@@ -86,3 +86,39 @@ html body img.yz-logo:not(.nav) { background: none !important; padding: 0 !impor
 .vbg.raw video { filter: brightness(.72) saturate(1.05); }
 .vbg.raw::after { background: linear-gradient(180deg, rgba(10,14,12,.55) 0%, rgba(10,14,12,.38) 40%, rgba(10,14,12,.5) 75%, #0a0e0c 100%); }
 section.hero.has-vbg .hero-canvas, section.hero.has-vbg .hero-halo { display: none; }
+
+/* 흐름도 */
+.yz-flow { list-style: none; margin: 1.6rem 0 0; padding: 0; display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 150px), 1fr)); gap: 1.1rem; counter-reset: s; }
+.yz-flow li { position: relative; padding: 1.1rem 1rem 1.2rem; border-radius: 18px; background: rgba(255,255,255,.04); box-shadow: inset 0 0 0 1px rgba(255,255,255,.08); }
+.yz-flow li:not(:last-child)::after { content: "→"; position: absolute; right: -.95rem; top: 50%; transform: translateY(-50%); color: #2dd4bf; font-size: 18px; z-index: 1; }
+@media (max-width: 900px) { .yz-flow li:not(:last-child)::after { content: "↓"; right: auto; left: 50%; top: auto; bottom: -1.05rem; transform: translateX(-50%); } }
+.yz-flow .yz-fn { display: inline-grid; place-items: center; width: 26px; height: 26px; border-radius: 50%; background: #2dd4bf; color: #06201c; font-weight: 700; font-size: 13px; margin-bottom: .65rem; }
+.yz-flow b { display: block; font-size: 16px; font-weight: 600; letter-spacing: -.016em; color: #f5f5f7; line-height: 1.3; }
+.yz-flow small { display: block; margin-top: .4rem; font-size: 13px; line-height: 1.5; color: #a1a1a6; letter-spacing: -.01em; }
+.yz-flow em { display: inline-block; margin-top: .6rem; font-style: normal; font-size: 11px; padding: .15rem .55rem; border-radius: 999px; border: 1px solid rgba(45,212,191,.4); color: #5eead4; }
+/* 가로 막대 */
+.yz-bars { display: grid; gap: 1rem; margin-top: 1.5rem; }
+.yz-bar { display: grid; grid-template-columns: 7.5rem 1fr auto; align-items: center; gap: .9rem; font-size: 14px; letter-spacing: -.016em; color: #d2d2d7; }
+@media (max-width: 560px) { .yz-bar { grid-template-columns: 1fr auto; } .yz-bar .yz-bt { grid-column: 1 / -1; order: 3; } }
+.yz-bt { height: 14px; border-radius: 999px; background: rgba(255,255,255,.08); overflow: hidden; }
+.yz-bt i { display: block; height: 100%; border-radius: 999px; width: var(--w); }
+.yz-js .yz .anim-w { width: 0; transition: width 1s cubic-bezier(.28,.11,.32,1); }
+.yz-js .yz.on .anim-w { width: var(--w); }
+.yz-bar b { color: #f5f5f7; font-weight: 600; font-variant-numeric: tabular-nums; text-align: right; }
+.yz-bar b small { display: block; font-size: 11px; font-weight: 400; color: #86868b; }
+@media (prefers-reduced-motion: reduce) { .yz-js .yz .anim-w { transition: none; width: var(--w); } }
+
+/* 사이트 전역 b 색상 규칙이 어두운 카드 안 굵은 글씨를 덮어쓰는 문제 수정 */
+html body .yz b, html body .yz strong { color: #f5f5f7 !important; }
+html body .yz .yz-big { color: #2dd4bf !important; }
+html body .yz .yz-flow em { color: #5eead4 !important; }
+/* 흐름도: 넓은 화면에서는 5칸 한 줄, 좁으면 세로 */
+@media (min-width: 1000px) { .yz-flow { grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 1.3rem; } .yz-flow li { padding: 1rem .85rem 1.1rem; } .yz-flow b { font-size: 15px; } .yz-flow small { font-size: 12.5px; } }
+@media (max-width: 999px) { .yz-flow { grid-template-columns: minmax(0, 1fr); gap: 1.4rem; } .yz-flow li:not(:last-child)::after { content: "↓"; right: auto; left: 50%; top: auto; bottom: -1.2rem; transform: translateX(-50%); } }
+
+/* 사이트 전역 "section :is(li,p) b" 규칙(ID급 우선순위)을 이기기 위한 보정 */
+html body>:is(section,section#top):not(.zx1):not(.zx2):not(#_):not(#__) .yz :is(b,strong) { color: #f5f5f7 !important; }
+html body>:is(section,section#top):not(.zx1):not(.zx2):not(#_):not(#__) .yz .yz-flow em { color: #5eead4 !important; }
+html body>:is(section,section#top):not(.zx1):not(.zx2):not(#_):not(#__) .yz .yz-big { color: #2dd4bf !important; }
+html body>:is(section,section#top):not(.zx1):not(.zx2):not(#_):not(#__) .yz .yz-bar b small,
+html body>:is(section,section#top):not(.zx1):not(.zx2):not(#_):not(#__) .yz .yz-flow small { color: #a1a1a6 !important; font-weight: 400 !important; }

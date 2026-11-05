@@ -16,7 +16,7 @@
 <meta name="theme-color" content="#000000">
 <link rel="stylesheet" href="site.css?v=yvvy20261102b">
 <script>document.documentElement.classList.add('js');</script>
-<link rel="stylesheet" href="yvvy-viz.css?v=mint20261105a">
+<link rel="stylesheet" href="yvvy-viz.css?v=mint20261105d">
 </head>
 <body data-step="1">
 <nav class="nav">
@@ -39,6 +39,14 @@
     </ol>
   </div>
 </section>
+<section id="biz">
+  <div class="wrap-wide" style="text-align:center">
+    <div class="eyebrow reveal">어떤 사업인가요</div>
+    <h2 class="display-md reveal">YVVY는 <span class="gold">거래 수수료</span>가 나오는 자리에<br>유동성을 공급하는 사업입니다</h2>
+    <p class="body reveal" style="max-width:680px;margin-left:auto;margin-right:auto">쉽게 말해, 탈중앙화 거래소(DEX)에서 누군가 코인을 바꿀 때마다 <strong>작은 수수료</strong>가 붙습니다. 그 거래가 이루어지도록 코인을 맡겨 두는 사람을 <strong>유동성 공급자(LP)</strong>라 하고, 수수료는 맡긴 사람들에게 나뉩니다. YVVY는 이 일을 <strong>회원 대신 전문적으로 관리</strong>하겠다는 모델입니다. 운용 환경은 Solana 기반 Meteora로 알려져 있습니다.</p>
+    <div data-yz="flow" data-title="돈이 들어와서 수익이 되기까지" data-cap="백서의 구조에 Meteora의 공개 문서를 더해 순서대로 그렸습니다" data-steps='[{"t":"회원이 SOL 입금","d":"1–100 SOL을 입금합니다. 수량 기준이며 100 USDT = 1 SOL로 환산합니다.","tag":"백서"},{"t":"YVVY가 풀에 공급","d":"거래가 활발한 풀을 골라 가격 구간(bin)에 유동성을 넣고 구간을 관리합니다.","tag":"백서 주장"},{"t":"트레이더가 코인 교환","d":"사용자가 Meteora에서 토큰을 바꿀 때마다 거래 수수료가 발생합니다.","tag":"Meteora 문서"},{"t":"수수료가 LP에게","d":"가격이 걸쳐 있는 구간에 있는 LP에게 비례해 나뉩니다. 프로토콜이 일부(표준 풀 5%)를 가져갑니다.","tag":"Meteora 문서"},{"t":"회원·회사가 나눔","d":"적격 순이익을 입금 기간에 따라 회원 30%→80%, 회사 나머지로 배분합니다.","tag":"백서"}]' data-src="※ 모든 단계의 수익은 거래량·가격 변동에 따라 달라지며 보장되지 않습니다. 실제 배분 방식은 최종 약관 확인이 필요합니다."></div>
+  </div>
+</section>
 <section id="flow">
   <div class="wrap-wide" style="text-align:center">
     <div class="eyebrow reveal">시장 문제</div>
@@ -52,6 +60,23 @@
 </div>
     <div class="vz-stats reveal"><div class="vz-stat"><strong>29.5%</strong><span>전체 평균 범위 이탈 비중(백서는 29.4%로 표기)</span></div><div class="vz-stat"><strong>5.42억 달러</strong><span>주간 평균 유휴 자금</span></div><div class="vz-stat"><strong>2억 달러+</strong><span>90일간 입출금 없이 유휴(약 36.7%)</span></div><div class="vz-stat"><strong>1.5억 달러</strong><span>연간 '놓친' 수수료 추정(손실 아님)</span></div></div>
     <div class="risk reveal"><p><b>이 통계를 읽는 법.</b> ① 연구는 Uniswap v3·v4, PancakeSwap v3, Aerodrome의 상위 풀을 7개 체인에서 본 것이며 <b>Solana의 집중 유동성 시장(Meteora 포함)은 제외</b>됐습니다. YVVY가 쓴다고 알려진 환경의 수치가 아닙니다. ② 1.5억 달러는 범위 밖 LP가 '받지 못한 수수료'의 추정치이며, 백서의 'LP 연간 손실'과 같은 뜻이 아닙니다. ③ 연구는 1inch가 의뢰했고, 일부 유휴 포지션은 의도적(지정가 방식)이라고 연구진도 밝혔습니다.</p></div>
+  </div>
+</section>
+<section class="alt" id="source">
+  <div class="wrap-wide" style="text-align:center">
+    <div class="eyebrow reveal">수익의 재원</div>
+    <h2 class="display-md reveal">수익은 <span class="gold">거래량에서</span> 나옵니다</h2>
+    <p class="body reveal" style="max-width:680px;margin-left:auto;margin-right:auto">LP 수익의 출처는 <strong>트레이더가 내는 수수료</strong>입니다. 그래서 풀의 거래량이 곧 재원의 크기이고, 가격이 내 구간 안에 머무는 동안에만 수수료를 받습니다. 아래는 Meteora가 공개한 2026년 상반기 수치입니다.</p>
+    <div data-yz="donut" data-title="Meteora가 LP에게 지급한 수수료 구성" data-cap="2026년 상반기 합계 약 1.4억 달러" data-center="$140M" data-sub="LP 수수료 합계" data-items='[{"l":"외부 토큰 풀","v":105,"t":"1.05억 달러 · 75%"},{"l":"런치패드 파트너 토큰","v":35,"t":"0.35억 달러 · 25%","c":"#ecc480"}]' data-src="출처: <a href='https://solanacompass.com/news/meteora-reports-140m-in-lp-fees-and-32b-in-h1-2026-trading-volume' target='_blank' rel='noopener'>Solana Compass 보도</a>(Meteora H1 2026 토큰 홀더 리포트 요약). 프로토콜 자체 집계이며 독립 검증은 아닙니다."></div>
+    <div data-yz="bars" data-title="거래량은 일정하지 않습니다" data-cap="2026년 분기별 Meteora 거래량 (단위: 십억 달러)" data-unit="B$" data-items='[{"l":"1분기","v":19.5,"t":"보고 수치"},{"l":"2분기","v":12.5,"t":"상반기 320억 − 1분기로 계산","c":"#0d9488"}]' data-src="1분기 195억 달러와 상반기 320억 달러는 보도된 값이고, 2분기는 그 차이로 계산한 값입니다(약 36% 감소). 거래량이 줄면 같은 풀의 수수료도 줄 수 있습니다."></div>
+    <div class="vz-stats reveal"><div class="vz-stat"><strong>36%</strong><span>90일 넘은 풀이 만든 DLMM 수수료 비중(1월 15%에서 상승)</span></div><div class="vz-stat"><strong>5% / 20%</strong><span>프로토콜이 가져가는 몫: 표준 풀 / 부트스트랩(런치) 풀</span></div><div class="vz-stat"><strong>최대 69</strong><span>한 포지션이 걸칠 수 있는 가격 구간(bin) 수(베타)</span></div></div>
+    <div class="tbl-wrap reveal"><table><thead><tr><th>수익 재원</th><th>어떻게 생기나</th><th>커지는 조건</th><th>함께 오는 위험</th></tr></thead><tbody>
+<tr><td>기본 수수료</td><td>스왑 금액 × (기본 요율). 요율은 풀을 만든 사람이 설정합니다.</td><td>거래량 증가, 내 구간 안에서 거래가 많을 때</td><td>거래량이 줄면 함께 감소</td></tr>
+<tr><td>변동 수수료</td><td>가격 변동성이 클수록 수수료가 커지도록 설계된 추가 요율입니다.</td><td>변동성이 커지는 시장</td><td>변동성이 크면 범위 이탈과 가치 변동도 커집니다</td></tr>
+<tr><td>구간 집중</td><td>자금을 활성 구간에 모아 같은 자본으로 더 많은 거래를 받습니다.</td><td>구간을 자주 점검·재설정할 때</td><td>범위를 벗어나면 수수료가 멈추고, 구간 수정에는 비용이 듭니다</td></tr>
+</tbody></table></div>
+    <div class="risk reveal"><p><b>YVVY의 가치 제안은 여기에 있습니다.</b> 재원은 '거래 수수료'로 분명한데, 그 수수료를 <b>얼마나 꾸준히 받느냐</b>는 구간을 얼마나 잘 관리하느냐에 달려 있습니다. 앞에서 본 것처럼 집중 유동성 자본의 상당 부분이 범위 밖에서 놀고 있다는 조사가 있고, 백서는 이 관리를 회원 대신 맡겠다고 주장합니다. 다만 <b>YVVY의 실제 운용 성과 데이터는 아직 공개된 것이 없어</b>, 이 주장은 확인이 필요한 항목입니다.</p></div>
+    <p class="fine reveal">※ 수수료 공식: 총 수수료 = 기본 수수료 + 변동 수수료. 출처: <a href="https://docs.meteora.ag/product-overview/dlmm-overview/dynamic-fees" target="_blank" rel="noopener">Meteora DLMM 동적 수수료 문서</a></p>
   </div>
 </section>
 <section class="alt">
@@ -163,6 +188,6 @@ addEventListener('scroll', () => document.querySelector('.sticky').classList.tog
 <script src="nocapital-stars.js?v=yvvy20261102b" defer></script>
 <script src="nocapital-apple3.js?v=yvvy20261102b" defer></script>
 <script src="yvvy-apple.js?v=yvvy20261102b" defer></script>
-<script src="yvvy-viz.js?v=mint20261105a" defer></script>
+<script src="yvvy-viz.js?v=mint20261105d" defer></script>
 </body>
 </html>
