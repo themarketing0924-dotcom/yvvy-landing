@@ -103,20 +103,19 @@
   /* ---------- 계산기 2: 추천 인센티브 ---------- */
   R.refcalc = function (el) {
     el.innerHTML = '<div class="yz-grid"><div>' +
-      '<div class="yz-row2"><div><label>1티어 활성 AUM(SOL)</label><input type="number" id="rc-a1" min="0" step="1" value="100" inputmode="decimal"></div><div><label>2티어 활성 AUM(SOL)</label><input type="number" id="rc-a2" min="0" step="1" value="100" inputmode="decimal"></div></div>' +
+      '<div><label>추천 사용자 활성 AUM(SOL)</label><input type="number" id="rc-a1" min="0" step="1" value="100" inputmode="decimal"></div>' +
       '<label>해당 기간 순이익률 r <span id="rc-rv">1.0%</span></label><input type="range" id="rc-r" min="-2" max="2" step="0.1" value="1" aria-label="순이익률 r(%)">' +
       '<div class="yz-ticks"><span>-2%</span><span>0</span><span>백서 참고 0.5–1%</span><span>2%</span></div></div><div>' +
-      '<ul class="yz-list"><li><span>1티어 전략 수익 P = A × r</span><b id="rc-p1">1 SOL</b></li><li><span>1티어 인센티브 × 10%</span><b id="rc-i1">0.1 SOL</b></li><li><span>2티어 전략 수익 P = A × r</span><b id="rc-p2">1 SOL</b></li><li><span>2티어 인센티브 × 5%</span><b id="rc-i2">0.05 SOL</b></li></ul>' +
-      '<div class="yz-big" style="margin-top:1rem"><span id="rc-t">0.15</span> SOL<small>합계</small></div><div class="yz-stack" aria-hidden="true"><i id="rc-b1" style="background:#2dd4bf;width:50%"></i><i id="rc-b2" style="background:#0d9488;width:25%"></i></div></div></div>' +
-      '<p class="yz-note" id="rc-n">백서 13쪽의 P = A × r 및 1티어 10%·2티어 5% 규칙을 곱한 산수입니다. 설명용 파라미터이며 고정 수익 약속이 아닙니다.</p>';
+      '<ul class="yz-list"><li><span>전략 수익 P = A × r</span><b id="rc-p1">1 SOL</b></li><li><span>추천 인센티브 × 10%</span><b id="rc-i1">0.1 SOL</b></li></ul>' +
+      '<div class="yz-big" style="margin-top:1rem"><span id="rc-t">0.1</span> SOL<small>추천 인센티브</small></div></div></div>' +
+      '<p class="yz-note" id="rc-n">백서 13쪽의 P = A × r 및 추천 10% 규칙을 곱한 산수입니다. 설명용 파라미터이며 고정 수익 약속이 아닙니다.</p>';
     var q = function (s) { return el.querySelector(s); };
     function upd() {
-      var a1 = Math.max(+q('#rc-a1').value || 0, 0), a2 = Math.max(+q('#rc-a2').value || 0, 0), r = +q('#rc-r').value;
-      var p1 = a1 * r / 100, p2 = a2 * r / 100, i1 = Math.max(p1, 0) * .1, i2 = Math.max(p2, 0) * .05, t = i1 + i2;
-      q('#rc-rv').textContent = f(r, 1) + '%'; q('#rc-p1').textContent = f(p1, 2) + ' SOL'; q('#rc-p2').textContent = f(p2, 2) + ' SOL';
-      q('#rc-i1').textContent = f(i1, 3) + ' SOL'; q('#rc-i2').textContent = f(i2, 3) + ' SOL'; q('#rc-t').textContent = f(t, 3);
-      q('#rc-b1').style.width = (t ? i1 / t * 100 : 0) + '%'; q('#rc-b2').style.width = (t ? i2 / t * 100 : 0) + '%';
-      q('#rc-n').textContent = r <= 0 ? '순이익률이 0 이하이면 인센티브 기준이 되는 전략 수익이 없어 0으로 표시했습니다. 손실 시 처리는 백서에 정해져 있지 않습니다.' : '백서 13쪽의 P = A × r 및 1티어 10%·2티어 5% 규칙을 곱한 산수입니다. 설명용 파라미터이며 고정 수익 약속이 아닙니다.';
+      var a1 = Math.max(+q('#rc-a1').value || 0, 0), r = +q('#rc-r').value;
+      var p1 = a1 * r / 100, i1 = Math.max(p1, 0) * .1, t = i1;
+      q('#rc-rv').textContent = f(r, 1) + '%'; q('#rc-p1').textContent = f(p1, 2) + ' SOL';
+      q('#rc-i1').textContent = f(i1, 3) + ' SOL'; q('#rc-t').textContent = f(t, 3);
+      q('#rc-n').textContent = r <= 0 ? '순이익률이 0 이하이면 인센티브 기준이 되는 전략 수익이 없어 0으로 표시했습니다. 손실 시 처리는 백서에 정해져 있지 않습니다.' : '백서 13쪽의 P = A × r 및 추천 10% 규칙을 곱한 산수입니다. 설명용 파라미터이며 고정 수익 약속이 아닙니다.';
     }
     el.addEventListener('input', upd); upd();
   };

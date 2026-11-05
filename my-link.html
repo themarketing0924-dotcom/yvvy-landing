@@ -32,7 +32,7 @@
 .mk .ref-pc{margin:1rem 0 0;padding:.8rem 1rem;border-radius:14px;background:rgba(45,212,191,.14);color:#5eead4;font-size:.88rem;line-height:1.55;text-align:left}
 </style>
 <style>.sim{max-width:34rem;margin:0 auto;text-align:left}.sim .calc-row{max-width:none}.sim h3{margin:0 0 .4rem}.sim small{display:block;color:inherit;opacity:.7;font-size:.82rem}.simwrap{display:grid;gap:1.6rem;grid-template-columns:repeat(auto-fit,minmax(min(100%,22rem),1fr));max-width:980px;margin:2.4rem auto 0}</style>
-<link rel="stylesheet" href="yvvy-viz.css?v=mint20261103b">
+<link rel="stylesheet" href="yvvy-viz.css?v=mint20261105a">
 </head>
 <body>
 <nav class="nav"><a class="nav-logo" href="nocapital.html">← 처음으로</a></nav>
@@ -51,9 +51,8 @@
         <div class="calc-out" id="out" aria-live="polite"></div>
       </div>
       <div class="ref-box calc reveal sim">
-        <h3>② 추천 인센티브</h3><small>백서 13쪽 · 1티어 10%, 2티어 5%</small>
-        <div class="calc-row"><label for="t1">1티어 사용자 전략 수익 합계 (SOL)</label><input id="t1" type="number" inputmode="decimal" step="any" value="10"></div>
-        <div class="calc-row"><label for="t2">2티어 사용자 전략 수익 합계 (SOL)</label><input id="t2" type="number" inputmode="decimal" step="any" value="10"></div>
+        <h3>② 추천 인센티브</h3><small>백서 13쪽 · 추천 10%</small>
+        <div class="calc-row"><label for="t1">추천 사용자 전략 수익 합계 (SOL)</label><input id="t1" type="number" inputmode="decimal" step="any" value="10"></div>
         <div class="calc-out" id="out2" aria-live="polite"></div>
         <h3 style="margin-top:2rem">③ V등급 요건</h3><small>백서 14쪽 · 두 요건 동시 충족</small>
         <div class="calc-row"><label for="pv">개인 활성 보유량 (SOL)</label><input id="pv" type="number" inputmode="decimal" min="0" step="any" value="100"></div>
@@ -103,20 +102,20 @@
     else{var gross=dep*r*days,mem=dep*r*cs;
       h+=line('총 적격 순이익',f(gross)+' SOL')+line('회원 누적 배분',f(mem)+' SOL')+line('회사 누적 배분',f(gross-mem)+' SOL')+line('평균 회원 몫',days?f(cs/days*100,1)+'%':'-')+line('입금 대비 회원 배분',f(mem/Math.max(dep,1e-9)*100,1)+'%')+line('단순 연환산 r',f(r*365*100,1)+'%')}
     g('out').innerHTML=h;
-    var t1=+g('t1').value||0,t2=+g('t2').value||0;
-    g('out2').innerHTML=line('1티어 (10%)',f(Math.max(t1,0)*.10,3)+' SOL')+line('2티어 (5%)',f(Math.max(t2,0)*.05,3)+' SOL')+line('합계',f(Math.max(t1,0)*.10+Math.max(t2,0)*.05,3)+' SOL')+(t1<0||t2<0?line('음수 입력','0으로 처리, 규정 없음'):'');
+    var t1=+g('t1').value||0;
+    g('out2').innerHTML=line('추천 인센티브 (10%)',f(Math.max(t1,0)*.10,3)+' SOL')+(t1<0?line('음수 입력','0으로 처리, 규정 없음'):'');
     var p=+g('pv').value||0,q=+g('gv').value||0,G=[['V6',1000,50000],['V5',500,20000],['V4',100,5000],['V3',50,1000],['V2',10,150],['V1',5,50]],hit=null;
     for(var i=0;i<G.length;i++){if(p>=G[i][1]&&q>=G[i][2]){hit=G[i];break}}
     var nx=null;for(var j=G.length-1;j>=0;j--){if(!(p>=G[j][1]&&q>=G[j][2])){nx=G[j];}else break}
     g('out3').innerHTML=line('충족 등급',hit?hit[0]:'없음')+(nx?line('다음 등급 '+nx[0],'개인 '+f(nx[1],0)+' · 그룹 '+f(nx[2],0)+' SOL'):line('다음 등급','최고 등급'));
   }
-  ['dep','days','r','t1','t2','pv','gv'].forEach(function(id){g(id).addEventListener('input',run)});run();
+  ['dep','days','r','t1','pv','gv'].forEach(function(id){g(id).addEventListener('input',run)});run();
 })();
 </script>
 <script src="nocapital-apple.js?v=yvvy20261102b" defer></script>
 <script src="nocapital-motion.js?v=yvvy20261102b" defer></script>
 <script src="nocapital-apple3.js?v=yvvy20261102b" defer></script>
 <script src="yvvy-apple.js?v=yvvy20261102b" defer></script>
-<script src="yvvy-viz.js?v=mint20261103b" defer></script>
+<script src="yvvy-viz.js?v=mint20261105a" defer></script>
 </body>
 </html>
