@@ -122,3 +122,6 @@ html body>:is(section,section#top):not(.zx1):not(.zx2):not(#_):not(#__) .yz .yz-
 html body>:is(section,section#top):not(.zx1):not(.zx2):not(#_):not(#__) .yz .yz-big { color: #2dd4bf !important; }
 html body>:is(section,section#top):not(.zx1):not(.zx2):not(#_):not(#__) .yz .yz-bar b small,
 html body>:is(section,section#top):not(.zx1):not(.zx2):not(#_):not(#__) .yz .yz-flow small { color: #a1a1a6 !important; font-weight: 400 !important; }
+
+/* 메인 헤더(내비게이션)는 어떤 스크롤 상황에서도 항상 보이게 고정 */
+html body nav.nav { position: fixed !important; top: 0 !important; left: 0; right: 0; transform: none !important; opacity: 1 !important; visibility: visible !important; z-index: 2147483000 !important; }
