@@ -125,3 +125,8 @@ html body>:is(section,section#top):not(.zx1):not(.zx2):not(#_):not(#__) .yz .yz-
 
 /* 메인 헤더(내비게이션)는 어떤 스크롤 상황에서도 항상 보이게 고정 */
 html body nav.nav { position: fixed !important; top: 0 !important; left: 0; right: 0; transform: none !important; opacity: 1 !important; visibility: visible !important; z-index: 2147483000 !important; }
+
+/* 히어로: 제목·부제·한 줄 안내만 남기고 한 화면에 */
+section.hero.has-vbg { min-height: 100svh; display: flex; align-items: center; justify-content: center; }
+section.hero.has-vbg .wrap-wide { padding-top: 6rem; padding-bottom: 5rem; }
+html body section.hero .hero-note { margin: 2.2rem auto 0; font-size: 14px !important; font-weight: 400 !important; letter-spacing: -.01em; color: rgba(245,245,247,.62); }
