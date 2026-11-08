@@ -16,7 +16,7 @@
 <meta name="theme-color" content="#000000">
 <link rel="stylesheet" href="site.css?v=yvvy20261102b">
 <script>document.documentElement.classList.add('js');</script>
-<link rel="stylesheet" href="yvvy-viz.css?v=mint20261108a">
+<link rel="stylesheet" href="yvvy-viz.css?v=mint20261108b">
 </head>
 <body data-step="1">
 <nav class="nav">
@@ -71,6 +71,19 @@
 <tr><td>구간 집중</td><td>자금을 활성 구간에 모아 같은 자본으로 더 많은 거래를 받습니다.</td><td>구간을 자주 점검·재설정할 때</td><td>범위를 벗어나면 수수료가 멈추고, 구간 수정에는 비용이 듭니다</td></tr>
 </tbody></table></div>
     <div class="risk reveal"><p><b>YVVY의 가치 제안은 여기에 있습니다.</b> 재원은 '거래 수수료'로 분명한데, 그 수수료를 <b>얼마나 꾸준히 받느냐</b>는 구간을 얼마나 잘 관리하느냐에 달려 있습니다. 앞에서 본 것처럼 집중 유동성 자본의 상당 부분이 범위 밖에서 놀고 있다는 조사가 있고, 백서는 이 관리를 회원 대신 맡겠다고 주장합니다. 다만 <b>YVVY의 실제 운용 성과 데이터는 아직 공개된 것이 없어</b>, 이 주장은 확인이 필요한 항목입니다.</p></div>
+    <div class="eyebrow reveal" style="margin-top:4rem">온체인 증거</div>
+    <h2 class="display-md reveal">누구나 <span class="gold">직접 확인</span>할 수 있는 수치</h2>
+    <p class="body reveal" style="max-width:680px;margin-left:auto;margin-right:auto">Solana에서 LP가 수수료를 번다는 것은 블록체인에 기록된 거래 내역으로 확인됩니다. 아래는 데이터 집계 사이트 DefiLlama에 공개된 Meteora DLMM의 <strong>2026년 10월 25일 기준</strong> 수치입니다. 좋은 숫자만이 아니라 최근 줄어든 흐름도 함께 보여드립니다.</p>
+    <div class="vz-stats reveal"><div class="vz-stat"><strong>$31.1M</strong><span>최근 30일 스왑 수수료</span></div><div class="vz-stat"><strong>$41.5억</strong><span>최근 30일 거래량($4.148B)</span></div><div class="vz-stat"><strong>$10.8억</strong><span>출시 이후 누적 수수료($1.082B)</span></div><div class="vz-stat"><strong>$2,265억</strong><span>누적 거래량($226.5B)</span></div></div>
+    <div data-yz="bars" data-title="일평균 수수료는 줄고 있습니다" data-cap="Meteora DLMM 일평균 스왑 수수료 (단위: 천 달러)" data-unit="K$" data-items='[{"l":"최근 30일 평균","v":1035},{"l":"최근 7일 평균","v":411,"c":"#14b8a6"},{"l":"최근 24시간","v":340,"c":"#0d9488"}]' data-src="계산: 30일 $31.06M ÷ 30, 7일 $2.88M ÷ 7, 24시간 $339,815. 출처: <a href='https://defillama.com/protocol/meteora-dlmm' target='_blank' rel='noopener'>DefiLlama Meteora DLMM</a>(2026-10-25 기준). 시장 상황에 따라 크게 변하는 값이므로 수익이 꾸준하다는 근거가 아니라 '재원이 실제로 존재하고 변동한다'는 근거로 읽어야 합니다."></div>
+    <div data-yz="bars" data-title="수수료가 곧 순이익은 아닙니다" data-cap="Uniswap LP 표본(TVL의 43%): 수수료 수입 vs 임시손실 (단위: 백만 달러)" data-unit="M$" data-items='[{"l":"받은 수수료","v":199.3},{"l":"임시손실","v":260.1,"c":"#ecc480"},{"l":"단순 보유 대비 순손익","v":60.8,"c":"#f87171","t":"−60.8M$ (손해)"}]' data-src="출처: <a href='https://blockeden.xyz/blog/2026/04/19/meteora-lp-portfolio-analytics-dlmm-defi-bloomberg-terminal' target='_blank' rel='noopener'>BlockEden</a>가 인용한 표본(원 연구자는 기사에 없음). Uniswap 데이터이며 Meteora·Solana LP의 성과를 뜻하지 않습니다. 수수료 수입이 있어도 가격 변동으로 손해가 날 수 있다는 점을 보여주는 사례입니다."></div>
+    <div class="tbl-wrap reveal"><table><thead><tr><th>확인하고 싶은 것</th><th>어디서 보나</th><th>무엇을 보나</th></tr></thead><tbody>
+<tr><td>풀의 수수료·거래량</td><td><a href="https://defillama.com/protocol/meteora-dlmm" target="_blank" rel="noopener">DefiLlama · Meteora DLMM</a></td><td>일·주·월 수수료, 거래량, 누적 수치</td></tr>
+<tr><td>수수료 계산 방식</td><td><a href="https://docs.meteora.ag/product-overview/dlmm-overview/dynamic-fees" target="_blank" rel="noopener">Meteora 공식 문서</a></td><td>기본 수수료 + 변동 수수료, 프로토콜 몫(5% / 20%)</td></tr>
+<tr><td>개별 포지션 손익</td><td>Meteora 앱의 포지션·포트폴리오 화면, Solana 탐색기(Solscan 등)</td><td>입금·수수료 청구·출금 거래 기록을 지갑 주소로 조회</td></tr>
+<tr><td>YVVY의 실제 운용</td><td>백서에 지갑·포지션 주소 없음</td><td>주소가 공개되면 위 도구로 누구나 같은 방식으로 검증 가능</td></tr>
+</tbody></table></div>
+    <div class="risk reveal"><p><b>투명하게 말씀드리는 한계.</b> 위 수치는 Meteora 전체의 재원 규모이지 YVVY의 수익이 아닙니다. YVVY가 실제로 얼마를 벌었는지는 운용 지갑 주소와 거래 내역이 공개되어야 확인할 수 있고, 현재 백서에는 그 정보가 없습니다. 그래서 이 사이트는 수익률을 약속하지 않고, <b>재원이 어디서 나오는지</b>와 <b>직접 확인하는 방법</b>을 보여드립니다.</p></div>
     <p class="fine reveal">※ 수수료 공식: 총 수수료 = 기본 수수료 + 변동 수수료. 출처: <a href="https://docs.meteora.ag/product-overview/dlmm-overview/dynamic-fees" target="_blank" rel="noopener">Meteora DLMM 동적 수수료 문서</a></p>
   </div>
 </section>
@@ -183,6 +196,6 @@ addEventListener('scroll', () => document.querySelector('.sticky').classList.tog
 <script src="nocapital-stars.js?v=yvvy20261102b" defer></script>
 <script src="nocapital-apple3.js?v=yvvy20261102b" defer></script>
 <script src="yvvy-apple.js?v=yvvy20261102b" defer></script>
-<script src="yvvy-viz.js?v=mint20261108a" defer></script>
+<script src="yvvy-viz.js?v=mint20261108b" defer></script>
 </body>
 </html>
