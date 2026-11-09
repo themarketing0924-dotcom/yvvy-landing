@@ -133,3 +133,18 @@ html body section.hero .hero-note { margin: 2.2rem auto 0; font-size: 14px !impo
 
 .vz-cta { margin: 2rem auto 0; text-align: center; }
 .vz-cta small { display: block; margin-top: .8rem; font-size: 12px; color: #86868b; word-break: break-all; }
+
+/* 본문 글자: 한 글자·단어씩 켜지는(타자 치듯) 스크롤 효과를 끄고, 처음부터 또렷한 색으로 블록 전체가 한 번에 나타나게 */
+html.js body .fx-on .w { color: #d2d2d7 !important; transition: none !important; }
+html.js body .fx-on :is(strong,b,em,.hl) .w { color: #f5f5f7 !important; }
+html.js body section.lt .fx-on .w { color: #3a3a3c !important; }
+html.js body section.lt .fx-on :is(strong,b,em,.hl) .w { color: #1d1d1f !important; }
+html.js body section.hero .fx-on .w, html.js body section.hero .sub .w { color: #f5f5f7 !important; }
+html.js body section.hero .hero-note { color: rgba(245,245,247,.78) !important; }
+html body section.hero .sub, html body section.hero .sub * { color: #f5f5f7 !important; -webkit-text-fill-color: #f5f5f7 !important; }
+html body section.hero .sub em { color: #ffffff !important; -webkit-text-fill-color: #ffffff !important; }
+html body section.hero .hero-note, html body section.hero .hero-note * { color: rgba(245,245,247,.82) !important; -webkit-text-fill-color: rgba(245,245,247,.82) !important; }
+.vbg.raw video { filter: brightness(.9) saturate(1.1); }
+.vbg.raw::after { background: linear-gradient(180deg, rgba(10,14,12,.38) 0%, rgba(10,14,12,.2) 40%, rgba(10,14,12,.34) 75%, #0a0e0c 100%); }
+.vbg.raw video { filter: brightness(.8) saturate(1.05); }
+.vbg.raw::after { background: linear-gradient(180deg, rgba(10,14,12,.5) 0%, rgba(10,14,12,.42) 45%, rgba(10,14,12,.42) 75%, #0a0e0c 100%); }
