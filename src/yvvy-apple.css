@@ -94,8 +94,8 @@ input,select,textarea{font-size:16px!important}
 }
 
 /* ===== 대비 보정: 번호 배지 흰 글자, 밝은 섹션의 연한 글자 진하게 ===== */
-html body .vz-check li::before{background:#0f766e!important;color:#fff!important;font-weight:700;box-shadow:0 0 0 3px rgba(45,212,191,.18)}
-html body section:not(.lt):not(.alt) .vz-check li::before{background:rgba(45,212,191,.22)!important;color:#fff!important;box-shadow:inset 0 0 0 1.5px #2dd4bf}
-html body section:is(.lt,.alt):not(.has-vbg) :is(.yz-chip){color:#0f766e!important;border-color:rgba(15,118,110,.45)!important}
+html body .vz-check li::before{background:#0a7a50!important;color:#fff!important;font-weight:700;box-shadow:0 0 0 3px rgba(20,241,149,.18)}
+html body section:not(.lt):not(.alt) .vz-check li::before{background:rgba(20,241,149,.22)!important;color:#fff!important;box-shadow:inset 0 0 0 1.5px #14f195}
+html body section:is(.lt,.alt):not(.has-vbg) :is(.yz-chip){color:#0a7a50!important;border-color:rgba(15,118,110,.45)!important}
 html body section:is(.lt,.alt):not(.has-vbg) :is(.yz-x,.gate-hint,.fine,.video-note,small.fine){color:#6e6e73!important}
 html body section:is(.lt,.alt):not(.has-vbg) small:not(.vz small):not(.vz-lab small){color:#6e6e73!important}
