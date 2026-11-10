@@ -153,3 +153,12 @@ html body section.hero .hero-note, html body section.hero .hero-note * { color: 
 @media (min-width: 1070px) { html body .sub { font-size: 24px !important; line-height: 1.3 !important; letter-spacing: .009em !important; } }
 @media (min-width: 1070px) { html body>:is(section,section#top):not(.zx1):not(.zx2):not(#_):not(#__) .sub { font-size: 24px !important; line-height: 1.3 !important; letter-spacing: .009em !important; } }
 html body>:is(section,section#top):not(.zx1):not(.zx2):not(#_):not(#__) .hero-note { font-size: 15px !important; line-height: 1.5 !important; font-weight: 500 !important; }
+
+/* 애플 맥 페이지 방식: 본문은 회색·중간 굵기, 강조 키워드는 또렷한 흰색/검정 + 굵은 글씨 */
+html.js body .fx-on .w { color: #a1a1a6 !important; font-weight: 500 !important; }
+html.js body .fx-on :is(strong,b,em,.hl) .w, html.js body .fx-on :is(strong,b,em,.hl) { color: #ffffff !important; font-weight: 700 !important; }
+html.js body section.lt .fx-on .w { color: #6e6e73 !important; font-weight: 500 !important; }
+html.js body section.lt .fx-on :is(strong,b,em,.hl) .w, html.js body section.lt .fx-on :is(strong,b,em,.hl) { color: #1d1d1f !important; font-weight: 700 !important; }
+/* 강조가 .w 없이 직접 있는 문단도 동일하게 */
+html body>:is(section,section#top):not(.zx1):not(.zx2):not(#_):not(#__) .body :is(strong,b,em) { font-weight: 700 !important; color: #ffffff !important; }
+html body>:is(section,section#top).lt:not(.zx1):not(.zx2):not(#_):not(#__) .body :is(strong,b,em) { color: #1d1d1f !important; }
