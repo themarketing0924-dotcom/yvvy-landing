@@ -2,7 +2,7 @@
    모든 수치는 백서(19쪽) 값 또는 그 규칙으로 계산한 값입니다. 외부 라이브러리 없음. */
 (function () {
   'use strict';
-  var PAL = ['#2dd4bf', '#5eead4', '#99f6e4', '#14b8a6', '#0d9488', '#0f766e'];
+  var PAL = ['#14f195', '#5bf5b9', '#a8ffd9', '#00d18c', '#9945ff', '#0a7a50'];
   document.documentElement.classList.add('yz-js');
   var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   function J(s, d) { try { return JSON.parse(s); } catch (e) { return d; } }
@@ -61,10 +61,10 @@
     var s = '<svg viewBox="0 0 ' + W + ' ' + H + '" role="img" aria-label="' + (el.dataset.alt || '꺾은선 차트') + '">';
     for (var g = 0; g <= 4; g++) { var v = max * g / 4; s += '<line class="grid-l" x1="' + pl + '" x2="' + (W - pr) + '" y1="' + Y(v).toFixed(1) + '" y2="' + Y(v).toFixed(1) + '"/><text x="' + (pl - 8) + '" y="' + (Y(v) + 4).toFixed(1) + '" text-anchor="end">' + f(v, 0) + unit + '</text>'; }
     var d = ys.map(function (v, i) { return (i ? 'L' : 'M') + X(i).toFixed(1) + ' ' + Y(v).toFixed(1); }).join(' ');
-    s += '<defs><linearGradient id="lg' + el.id + '" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#2dd4bf" stop-opacity=".35"/><stop offset="1" stop-color="#2dd4bf" stop-opacity="0"/></linearGradient></defs>';
+    s += '<defs><linearGradient id="lg' + el.id + '" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#14f195" stop-opacity=".35"/><stop offset="1" stop-color="#14f195" stop-opacity="0"/></linearGradient></defs>';
     s += '<path class="anim-fade" d="' + d + ' L' + X(ys.length - 1).toFixed(1) + ' ' + Y(0) + ' L' + X(0).toFixed(1) + ' ' + Y(0) + ' Z" fill="url(#lg' + el.id + ')"/>';
-    s += '<path class="anim-line" pathLength="1" d="' + d + '" fill="none" stroke="#2dd4bf" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>';
-    ys.forEach(function (v, i) { s += '<g class="anim-fade"><circle cx="' + X(i).toFixed(1) + '" cy="' + Y(v).toFixed(1) + '" r="4.5" fill="#1d1d1f" stroke="#2dd4bf" stroke-width="2.5"/><text x="' + X(i).toFixed(1) + '" y="' + (Y(v) - 11).toFixed(1) + '" text-anchor="middle" style="fill:#f5f5f7;font-weight:600">' + v + unit + '</text></g><text x="' + X(i).toFixed(1) + '" y="' + (H - 10) + '" text-anchor="middle">' + xs[i] + '</text>'; });
+    s += '<path class="anim-line" pathLength="1" d="' + d + '" fill="none" stroke="#14f195" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>';
+    ys.forEach(function (v, i) { s += '<g class="anim-fade"><circle cx="' + X(i).toFixed(1) + '" cy="' + Y(v).toFixed(1) + '" r="4.5" fill="#1d1d1f" stroke="#14f195" stroke-width="2.5"/><text x="' + X(i).toFixed(1) + '" y="' + (Y(v) - 11).toFixed(1) + '" text-anchor="middle" style="fill:#f5f5f7;font-weight:600">' + v + unit + '</text></g><text x="' + X(i).toFixed(1) + '" y="' + (H - 10) + '" text-anchor="middle">' + xs[i] + '</text>'; });
     el.innerHTML = '<div style="margin-top:1.2rem">' + s + '</svg></div>';
   };
 
@@ -72,7 +72,7 @@
   R.rings = function (el) {
     var items = J(el.dataset.items, []), Rr = 46, C = 2 * Math.PI * Rr;
     el.innerHTML = '<div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:1.4rem;margin-top:1.6rem;text-align:center">' + items.map(function (it) {
-      var len = C * (it.n / it.d), col = it.c || '#2dd4bf';
+      var len = C * (it.n / it.d), col = it.c || '#14f195';
       return '<div><svg viewBox="0 0 120 120" style="max-width:150px;margin:0 auto" role="img" aria-label="' + it.l + ' ' + it.n + '/' + it.d + '"><circle cx="60" cy="60" r="' + Rr + '" fill="none" stroke="rgba(255,255,255,.1)" stroke-width="11"/><circle class="anim-stroke" data-len="' + len.toFixed(2) + '" data-c="' + C.toFixed(2) + '" cx="60" cy="60" r="' + Rr + '" fill="none" stroke="' + col + '" stroke-width="11" stroke-linecap="round" stroke-dasharray="0 ' + C.toFixed(2) + '" transform="rotate(-90 60 60)"/><text x="60" y="68" text-anchor="middle" style="font-size:24px;font-weight:600;fill:#f5f5f7">' + it.n + '/' + it.d + '</text></svg><div style="margin-top:.7rem;font-size:14px;font-weight:600;color:#f5f5f7;letter-spacing:-.016em">' + it.l + '</div><div style="font-size:12px;color:#86868b;margin-top:.2rem">' + it.s + '</div></div>';
     }).join('') + '</div>';
   };
@@ -91,7 +91,7 @@
     var fig = el.querySelector('#pd-fig'), d = el.querySelector('#pd-d'), pf = el.querySelector('#pd-pf');
     function upd() {
       var N = +d.value, m = rate(N), a = avg(N), p = Math.max(+pf.value || 0, 0);
-      fig.innerHTML = donutSVG([{ v: m, l: '회원', c: '#2dd4bf' }, { v: 100 - m, l: '회사', c: '#48484c' }], m + '%', N + '일차 회원 몫');
+      fig.innerHTML = donutSVG([{ v: m, l: '회원', c: '#14f195' }, { v: 100 - m, l: '회사', c: '#48484c' }], m + '%', N + '일차 회원 몫');
       el.querySelector('#pd-m').textContent = m; el.querySelector('#pd-c').textContent = (100 - m) + '%';
       el.querySelector('#pd-a').textContent = f(a, 1) + '%'; el.querySelector('#pd-dv').textContent = N + '일';
       el.querySelector('#pd-p').textContent = f(p * a / 100, 2) + ' SOL';
@@ -122,7 +122,7 @@
 
   /* ---------- 계산기 3: 회원 몫 시나리오 막대 ---------- */
   R.scen = function (el) {
-    el.innerHTML = '<label style="margin-top:1.2rem">참여 금액 A(SOL) <span id="sc-av">100</span></label><input type="number" id="sc-a" min="1" max="100" step="1" value="100" inputmode="decimal"><div id="sc-fig" style="margin-top:1.4rem"></div>' + legend([{ l: '1–7일 구간(회원 30%)', c: '#5eead4' }, { l: '181일부터(회원 80%)', c: '#2dd4bf' }]) +
+    el.innerHTML = '<label style="margin-top:1.2rem">참여 금액 A(SOL) <span id="sc-av">100</span></label><input type="number" id="sc-a" min="1" max="100" step="1" value="100" inputmode="decimal"><div id="sc-fig" style="margin-top:1.4rem"></div>' + legend([{ l: '1–7일 구간(회원 30%)', c: '#5bf5b9' }, { l: '181일부터(회원 80%)', c: '#14f195' }]) +
       '<p class="yz-note">하루 순이익률 r마다 회원 몫이 얼마인지 곱해 본 값입니다. 백서는 순이익이 없거나 손실일 때 누가 부담하는지 정하지 않아, 0 이하는 막대 대신 “미규정”으로 표시했습니다. r은 백서의 설명용 수치(0.5–1%)와 가정(0, -1%)이며 전망이 아닙니다.</p>';
     var rs = [-1, 0, .5, 1], fig = el.querySelector('#sc-fig'), inp = el.querySelector('#sc-a');
     function upd() {
@@ -133,7 +133,7 @@
         if (profit <= 0) { s += '<text x="' + (gx + 50) + '" y="' + (base - 60) + '" text-anchor="middle" style="fill:#ff8a7a;font-weight:600;font-size:14px">미규정</text><text x="' + (gx + 50) + '" y="' + (base - 40) + '" text-anchor="middle" style="font-size:12px">손실·0일 때</text>'; }
         else [.3, .8].forEach(function (sh, k) {
           var h = hmax * (profit * sh) / mx, x = gx + k * 44;
-          s += '<rect class="anim-bar" x="' + x + '" y="' + (base - h).toFixed(1) + '" width="38" height="' + h.toFixed(1) + '" rx="6" fill="' + (k ? '#2dd4bf' : '#5eead4') + '"/><text x="' + (x + 19) + '" y="' + (base - h - 8).toFixed(1) + '" text-anchor="middle" style="fill:#f5f5f7;font-weight:600">' + f(profit * sh, 2) + '</text>';
+          s += '<rect class="anim-bar" x="' + x + '" y="' + (base - h).toFixed(1) + '" width="38" height="' + h.toFixed(1) + '" rx="6" fill="' + (k ? '#14f195' : '#5bf5b9') + '"/><text x="' + (x + 19) + '" y="' + (base - h - 8).toFixed(1) + '" text-anchor="middle" style="fill:#f5f5f7;font-weight:600">' + f(profit * sh, 2) + '</text>';
         });
         s += '<text x="' + (gx + 41) + '" y="' + (base + 22) + '" text-anchor="middle">r = ' + (r > 0 ? '+' : '') + r + '%</text>';
       });

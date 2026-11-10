@@ -67,7 +67,7 @@ html body > :is(section,section#top):not(.zx1):not(.zx2) .tag{font-weight:600!im
 @media (prefers-reduced-motion:reduce){.js .fx-on .w{transition:none;color:var(--ap-g)}.js .fx-on :is(strong,b,em,.hl) .w{color:var(--ap-w)}.js section.lt .fx-on .w{color:var(--ap-lg)}.js section.lt .fx-on :is(strong,b,em,.hl) .w{color:var(--ap-lw)}}
 
 /* ===== 모바일 최적화: iPhone(SE~Pro Max)·Galaxy(S/Ultra/Fold) ===== */
-html{-webkit-text-size-adjust:100%;text-size-adjust:100%;-webkit-tap-highlight-color:rgba(45,212,191,.18)}
+html{-webkit-text-size-adjust:100%;text-size-adjust:100%;-webkit-tap-highlight-color:rgba(20,241,149,.18)}
 body{overflow-wrap:break-word}
 html body :is(p,li,td,th,small,figcaption,.body,.sub,summary,h1,h2,h3){overflow-wrap:anywhere}
 html body .w{overflow-wrap:anywhere}

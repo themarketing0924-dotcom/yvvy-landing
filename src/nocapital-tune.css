@@ -21,7 +21,7 @@
 .card { padding: 1.6rem 1.5rem !important; display: flex; flex-direction: column; }
 .card h3 { margin-bottom: .3rem; }
 .card p { margin-top: .4rem !important; }
-.card ul { list-style: none; margin-top: auto !important; padding-top: .9rem; border-top: 1px solid rgba(45,212,191,.25); }
+.card ul { list-style: none; margin-top: auto !important; padding-top: .9rem; border-top: 1px solid rgba(20,241,149,.25); }
 .lt .card ul { border-top-color: rgba(0,0,0,.1); }
 .card li { padding-left: 0 !important; margin-top: .25rem; }
 .card li::before { content: none !important; }
@@ -109,7 +109,7 @@ footer strong { color: #26303a !important; }
 #community .banner { padding: 2.2rem 1.5rem !important; min-height: 0 !important; }
 #community .banner p { margin: .4rem 0 0; }
 #community .banner .btn { display: inline-flex; align-items: center; justify-content: center; min-height: 48px; padding: 0 1.8rem; border-radius: 980px;
-  background: linear-gradient(135deg, #ccfbf1 0%, #2dd4bf 45%, #14b8a6 100%) !important; color: #04141a !important; font-weight: 700; box-shadow: none; }
+  background: linear-gradient(135deg, #c9ffe8 0%, #14f195 45%, #00d18c 100%) !important; color: #04141a !important; font-weight: 700; box-shadow: none; }
 
 /* ===== 섹션 최소 높이: 내용이 짧은 섹션도 애플처럼 한 화면 리듬을 갖게(내용이 길면 그대로 늘어남) ===== */
 body > section { min-height: clamp(500px, 68vh, 660px); display: flex; flex-direction: column; justify-content: center; }
